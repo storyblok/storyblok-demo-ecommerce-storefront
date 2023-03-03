@@ -48,9 +48,7 @@ module.exports = {
         lg: '2rem',
       },
     },
-    fontFamily: {
-      sans: 'Roboto, sans-serif',
-    },
+
     borderRadius: {
       none: '0',
       sm: 'var(--rounded_sm)',
