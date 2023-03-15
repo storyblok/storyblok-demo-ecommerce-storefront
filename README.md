@@ -1,26 +1,36 @@
-# Storyblok Default Demo
+# Storyblok Ecommerce Demo
 
-This frontend is shown when creating a new example space in your [Storyblok](https://storyblok.com) account. It is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/). Feel free to explore and reuse the code.
+This Frontend Website is a practical example about how to integrate Your Frontend with Storyblok content and E-commerce catalog.
+The FRontend Website provided in this Open Source repository is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
+The E-commerce platform used is [Swell](swell.is) but you can adapt the fetching data mechanism with any commerece that provides you catalog data via API for retrieving:
+- a list of categories
+- one specific category (by slug)
+- a list of products related to a category (by slug category)
+- a product detail (by slug product)
+
 
 ## Setup
 
-- **Install the dependencies:**
+### Install the dependencies
 
 ```bash
 npm install
 ```
 
-- **Install `mkcert` on your system:** The installation instructions for macOS, Windows and Linux can be found in the [mkcert Github repository](https://github.com/FiloSottile/mkcert).
+### Set your API Keys
 
-- **Change the following in your package.json:** `nuxt dev` -> `nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem`
+Set your API Keys in the `.env` file, for Storyblok and for Swell e-commerce. Copy the `.env.example` file into `.env` file and fill all the listed parameters with your values:
 
-- **Create a valid certificate by running the following command in your project folder:** 
+```
+STORYBLOK_SPACE=your-storyblok-space-is
+STORYBLOK_PREVIEW_TOKEN=your-storyblok-access-token
 
-```bash
-mkcert localhost
+SWELL_STORE_NAME=your-swell-ecommerce-name
+SWELL_ACCESS_TOKEN=your-swell-access-token
+
 ```
 
-- **Run your project:**
+### Run the project
 
 ```bash
 npm run dev
@@ -28,23 +38,29 @@ npm run dev
 
 Your project will now be served on [https://localhost:3000](https://localhost:3000).
 
-Have a look at the [Nuxt 3 deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for further information.
 
-## Some particularities to be aware of
+## Features
 
-### Access token and path via URL parameters
+### Banner with 1 product
 
-For our particular use case, we needed one deployed frontend that could be used to display a large quantity of demo spaces that are generated on the fly. Therefore, the access tokens of these spaces are passed via URL parameters. In a more typical scenario, you would probably want to hardcode the access token or store it as an environment variable (the latter being the recommended approach). The changes you have to make are documented as comments in the following files:
-- nuxt.config.js
-- layouts/default.vue
-- pages/[...slug].vue
 
-### Internationalization and language detection
+### Banner with selected products
 
-For the purpose of being used in product demos, it has to be possible that any language can be added in the internationalization settings in Storyblok and is detected automatically in the frontend subsequently. In order to ensure this, all currently active language codes are retrieved from the Storyblok space. When fetching a particular story based on the current route, it is checked whether any of the currently active language codes matches the first part of the route. For example, if the current route was `https://localhost:3000/de/home` and German had been added as a language, `de` would get added as the language parameter in the API request for the home story. You can take a look at the [getLanguage composable](composables/getLanguage.js) to see how it works.
+Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`
+Stroyblok component: `featured-products`
 
-In a real-world project, you would usually know which languages are used on the website, allowing you to choose a simpler approach (e.g. a folder-based one).
+Fields:
+- `headline`: for the editorial purpose (for example, Latest additions, "Selected products" or "Products of the month")
+- `lead`: editorial, for describing the selected products
+- `Product1`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
+- Background Color: pick a coloro from the list for the background
+- Cols: number of columns used for listing products in a kind of grid.
 
-### Setting a real path for stories
 
-The main drawback of handling internationalization as described above is that field-level translation will not working when setting a real path for certain stories (e.g. `/` instead of `home`). When setting a real path, the language code is no longer part of the route, thus making it impossible to detect.
+
+### Banner listing categories
+
+
+### Categories listing
+
+### Category detail
