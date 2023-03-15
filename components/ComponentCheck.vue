@@ -8,7 +8,7 @@ const componentExists = (component) =>
   <StoryblokComponent
     v-if="componentExists(blok.component)"
     :blok="blok"
-    :index="index"
+
   />
   <div v-else class="container flex justify-center">
     <div

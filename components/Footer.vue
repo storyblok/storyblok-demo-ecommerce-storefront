@@ -3,7 +3,8 @@
 const props = defineProps({
   contacts: Array,
   headline: String,
-  nav: Array
+  nav: Array,
+  light: Boolean
 })
 
 const textColor = computed(() => {

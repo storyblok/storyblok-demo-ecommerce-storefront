@@ -69,7 +69,7 @@ onMounted(() => {
       :auto_nav_folder="story.content.header_auto_nav_folder"
       :nav="story.content.header_nav"
       :buttons="story.content.header_buttons"
-      :light="story.content.header_light"
+      :light="false"
     />
     <div
       v-if="
@@ -114,6 +114,7 @@ onMounted(() => {
       :headline="story.content.footer_headline"
       :contacts="story.content.footer_contacts"
       :nav="story.content.header_nav"
+      :light="false"
     />
   </main>
 </template>

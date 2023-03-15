@@ -83,5 +83,5 @@ try {
   <Error404 v-if="error404">
     Unfortunately, this page could not be found.
   </Error404>
-  <StoryblokComponent v-if="story" :blok="story.content" :uuid="story.uuid" />
+  <StoryblokComponent v-if="story" :blok="story.content" :uuid="story.uuid" :index="story.uuid" />
 </template>
