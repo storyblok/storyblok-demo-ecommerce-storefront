@@ -52,17 +52,32 @@ const apiParams = {
 }
 
 const error404 = ref(false)
-console.log("SLUG", slug)
+console.log("SLUG", slug, route)
+
+let loadFallback = false
 try {
+    if (slug === 'error-404') error404.value = true
+    const { data } = await storyblokApi.get('cdn/stories' + route.path, apiParams)
+    story.value = data.story
+} catch (error) {
+    loadFallback = true
+}
+if (loadFallback) {
     try {
+        console.log("ROUTE", route)
         if (slug === 'error-404') error404.value = true
-        const { data } = await storyblokApi.get('cdn/stories' + route.path, apiParams)
+        const { data } = await storyblokApi.get('cdn/stories/products-category/product-category', apiParams)
         story.value = data.story
     } catch (error) {
         if (error.response.status === 404) error404.value = true
         const { data } = await storyblokApi.get('cdn/stories/error-404', apiParams)
         story.value = data.story
     }
+
+}
+
+
+try {
 
     onMounted(() => {
         if (slug[0] !== undefined && slug[0] === 'site-config') return
