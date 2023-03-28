@@ -85,7 +85,7 @@ const config = useRuntimeConfig();
 let product = {};
 swell.init(config.swellStoreName, config.swellAccessToken);
 //swell.currency.select('USD');
-const { pending, data: ecommerceProduct } = await useLazyAsyncData('ecommerceProduct', function () {
+const { pending, data: ecommerceProduct } = useLazyAsyncData('ecommerceProduct', function () {
     return swell.products.get(slug)
 });
 
@@ -94,7 +94,7 @@ watch(ecommerceProduct, (newEcommerceProduct) => {
     product = newEcommerceProduct;
 
 })
-console.log(await swell.cart.get())
+
 
 const loadCart = async function () {
     let cart = await swell.cart.get()
