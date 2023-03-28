@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-const props = defineProps({ minimal: Boolean, category: Object, slug: String, theme: String })
+const props = defineProps({  category: Object, slug: String, theme: String })
 
 const textColor = computed(() => {
     return 'text-white'

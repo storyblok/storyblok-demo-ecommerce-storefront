@@ -6,22 +6,23 @@
                     blok.headline
                 }}</Headline>
 
-                <div v-if="blok.button.length" class="mt-8">
-                    <Button v-for="button in blok.button" :key="button._uid" :button="button" />
+                <div v-if="!pending && blok.button.length"  class="mt-8">
+
+                    <ButtonProduct v-for="button in blok.button" :key="button._uid" :product="myEcommerceProducts[blok.product.items[0].id]" :button="button" />
                 </div>
             </div>
             <div>
                 <div v-if="pending" class="flex items-center justify-center">
-                        <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                            role="status">
-                            <span
-                                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                        </div>
+                    <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status">
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                    </div>
                 </div>
                 <div v-else>
 
-    <img v-if="!fixedHeightImages" :src="myEcommerceProducts[blok.product.items[0].id].images[0].file.url" :alt="blok.product.items[0].id"
-                            class="rounded-lg shadow-2xl pointer-events-none" />
+                    <img v-if="!fixedHeightImages" :src="myEcommerceProducts[blok.product.items[0].id].images[0].file.url"
+                        :alt="blok.product.items[0].id" class="rounded-lg shadow-2xl pointer-events-none" />
                 </div>
 
                 <div v-if="blok.image.filename">

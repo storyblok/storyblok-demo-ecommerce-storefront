@@ -1,5 +1,6 @@
 <template>
-    <NuxtLink :to=product.slug v-if="product"
+
+    <NuxtLink :to=url v-if="product"
         class="max-w-md flex flex-col h-full rounded-lg overflow-hidden group transform hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg group">
         <div class="w-full h-[210px] xl:h-[300px] overflow-hidden">
             <img :src="optimizedImage" :alt="product.images[0].file.url && product.meta_title"
@@ -14,9 +15,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                 </svg>
 
-            <div v-if="minimal == 'true'" class="line-clamp-3 font-light leading-relaxed">
-                {{ product.description }}
-            </div>
+
         </div>
     </NuxtLink>
 </template>
@@ -24,6 +23,11 @@
 <script setup>
 const props = defineProps({ product: Object, slug: String })
 
+
+const url = computed(() => {
+    return '/products/' + props.product.slug
+
+})
 
 const optimizedImage = computed(
     () => props.product?.images[0]?.file.url
