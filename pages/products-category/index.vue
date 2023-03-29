@@ -104,7 +104,7 @@ watch(ecommerceCategories, (newEcommerceCategories) => {
 const gridClasses = computed(() => {
     let gridClasses =
         'grid md:grid-cols-2 gap-10 md:gap-12 md:mt-12 place-items-center items-start'
-            gridClasses += ' lg:grid-cols-3 xl:grid-cols-4'
+    gridClasses += ' lg:grid-cols-3 xl:grid-cols-4'
 
     return gridClasses
 })
@@ -115,12 +115,11 @@ const gridClasses = computed(() => {
         Unfortunately, this page could not be found.
     </Error404>
 
-    <StoryblokComponent v-if="story" :blok="story.content" :uuid="story.uuid" />
-          <h1
-            class="mt-5 mx-16 p-3 text-4xl md:text-5xl lg:text-6xl leading-tight md:leading-tight lg:leading-tight font-black mb-4"
-          >
-            {{ story.content.headline }}
-          </h1>
+
+    <h1
+        class="mt-5 mx-16 p-3 text-4xl md:text-5xl lg:text-6xl leading-tight md:leading-tight lg:leading-tight font-black mb-4">
+        {{ story.content.headline }}
+    </h1>
     <div :class="gridClasses" class="bg-white">
         <div v-if="pending" class="flex items-center justify-center">
             <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -130,6 +129,6 @@ const gridClasses = computed(() => {
             </div>
         </div>
         <CategoryCard v-else v-for="category in categories" :key="category.id" :category="category" :class="gridCardColor"
-             theme="light" />
+            theme="light" />
     </div>
 </template>
