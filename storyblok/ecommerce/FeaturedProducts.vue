@@ -31,7 +31,7 @@ const props = defineProps({ blok: Object })
 
 let myEcommerceProducts = [];
 swell.init(config.swellStoreName, config.swellAccessToken);
-const { pending, data: ecommerceProducts } = await useLazyAsyncData('ecommerceProductsFP', () =>
+const { pending, data: ecommerceProducts } = useLazyAsyncData('ecommerceProductsFP', () =>
     Promise.all(props.blok.Product1.items.map(product => swell.products.get(product.id)))
 );
 
