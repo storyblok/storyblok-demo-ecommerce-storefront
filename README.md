@@ -42,7 +42,20 @@ Your project will now be served on [https://localhost:3000](https://localhost:30
 ## Features
 
 ### Banner with 1 product
+Frontend File: `storyblok/ecommerce/ImageTextSectionProduct.vue`
+Storyblok component: `image-text-section-product`
 
+Fields:
+- `text`: a richtext for adding more text
+- `headline`: for exampel for "New Arrival", "Best product", etc
+- `product` : ecommerce product
+- `buttons`: call to actions
+    - button internal link to a page
+    - button product, link to a product detail page
+- `image`: alternative image
+- `image_layout`
+- `reverse_layout`: image on the left or on the right
+- `backgound_color`
 
 ### Banner with selected products
 
@@ -53,14 +66,81 @@ Fields:
 - `headline`: for the editorial purpose (for example, Latest additions, "Selected products" or "Products of the month")
 - `lead`: editorial, for describing the selected products
 - `Product1`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
-- Background Color: pick a coloro from the list for the background
+- Background Color: pick a color from the list for the background
 - Cols: number of columns used for listing products in a kind of grid.
 
 
 
 ### Banner listing categories
 
+Frontend File: `storyblok/FeaturedArticlesSection.vue`
+Stroyblok component: `featured-articles-section`
+
+Fields:
+- `headline`: for the editorial purpose (for example, Latest additions, "Our Stories" or "Best articles")
+- `lead`: editorial, for describing the articles
+- `articles`: list of selected articles. The articles are selected manually by the content editor via the Storyblok UI.
+- Background Color: pick a color from the list for the background
+- Cols: number of columns used for listing articles in a kind of grid.
+
 
 ### Categories listing
 
-### Category detail
+Frontend File: `storyblok/ecommerce/FeaturesCategories.vue`
+Stroyblok component: `featured-categories`
+
+Fields:
+- `headline`: for the editorial purpose (for example, "By Style")
+- `lead`: editorial, for describing the categories
+- Background Color: pick a color from the list for the background
+- Cols: number of columns used for listing categories in a kind of grid.
+
+## Pages
+
+### Categories
+
+Slug: /products-category/
+Route file: /pages/products-category/index.vue
+Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+
+With headline, description and cols parameter (for setting the number of columns used to list the categories)
+Loads list of categories from Swell ecommerce.
+Each category links to the Category page
+
+### Category page
+
+Slug: /products-category/<SLUG>
+Route file: /pages/products-category/[...slug].vue
+Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+
+#### Category page HERO
+
+#### Category page STANDARD
+
+### Product page
+
+Slug: /products/<SLUG>
+Route file: /pages/products/[...slug].vue
+Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+
+#### Product page HERO
+
+#### Product page STANDARD
+
+### Store Finder
+
+Editorial page with Store component (it is just a list of stores, no maps)
+
+## JS functionality
+
+### Add to cart
+
+Add to the Swell Cart the selected product
+See: TBD
+
+
+### Composables
+- getCart
+- getLanguage
+- getPathArray
+- getSlug
