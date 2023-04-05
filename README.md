@@ -60,7 +60,7 @@ Fields:
 ### Banner with selected products
 
 Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`
-Stroyblok component: `featured-products`
+Storyblok component: `featured-products`
 
 Fields:
 - `headline`: for the editorial purpose (for example, Latest additions, "Selected products" or "Products of the month")
