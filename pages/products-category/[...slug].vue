@@ -67,30 +67,29 @@ try {
 
 const config = useRuntimeConfig();
 
-let category = {};
+
 swell.init(config.swellStoreName, config.swellAccessToken);
-const { pending, data: ecommerceCategory } =  useLazyAsyncData('ecommerceCategory', function () {
-    return swell.categories.get(slug)
+
+const category = ref({});
+const pending = ref(true);
+watchEffect(async () => {
+    swell.categories.get(slug).then((result) => {
+        category.value = result;
+        pending.value = false;
+    });
+
 });
 
-watch(ecommerceCategory, (newEcommerceCategory) => {
-    //console.log(newEcommerceCategory)
-    category = newEcommerceCategory;
-})
 
-let products = {};
+const products = ref({});
+const pendingProducts = ref(true);
+watchEffect(async () => {
+    swell.products.list( { category: slug }).then( (result) => {
+        products.value = result;
+        pendingProducts.value = false;
+    });
 
-
-const { pendingProducts, data: ecommerceProducts } =  useLazyAsyncData('ecommerceProducts', function () {
-    return swell.products.list(
-        { category: slug })
 });
-
-watch(ecommerceProducts, (newEcommerceProducts) => {
-    //console.log(newEcommerceProducts)
-    products = newEcommerceProducts;
-})
-
 
 </script>
 
@@ -118,7 +117,7 @@ watch(ecommerceProducts, (newEcommerceProducts) => {
                 class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
         </div>
     </div>
-    <div  v-else class="items-center justify-center">
+    <div v-else class="items-center justify-center">
         <ProductCard v-for="product in products.results" :key="product.id" :product="product"
            />
     </div>
