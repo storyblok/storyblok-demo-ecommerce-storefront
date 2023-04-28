@@ -29,11 +29,6 @@ export default defineNuxtConfig({
 
     },
   },
-  publicRuntimeConfig: {
-      _templateToken: process.env.STORYBLOK_PREVIEW_TOKEN,
-      _swellStoreName: process.env.SWELL_STORE_NAME,
-      _swellAccessToken: process.env.SWELL_ACCESS_TOKEN
-  },
   vite: {
     optimizeDeps: { exclude: ["fsevents"] }
   }
