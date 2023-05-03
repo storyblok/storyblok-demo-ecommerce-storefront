@@ -1,10 +1,11 @@
 <script setup>
 const defaultColors = {
-  '--primary': '#395ECE',
-  '--secondary': '#00B3B0',
-  '--light': '#F8F8F8',
-  '--medium': '#435366',
-  '--dark': '#0A0F15',
+  '--primary': '#171717',
+  //'--secondary': '#D34E24',
+  '--secondary': '#38726C',
+  '--light': '#e3d9c6',
+  '--medium': '#967C4A',
+  '--dark': '#171717',
 }
 
 const defaultBorderRadiuses = {
@@ -51,6 +52,16 @@ const cssVariables = computed(() => {
 })
 
 const { customParent } = useRuntimeConfig().public
+
+// TODO: write getSlug composable to be used here and in ...slug
+const route = useRoute()
+let slug = []
+if (route.query.path) {
+  slug = route.query.path?.split('/')
+} else {
+  // fallback if no path parameter found (e.g. in template space)
+  slug = route.params.slug.slice()
+}
 
 onMounted(() => {
   useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {

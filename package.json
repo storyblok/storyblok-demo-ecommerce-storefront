@@ -21,6 +21,6 @@
     "singleQuote": true
   },
   "dependencies": {
-    "swell-js": "^3.20.1"
+    "swell-js": "^3.21.6"
   }
 }
