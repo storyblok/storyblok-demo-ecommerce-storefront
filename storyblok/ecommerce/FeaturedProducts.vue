@@ -21,20 +21,10 @@ watch(ecommerceProducts, (newEcommercProducts) => {
   }, {})
 })
 
-const gridClasses = computed(() => {
-  let gridClasses =
-    'grid md:grid-cols-2 gap-10 md:gap-12 md:mt-12 place-items-center items-start'
+const gridClasses = computed(() => getGridClasses(props.blok.cols))
 
-  switch (props.blok.cols) {
-    case '4':
-      gridClasses += ' lg:grid-cols-3 xl:grid-cols-4'
-      break
-    case '3':
-      gridClasses += ' lg:grid-cols-3'
-      break
-  }
-
-  return gridClasses
+const textColor = computed(() => {
+  return props.blok.background_color === 'dark' ? 'text-white' : 'text-dark'
 })
 </script>
 
@@ -45,9 +35,12 @@ const gridClasses = computed(() => {
     :class="'bg-' + blok.background_color"
   >
     <div class="container text-left">
-      <Headline color="white" class="text-left" v-if="blok.headline">{{
-        blok.headline
-      }}</Headline>
+      <Headline
+        :color="blok.background_color === 'dark' ? 'white' : 'dark'"
+        class="text-left"
+        v-if="blok.headline"
+        >{{ blok.headline }}</Headline
+      >
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>
@@ -58,6 +51,7 @@ const gridClasses = computed(() => {
           v-for="product in blok.Product1.items"
           :key="product.id"
           :product="myEcommerceProducts[product.id]"
+          :section-bg-color="blok.background_color"
         />
       </div>
     </div>
