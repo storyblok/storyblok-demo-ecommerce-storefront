@@ -1,7 +1,7 @@
 <template>
   <section
     v-editable="blok"
-    class="page-section image-text-section"
+    class="page-section image-text-section-product"
     :class="'bg-' + blok.background_color"
   >
     <div
@@ -25,17 +25,7 @@
         </div>
       </div>
       <div>
-        <div v-if="pending" class="flex items-center justify-center">
-          <div
-            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status"
-          >
-            <span
-              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-              >Loading...</span
-            >
-          </div>
-        </div>
+        <LoadingSpinner v-if="pending" />
         <div v-else>
           <img
             v-if="!fixedHeightImages"
@@ -43,10 +33,12 @@
               myEcommerceProducts[blok.product.items[0].id].images[0].file.url
             "
             :alt="blok.product.items[0].id"
-            class="rounded-lg shadow-2xl pointer-events-none"
+            class="rounded-lg shadow-2xl pointer-events-none w-full"
           />
         </div>
 
+        <!-- TODO: do we actually need the Storyblok asset here at all? -->
+        <!-- TODO: do we need the text field from Storyblok? it's not rendered anyway -->
         <div v-if="blok.image.filename">
           <img
             v-if="!fixedHeightImages"
