@@ -1,53 +1,29 @@
 <script setup>
-const props = defineProps({
-  minimal: Boolean,
-  category: Object,
-  slug: String,
-  theme: String,
-})
-
-let urlCategory = '/products-category/' + props.category.slug
-const backgroundColor = computed(() => {
-  let color = 'bg-black'
-  if (props.theme === 'light') color = 'bg-white'
-  return color
-})
-const foregroundColor = computed(() => {
-  let color = 'text-white'
-  if (props.theme === 'light') color = 'text-black'
-  return color
-})
+const props = defineProps({ category: Object, sectionBgColor: String })
 </script>
 
 <template>
   <NuxtLink
-    :to="urlCategory"
+    :to="'/products-category/' + props.category.slug"
     v-if="category"
-    class="max-w-md flex flex-col h-full rounded-lg overflow-hidden group transform hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg group"
+    class="max-w-md w-full flex flex-col h-full rounded-lg overflow-hidden group transform transition-all duration-300 group"
   >
-    <div class="w-full h-[210px] xl:h-[300px] overflow-hidden">
+    <div class="w-full aspect-square overflow-hidden">
       <img
+        v-if="category?.images[0]?.file.url"
         :src="category?.images[0]?.file.url"
         :alt="category.images[0].file.url && category.meta_title"
         class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 transform pointer-events-none"
       />
     </div>
-    <div
-      :class="[backgroundColor, foregroundColor]"
-      class="grow p-6 text-left flex justify-between"
-    >
-      <h3
-        :class="[backgroundColor, foregroundColor]"
-        class="font-medium mb-3 text-xl uppercase font-light tracking-widest"
-      >
-        {{ category.name }}
-      </h3>
-      <div
-        v-if="minimal"
-        :class="foregroundColor"
-        class="line-clamp-3 font-light leading-relaxed"
-      >
-        {{ category.name }}
+    <div class="grow mt-4 text-left flex justify-between">
+      <div>
+        <h3
+          class="text-xl"
+          :class="sectionBgColor === 'dark' ? 'text-white' : 'text-dark'"
+        >
+          {{ category.name }}
+        </h3>
       </div>
     </div>
   </NuxtLink>

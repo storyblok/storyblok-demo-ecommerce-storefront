@@ -22,10 +22,6 @@ watch(ecommerceProducts, (newEcommercProducts) => {
 })
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
-
-const textColor = computed(() => {
-  return props.blok.background_color === 'dark' ? 'text-white' : 'text-dark'
-})
 </script>
 
 <template>

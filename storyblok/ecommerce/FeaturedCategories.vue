@@ -35,9 +35,12 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
     :class="'bg-' + blok.background_color"
   >
     <div class="container text-center">
-      <Headline color="black" class="text-left" v-if="blok.headline">{{
-        blok.headline
-      }}</Headline>
+      <Headline
+        :color="blok.background_color === 'dark' ? 'white' : 'dark'"
+        class="text-left"
+        v-if="blok.headline"
+        >{{ blok.headline }}</Headline
+      >
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>
@@ -48,6 +51,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
           v-for="category in categories"
           :key="category.id"
           :category="category"
+          :section-bg-color="blok.background_color"
         />
       </div>
     </div>
