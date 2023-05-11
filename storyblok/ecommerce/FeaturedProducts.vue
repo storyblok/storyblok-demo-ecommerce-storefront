@@ -10,7 +10,7 @@ const { pending, data: ecommerceProducts } = useLazyAsyncData(
   'ecommerceProductsFP',
   () =>
     Promise.all(
-      props.blok.Product1.items.map((product) => swell.products.get(product.id))
+      props.blok.products.items.map((product) => swell.products.get(product.id))
     )
 )
 
@@ -44,7 +44,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
         <LoadingSpinner v-if="pending" />
         <ProductCard
           v-else
-          v-for="product in blok.Product1.items"
+          v-for="product in blok.products.items"
           :key="product.id"
           :product="myEcommerceProducts[product.id]"
           :section-bg-color="blok.background_color"
