@@ -13,10 +13,12 @@ export default defineNuxtConfig({
     ],
     '@nuxtjs/tailwindcss',
   ],
-
   ssr: false,
   css: ['@/assets/css/fonts.css'],
-
+  components: [{ path: '~/components/ecommerce' }, '~/components'],
+  imports: {
+    dirs: ['composables', 'composables/ecommerce'],
+  },
   runtimeConfig: {
     public: {
       templateToken: process.env.STORYBLOK_TOKEN,
