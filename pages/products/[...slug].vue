@@ -17,7 +17,6 @@ const apiParams = {
 }
 
 const error404 = ref(false)
-
 const { customParent } = useRuntimeConfig().public
 
 try {

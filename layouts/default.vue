@@ -51,17 +51,8 @@ const cssVariables = computed(() => {
   return theme
 })
 
+const onSiteConfig = await isSiteConfig()
 const { customParent } = useRuntimeConfig().public
-
-// TODO: write getSlug composable to be used here and in ...slug
-const route = useRoute()
-let slug = []
-if (route.query.path) {
-  slug = route.query.path?.split('/')
-} else {
-  // fallback if no path parameter found (e.g. in template space)
-  slug = route.params.slug.slice()
-}
 
 onMounted(() => {
   useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {
@@ -83,9 +74,7 @@ onMounted(() => {
       :light="false"
     />
     <div
-      v-if="
-        slug && slug[0] === 'site-config' && story.content.use_custom_colors
-      "
+      v-if="onSiteConfig && story.content.use_custom_colors"
       class="container py-12"
     >
       <Headline class="mb-8">Color Previews</Headline>
