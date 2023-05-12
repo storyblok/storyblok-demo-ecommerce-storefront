@@ -8,6 +8,8 @@ export default async function () {
      */
     if (language) slug = slug.slice(1)
     slug = slug.join('/')
+  } else {
+    slug = 'home'
   }
 
   return slug
