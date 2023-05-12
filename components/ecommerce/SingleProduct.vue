@@ -66,8 +66,16 @@ const addToCart = async function (id) {
             </ul>
           </div>
         </div>
-        <!--TODO: style add to cart button-->
-        <button @click.prevent="addToCart(product.id)">Add to cart</button>
+        <div class="flex items-center space-x-8 mt-12">
+          <PriceWithCurrency
+            v-if="product.price && product.currency"
+            :price="product.price"
+            :currency="product.currency"
+            class="text-white text-xl font-serif"
+          />
+          <!--TODO: style add to cart button-->
+          <button @click.prevent="addToCart(product.id)">Add to cart</button>
+        </div>
       </div>
     </div>
   </section>
