@@ -4,13 +4,11 @@
  */
 import swell from 'swell-js'
 const props = defineProps({ blok: Object, productSlug: String })
-console.log('productSlug: ' + props.productSlug)
 
 const config = useRuntimeConfig()
 
 let product = {}
 swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-//swell.currency.select('USD');
 const { pending, data: ecommerceProduct } = useLazyAsyncData(
   'ecommerceProduct',
   function () {
@@ -19,43 +17,63 @@ const { pending, data: ecommerceProduct } = useLazyAsyncData(
 )
 
 watch(ecommerceProduct, (newEcommerceProduct) => {
-  console.log(newEcommerceProduct)
   product = newEcommerceProduct
 })
 
 const loadCart = async function () {
   let cart = await swell.cart.get()
-  console.log(cart)
   return cart
 }
 const addToCart = async function (id) {
-  console.log(id)
-  console.log(swell)
   let cart = await swell.cart.addItem({
     product_id: product.id,
     quantity: 1,
   })
-  console.log(cart)
 }
 </script>
 <template>
-  <section v-editable="blok" class="page-section image-text-section bg-black">
-    <div class="container items-center">
+  <StoryblokComponent
+    v-for="blok in blok.bloks_above"
+    :key="blok._uid"
+    :blok="blok"
+  />
+
+  <section v-editable="blok" class="page-section single-product bg-dark">
+    <LoadingSpinner v-if="pending" />
+    <div
+      v-else
+      class="container grid lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 items-center"
+    >
       <div>
-        <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
+        <img
+          class="rounded-lg shadow-2xl pointer-events-none w-full max-w-md lg:max-w-full aspect-square lg:aspect-auto object-cover"
+          :src="product.images[0].file.url"
+          :alt="product.name"
+        />
       </div>
-      <div>
-        <LoadingSpinner v-if="pending" />
-        <div class="items-center justify-center" v-else>
-          <LazyProductCardDetail :product="product" :slug="product.slug" />
-          <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-100"
-              >{{ product.currency }} {{ product.price }}</span
-            >
-            <button @click.prevent="addToCart(product.id)">Add to cart</button>
+      <div class="text-left">
+        <Headline color="white" class="text-left" v-if="blok.headline">{{
+          blok.headline
+        }}</Headline>
+        <RichText :text="blok.description" class="prose-invert" />
+        <div class="mt-12">
+          <Headline color="white" size="small">{{ product.name }}</Headline>
+          <div class="prose prose-invert">
+            <ul>
+              <li v-for="benefit in product.content.product_benefits">
+                {{ benefit.text }}
+              </li>
+            </ul>
           </div>
         </div>
+        <!--TODO: style add to cart button-->
+        <button @click.prevent="addToCart(product.id)">Add to cart</button>
       </div>
     </div>
   </section>
+  <StoryblokComponent
+    v-for="blok in blok.bloks_below"
+    :key="blok._uid"
+    :blok="blok"
+  />
 </template>

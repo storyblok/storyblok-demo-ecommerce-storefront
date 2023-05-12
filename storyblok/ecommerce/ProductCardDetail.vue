@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-black flex items-center justify-between">
+  <!-- TODO: check where and if still needed-->
+  <div class="bg-dark flex items-center justify-between">
     <img
       class="p-8 rounded-t-lg"
       :src="product.images[0].file.url"
@@ -21,6 +22,4 @@
 
 <script setup>
 const props = defineProps({ product: Object, slug: String })
-
-const optimizedImage = computed(() => props.product?.images[0]?.file.url)
 </script>

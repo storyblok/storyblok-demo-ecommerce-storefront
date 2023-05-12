@@ -58,7 +58,6 @@ watch(ecommerceProducts, (newEcommercProducts) => {
         <LoadingSpinner v-if="pending" />
         <div v-else>
           <img
-            v-if="!fixedHeightImages"
             :src="
               myEcommerceProducts[blok.product.items[0].id].images[0].file.url
             "
