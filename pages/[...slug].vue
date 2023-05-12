@@ -23,6 +23,18 @@ const apiParams = {
 const error404 = ref(false)
 const { customParent } = useRuntimeConfig().public
 
+/**
+ * Handle products
+ */
+const viewingSingleProduct = await isSingleProduct()
+const productSlug = await getSingleProductSlug()
+
+/**
+ * Handle product categories
+ */
+const viewingSingleProductCategory = await isSingleProductCategory()
+const productCategorySlug = await getSingleProductCategorySlug()
+
 try {
   try {
     if (slug === 'error-404') error404.value = true
@@ -50,9 +62,19 @@ try {
     Unfortunately, this page could not be found.
   </Error404>
   <StoryblokComponent
-    v-if="story"
+    v-if="story && !viewingSingleProduct && !viewingSingleProductCategory"
     :blok="story.content"
     :uuid="story.uuid"
     :index="story.uuid"
+  />
+  <SingleProduct
+    v-else-if="story && viewingSingleProduct"
+    :blok="story.content"
+    :product-slug="productSlug"
+  />
+  <SingleProductCategory
+    v-else-if="story && viewingSingleProductCategory"
+    :blok="story.content"
+    :product-category-slug="productCategorySlug"
   />
 </template>
