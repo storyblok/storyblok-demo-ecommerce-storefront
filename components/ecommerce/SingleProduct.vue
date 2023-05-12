@@ -1,4 +1,7 @@
 <script setup>
+/**
+ * Note: This component is used to render both product-page-hero and product-page-default
+ */
 import swell from 'swell-js'
 const props = defineProps({ blok: Object, productSlug: String })
 console.log('productSlug: ' + props.productSlug)
