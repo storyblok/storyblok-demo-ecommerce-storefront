@@ -4,7 +4,7 @@ const defaultColors = {
   //'--secondary': '#D34E24',
   '--secondary': '#38726C',
   '--light': '#e3d9c6',
-  '--medium': '#8D919C',
+  '--medium': '#8f6b2b',
   '--dark': '#171717',
 }
 

@@ -18,7 +18,6 @@ const { pending, data: ecommerceCategories } = await useLazyAsyncData(
 )
 
 watch(ecommerceCategories, (newEcommerceCategories) => {
-  console.log(newEcommerceCategories)
   categories = newEcommerceCategories.results.reduce((acc, curr) => {
     acc[curr.id] = curr
     return acc
@@ -34,10 +33,9 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
     class="page-section featured-categories-section"
     :class="'bg-' + blok.background_color"
   >
-    <div class="container text-center">
+    <div class="container">
       <Headline
         :color="blok.background_color === 'dark' ? 'white' : 'dark'"
-        class="text-left"
         v-if="blok.headline"
         >{{ blok.headline }}</Headline
       >
