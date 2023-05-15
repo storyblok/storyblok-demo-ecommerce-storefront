@@ -28,47 +28,50 @@ watchEffect(async () => {
       pendingProducts.value = false
     })
 })
+
+const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
 <template>
-  <!-- TODO: needs styling -->
-  <div v-editable="blok">
-    <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
-    <!-- <StoryblokComponent v-if="blok" :blok="blok" :uuid="blok.uuid" /> -->
-  </div>
-  <div v-if="pendingCategory" class="w-full flex items-center justify-center">
-    <div
-      class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-      role="status"
-    >
-      <span
-        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-        >Loading...</span
-      >
-    </div>
-  </div>
-  <CategoryCardDetail
-    v-else
-    :key="category.id"
-    :category="category"
-    theme="light"
+  <StoryblokComponent
+    v-for="blok in blok.bloks_above"
+    :key="blok._uid"
+    :blok="blok"
   />
-
-  <div v-if="pendingProducts" class="w-full flex items-center justify-center">
-    <div
-      class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-      role="status"
-    >
-      <span
-        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-        >Loading...</span
+  <section
+    v-editable="blok"
+    class="page-section single-product"
+    :class="'bg-' + blok.background_color"
+  >
+    <div class="container">
+      <LoadingSpinner v-if="pendingCategory" />
+      <div
+        v-else
+        class="relative w-full h-[500px] flex items-center justify-center mb-12"
       >
+        <img
+          v-if="category?.images[0]?.file.url"
+          :src="category?.images[0]?.file.url"
+          :alt="category.images[0].file.url && category.meta_title"
+          class="absolute top-0 left-0 z-0 w-full h-full object-cover pointer-events-none"
+        />
+        <Headline class="relative z-10 text-white">{{
+          category.name
+        }}</Headline>
+      </div>
+      <LoadingSpinner v-if="pendingProducts" />
+      <div v-else :class="gridClasses">
+        <ProductCard
+          v-for="product in products.results"
+          :key="product.id"
+          :product="product"
+          :section-bg-color="blok.background_color"
+        />
+      </div>
     </div>
-  </div>
-  <div v-else class="items-center justify-center">
-    <ProductCard
-      v-for="product in products.results"
-      :key="product.id"
-      :product="product"
-    />
-  </div>
+  </section>
+  <StoryblokComponent
+    v-for="blok in blok.bloks_below"
+    :key="blok._uid"
+    :blok="blok"
+  />
 </template>

@@ -37,7 +37,6 @@ const addToCart = async function (id) {
     :key="blok._uid"
     :blok="blok"
   />
-
   <section v-editable="blok" class="page-section single-product bg-dark">
     <LoadingSpinner v-if="pending" />
     <div

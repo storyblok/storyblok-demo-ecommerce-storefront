@@ -26,8 +26,12 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
 
 <template>
-  <main :class="'bg-' + blok.background_color" v-editable="blok">
-    <section class="container py-12 md:py-16">
+  <section
+    class="page-section product-category-overview"
+    :class="'bg-' + blok.background_color"
+    v-editable="blok"
+  >
+    <div class="container">
       <Headline
         v-if="blok.headline"
         :color="blok.background_color === 'dark' ? 'white' : 'dark'"
@@ -46,6 +50,6 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
           :section-bg-color="blok.background_color"
         />
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </template>
