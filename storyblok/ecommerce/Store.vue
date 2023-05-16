@@ -1,3 +1,7 @@
+<script setup>
+const props = defineProps({ blok: Object })
+</script>
+
 <template>
   <div
     class="w-full max-w-md lg:max-w-none h-full flex flex-col"
@@ -19,7 +23,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({ blok: Object })
-</script>

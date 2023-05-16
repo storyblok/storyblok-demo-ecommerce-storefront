@@ -41,15 +41,6 @@ const toggleMobileNav = () => {
   mobileNavOpen.value = !mobileNavOpen.value
 }
 
-const cartOpen = ref(false)
-let cart = ref({})
-const toggleCart = async () => {
-  cartOpen.value = !cartOpen.value
-  if (cartOpen.value) {
-    cart.value = await getCart()
-  }
-}
-
 const route = useRoute()
 watch(route, () => {
   mobileNavOpen.value = false
@@ -129,37 +120,14 @@ onMounted(() => {
             </li>
           </ul>
         </nav>
-        <nav
-          class="invisible ml-auto lg:ml-0 hidden md:visible md:block md:mr-8 lg:mr-0"
-        >
-          <ul class="flex space-x-4 xl:space-x-8 items-center">
-            <li v-for="button in buttons" :key="button._uid">
-              <Button :button="button" />
-            </li>
-            <li>
-              <button>
-                <a href="#" @click="toggleCart"> My Cart </a>
-              </button>
-            </li>
-          </ul>
-        </nav>
+        <HeaderCart />
         <MobileNavToggle
           @click="toggleMobileNav"
           :color="light ? 'bg-dark' : 'bg-light'"
         />
       </div>
-      <div v-show="cartOpen">
-        <ul class="flex space-x-4 xl:space-x-8 items-center">
-          <li v-for="item in cart.items" :key="item.id">
-            {{ item.quantity }}
-            {{ item.price_total }}
-            {{ item.product.name }}
-          </li>
-        </ul>
-      </div>
     </div>
   </header>
-
   <MobileNav
     :mobileNavOpen="mobileNavOpen"
     :headerNav="nav"
