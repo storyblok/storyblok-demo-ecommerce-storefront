@@ -8,7 +8,7 @@ const toggleCart = async () => {
 </script>
 
 <template>
-  <div class="relative h-full flex items-center">
+  <div v-if="cart !== null" class="relative h-full flex items-center">
     <button
       @click.prevent="toggleCart"
       class="flex space-x-2 items-center text-white"
@@ -47,6 +47,19 @@ const toggleCart = async () => {
         </div>
       </div>
     </Transition>
+  </div>
+  <div v-else>
+        <div
+
+        class="flex space-x-2 items-center text-white"
+      >
+        <img
+          src="~/assets/images/cart.svg"
+          width="20"
+          class="block mx-auto pointer-events-none"
+          alt="Cart Icon"
+        /><span>My Cart</span>
+      </div>
   </div>
 </template>
 
