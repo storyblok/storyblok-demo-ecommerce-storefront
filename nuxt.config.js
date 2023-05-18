@@ -1,7 +1,5 @@
 export default defineNuxtConfig({
-
   modules: [
-
     [
       '@storyblok/nuxt',
       {
@@ -14,22 +12,22 @@ export default defineNuxtConfig({
       },
     ],
     '@nuxtjs/tailwindcss',
-
   ],
-
   ssr: false,
   css: ['@/assets/css/fonts.css'],
-
+  components: [{ path: '~/components/ecommerce' }, '~/components'],
+  imports: {
+    dirs: ['composables', 'composables/ecommerce'],
+  },
   runtimeConfig: {
     public: {
       templateToken: process.env.STORYBLOK_TOKEN,
       customParent: process.env.STORYBLOK_CUSTOM_PARENT,
       swellStoreName: process.env.SWELL_STORE_NAME,
-      swellAccessToken: process.env.SWELL_ACCESS_TOKEN
-
+      swellAccessToken: process.env.SWELL_ACCESS_TOKEN,
     },
   },
   vite: {
-    optimizeDeps: { exclude: ["fsevents"] }
-  }
+    optimizeDeps: { exclude: ['fsevents'] },
+  },
 })

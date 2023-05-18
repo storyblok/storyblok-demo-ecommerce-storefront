@@ -1,10 +1,11 @@
 <script setup>
 const defaultColors = {
-  '--primary': '#395ECE',
-  '--secondary': '#00B3B0',
-  '--light': '#F8F8F8',
-  '--medium': '#435366',
-  '--dark': '#0A0F15',
+  '--primary': '#171717',
+  //'--secondary': '#D34E24',
+  '--secondary': '#38726C',
+  '--light': '#e3d9c6',
+  '--medium': '#8D919C',
+  '--dark': '#171717',
 }
 
 const defaultBorderRadiuses = {
@@ -50,6 +51,7 @@ const cssVariables = computed(() => {
   return theme
 })
 
+const viewingSiteConfig = await isSiteConfig()
 const { customParent } = useRuntimeConfig().public
 
 onMounted(() => {
@@ -72,9 +74,7 @@ onMounted(() => {
       :light="false"
     />
     <div
-      v-if="
-        slug && slug[0] === 'site-config' && story.content.use_custom_colors
-      "
+      v-if="viewingSiteConfig && story.content.use_custom_colors"
       class="container py-12"
     >
       <Headline class="mb-8">Color Previews</Headline>
@@ -109,12 +109,23 @@ onMounted(() => {
       </div>
     </div>
     <slot />
-
     <Footer
-      :headline="story.content.footer_headline"
-      :contacts="story.content.footer_contacts"
-      :nav="story.content.header_nav"
-      :light="false"
+      :text_color="story.content.footer_text_color"
+      :background_color="story.content.footer_background_color"
+      :logo="story.content.footer_logo"
+      :about="story.content.footer_about"
+      :navs="{
+        nav_1_headline: story.content.footer_nav_1_headline,
+        nav_2_headline: story.content.footer_nav_2_headline,
+        nav_3_headline: story.content.footer_nav_3_headline,
+        nav_1: story.content.footer_nav_1,
+        nav_2: story.content.footer_nav_2,
+        nav_3: story.content.footer_nav_3,
+      }"
+      :twitter="story.content.twitter"
+      :instagram="story.content.instagram"
+      :youtube="story.content.youtube"
+      :facebook="story.content.facebook"
     />
   </main>
 </template>

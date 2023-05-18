@@ -1,46 +1,13 @@
 <script setup>
-const route = useRoute()
-
-/**
- * Create correct slug and handle language parameter
- */
-
-// Here we are getting the path as a URL parameter
-let slug = []
-if (route.query.path) {
-  slug = route.query.path?.split('/')
-} else {
-  // fallback if no path parameter found (e.g. in template space)
-  slug = route.params.slug.slice()
-}
-// In your project you would typically want to do the following:
-// let slug = route.params.slug.slice()
-let language = 'default'
-
-if (slug) {
-  language = await getLanguage(slug)
-  // remove first slug entry if it matches query language
-  if (language !== 'default') slug = slug.slice(1)
-  slug = slug.join('/')
-} else {
-  slug = 'home'
-}
-
-/**
- * Fetch current release
- */
-const releaseId = route.query?._storyblok_release || 0
-
-/**
- * Resolve relations
- */
-let resolveRelations = [
+const slug = await getProcessedSlug()
+const language = await getLanguage(slug)
+const releaseId = await getReleaseId()
+const resolveRelations = [
   'banner-reference.banners',
   'featured-articles-section.articles',
   'article-page.categories',
   'article-page.author',
 ]
-
 const story = ref(null)
 const storyblokApi = useStoryblokApi()
 
@@ -54,8 +21,19 @@ const apiParams = {
 }
 
 const error404 = ref(false)
-
 const { customParent } = useRuntimeConfig().public
+
+/**
+ * Handle products
+ */
+const viewingSingleProduct = await isSingleProduct()
+const productSlug = await getSingleProductSlug()
+
+/**
+ * Handle product categories
+ */
+const viewingSingleProductCategory = await isSingleProductCategory()
+const productCategorySlug = await getSingleProductCategorySlug()
 
 try {
   try {
@@ -83,5 +61,20 @@ try {
   <Error404 v-if="error404">
     Unfortunately, this page could not be found.
   </Error404>
-  <StoryblokComponent v-if="story" :blok="story.content" :uuid="story.uuid" :index="story.uuid" />
+  <StoryblokComponent
+    v-if="story && !viewingSingleProduct && !viewingSingleProductCategory"
+    :blok="story.content"
+    :uuid="story.uuid"
+    :index="story.uuid"
+  />
+  <SingleProduct
+    v-else-if="story && viewingSingleProduct"
+    :blok="story.content"
+    :product-slug="productSlug"
+  />
+  <SingleProductCategory
+    v-else-if="story && viewingSingleProductCategory"
+    :blok="story.content"
+    :product-category-slug="productCategorySlug"
+  />
 </template>

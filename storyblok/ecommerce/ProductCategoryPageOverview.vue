@@ -10,8 +10,6 @@ const { pending, data: ecommerceCategories } = await useLazyAsyncData(
   'ecommerceCategoriesFeatured',
   () =>
     swell.categories.list({
-      limit: 4,
-      page: 1,
       active: true,
       sort: 'name asc',
     })
@@ -29,14 +27,14 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
 
 <template>
   <section
-    v-editable="blok"
-    class="page-section featured-categories-section"
+    class="page-section product-category-overview"
     :class="'bg-' + blok.background_color"
+    v-editable="blok"
   >
     <div class="container">
       <Headline
-        :color="blok.background_color === 'dark' ? 'white' : 'dark'"
         v-if="blok.headline"
+        :color="blok.background_color === 'dark' ? 'white' : 'dark'"
         >{{ blok.headline }}</Headline
       >
       <Lead v-if="blok.lead">
