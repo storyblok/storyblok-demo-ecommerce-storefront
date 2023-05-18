@@ -1,7 +1,7 @@
 <script setup>
 const cartOpen = ref(false)
-const cart = ref()
-cart.value = await getCart()
+let cart = reactive({})
+cart = await getCart()
 const toggleCart = async () => {
   cartOpen.value = !cartOpen.value
 }

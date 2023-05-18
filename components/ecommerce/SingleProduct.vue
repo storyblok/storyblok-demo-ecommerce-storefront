@@ -32,23 +32,14 @@ const addToCart = async function (id) {
 }
 </script>
 <template>
-  <StoryblokComponent
-    v-for="blok in blok.bloks_above"
-    :key="blok._uid"
-    :blok="blok"
-  />
+  <StoryblokComponent v-for="blok in blok.bloks_above" :key="blok._uid" :blok="blok" />
   <section v-editable="blok" class="page-section single-product bg-dark">
     <LoadingSpinner v-if="pending" />
-    <div
-      v-else
-      class="container grid lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 items-center"
-    >
+    <div v-else class="container grid lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 items-center">
       <div>
         <img
           class="rounded-lg shadow-2xl pointer-events-none w-full max-w-md lg:max-w-full aspect-square lg:aspect-auto object-cover"
-          :src="product.images[0].file.url"
-          :alt="product.name"
-        />
+          :src="product.images[0].file.url" :alt="product.name" />
       </div>
       <div class="text-left">
         <Headline color="white" class="text-left" v-if="blok.headline">{{
@@ -66,21 +57,13 @@ const addToCart = async function (id) {
           </div>
         </div>
         <div class="flex items-center space-x-8 mt-12">
-          <PriceWithCurrency
-            v-if="product.price && product.currency"
-            :price="product.price"
-            :currency="product.currency"
-            class="text-white text-xl font-serif"
-          />
+          <PriceWithCurrency v-if="product.price && product.currency" :price="product.price" :currency="product.currency"
+            class="text-white text-xl font-serif" />
           <!--TODO: style add to cart button-->
           <button @click.prevent="addToCart(product.id)">Add to cart</button>
         </div>
       </div>
     </div>
   </section>
-  <StoryblokComponent
-    v-for="blok in blok.bloks_below"
-    :key="blok._uid"
-    :blok="blok"
-  />
+  <StoryblokComponent v-for="blok in blok.bloks_below" :key="blok._uid" :blok="blok" />
 </template>
