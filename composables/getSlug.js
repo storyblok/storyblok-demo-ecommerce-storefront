@@ -2,6 +2,7 @@ export default async function () {
   const route = useRoute()
 
   let slug = []
+  console.log(route)
   if (route.query.path) {
     /**
      * Check if the path URL parameter is provided.
@@ -12,7 +13,10 @@ export default async function () {
     /**
      * If there is no path parameter provided, retrieve the slug.
      */
-    slug = route.params.slug.slice()
+    if (route.params?.slug) {
+      slug = route.params.slug.slice()
+    }
+
   }
 
   return slug

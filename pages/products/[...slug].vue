@@ -23,8 +23,10 @@ const apiParams = {
     from_release: releaseId,
 }
 let data = await getHero(slug, 'default', 'products', apiParams)
+
 if (data) {
     story.value = data.story
+
 }
 
 

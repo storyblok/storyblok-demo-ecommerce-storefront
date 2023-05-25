@@ -45,6 +45,7 @@ watch(ecommerceProducts, (newEcommercProducts) => {
           :text="blok.text"
           :class="{ 'prose-invert': blok.background_color === 'dark' }"
         />
+
         <div v-if="!pending && blok.button.length" class="mt-8">
           <ButtonProduct
             v-for="button in blok.button"
