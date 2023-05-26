@@ -1,5 +1,6 @@
 <script setup>
-const slug = await getProcessedSlug()
+let slug = await getProcessedSlug()
+slug = (slug === "" ? "home" : slug)
 const language = await getLanguage(slug)
 const releaseId = await getReleaseId()
 const resolveRelations = [

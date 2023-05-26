@@ -21,16 +21,9 @@ watch(ecommerceProduct, (newEcommerceProduct) => {
   //console.log(newEcommerceProduct)
 })
 
-const loadCart = async function () {
-  let cart = await swell.cart.get()
-  return cart
-}
-const addToCart = async function (id) {
-  let cart = await swell.cart.addItem({
-    product_id: product.id,
-    quantity: 1,
-  })
-}
+const { addToCart } = useCart()
+
+
 </script>
 <template>
   <StoryblokComponent v-for="blok in blok.bloks_above" :key="blok._uid" :blok="blok" />
@@ -59,8 +52,8 @@ const addToCart = async function (id) {
             </div>
           </div>
           <div class="flex items-center space-x-8 mt-12">
-            <PriceWithCurrency v-if="product.price && product.currency" :price="product.price" :currency="product.currency"
-              class="text-white text-xl font-serif" />
+            <PriceWithCurrency v-if="product.price && product.currency" :price="product.price"
+              :currency="product.currency" class="text-white text-xl font-serif" />
             <!--TODO: style add to cart button-->
             <button @click.prevent="addToCart(product.id)">Add to cart</button>
           </div>
