@@ -99,8 +99,8 @@ Fields:
 
 ### Categories
 
-Slug: /products-category/
-Route file: /pages/products-category/index.vue
+Slug: /product-categories/
+Route file: /pages/product-categories/index.vue
 Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
 
 With headline, description and cols parameter (for setting the number of columns used to list the categories)
@@ -109,8 +109,8 @@ Each category links to the Category page
 
 ### Category page
 
-Slug: /products-category/<SLUG>
-Route file: /pages/products-category/[...slug].vue
+Slug: /product-categories/<SLUG>
+Route file: /pages/product-categories/[...slug].vue
 Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
 
 #### Category page HERO

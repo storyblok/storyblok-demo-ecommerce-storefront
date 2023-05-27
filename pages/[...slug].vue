@@ -37,6 +37,15 @@ const viewingSingleProductCategory = await isSingleProductCategory()
 const productCategorySlug = await getSingleProductCategorySlug()
 
 try {
+  if (slug === 'error-404') error404.value = true
+  let type = viewingSingleProductCategory ? 'product-categories' : ''
+  let data = await getHero(slug, 'default', type, apiParams)
+  if (data) {
+    story.value = data.story
+
+  }
+  /*
+  if (error.status === 404) error404.value = true
   try {
     if (slug === 'error-404') error404.value = true
     const { data } = await storyblokApi.get('cdn/stories/' + slug, apiParams)
@@ -46,6 +55,7 @@ try {
     const { data } = await storyblokApi.get('cdn/stories/error-404', apiParams)
     story.value = data.story
   }
+  */
 
   onMounted(() => {
     useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {

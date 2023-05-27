@@ -4,7 +4,7 @@ const props = defineProps({ category: Object, sectionBgColor: String })
 
 <template>
   <NuxtLink
-    :to="'/products-category/' + props.category.slug"
+    :to="'/product-categories/' + props.category.slug"
     v-if="category"
     class="max-w-md w-full flex flex-col h-full rounded-lg overflow-hidden group transform transition-all duration-300 group"
   >
