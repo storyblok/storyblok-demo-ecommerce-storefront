@@ -22,7 +22,7 @@ cd storyblok-demo-ecommerce-swell
 
 ### Install the dependencies
 
-Once you cloned the repository and you accessed the project directory you can install the packages needed by the project:
+Once you cloned the repository and accessed the project directory you can install the packages needed by the project (using `npm` or `pnpm` or `yarn`):
 
 ```bash
 npm install
@@ -57,16 +57,14 @@ Frontend File: `storyblok/ecommerce/ImageTextSectionProduct.vue`
 Storyblok component: `image-text-section-product`
 
 Fields:
-- `text`: a richtext for adding more text
-- `headline`: for exampel for "New Arrival", "Best product", etc
-- `product` : ecommerce product
-- `buttons`: call to actions
-    - button internal link to a page
-    - button product, link to a product detail page
-- `image`: alternative image
-- `image_layout`
-- `reverse_layout`: image on the left or on the right
-- `backgound_color`
+- `text`: a Richtext field for adding more text;
+- `headline`: a plain text field for the title, for example, "New Arrival", "Best product", etc;
+- `product` : the plugin field for referencing an e-commerce product;
+- `buttons`: call to actions:
+    - button internal link to a page;
+    - button product, link to a product detail page;
+- `reverse_layout`: image on the left or on the right;
+- `backgound_color`: back ground color , picked from `eCommerce `Background Colors` data source.
 
 ### Banner with selected products
 
