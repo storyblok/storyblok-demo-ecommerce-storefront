@@ -53,8 +53,10 @@ Your project will now be served on [https://localhost:3000](https://localhost:30
 ## Features
 
 ### Banner with 1 product
-Frontend File: `storyblok/ecommerce/ImageTextSectionProduct.vue`
-Storyblok component: `image-text-section-product`
+
+- Frontend File: `storyblok/ecommerce/ImageTextSectionProduct.vue`;
+- Storyblok component: `image-text-section-product`;
+- For: product.
 
 Fields:
 - `text`: a Richtext field for adding more text;
@@ -68,8 +70,9 @@ Fields:
 
 ### Banner with selected products
 
-Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`
-Storyblok component: `featured-products`
+- Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`;
+- Storyblok component: `featured-products`;
+- For: products.
 
 Product Components useful for showing a list of selected products (best products, selected products for you, etc. )
 
@@ -78,33 +81,34 @@ Fields:
 - `lead`: editorial, for describing the selected products;
 - `products`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
 - `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
-- Cols: number of columns used for listing products in a kind of grid.
-
+- `cols`: number of columns used for listing products in a kind of grid.
 
 
 ### Banner listing categories
 
-Frontend File: `storyblok/FeaturedArticlesSection.vue`
-Stroyblok component: `featured-articles-section`
+- Frontend File: `storyblok/FeaturedArticlesSection.vue`;
+- Stroyblok component: `featured-articles-section`;
+- For: articles.
 
 Fields:
-- `headline`: for the editorial purpose (for example, Latest additions, "Our Stories" or "Best articles")
-- `lead`: editorial, for describing the articles
+- `headline`: title of the block for selected articles (for example, "Important additions", "Our Stories" or "Best articles")
+- `lead`: editorial, for describing the selected articles
 - `articles`: list of selected articles. The articles are selected manually by the content editor via the Storyblok UI.
-- Background Color: pick a color from the list for the background
-- Cols: number of columns used for listing articles in a kind of grid.
+- `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
+- `cols`: number of columns used for listing products in a kind of grid.
 
 
 ### Categories listing
 
-Frontend File: `storyblok/ecommerce/FeaturesCategories.vue`
-Stroyblok component: `featured-categories`
+- Frontend File: `storyblok/ecommerce/FeaturesCategories.vue`;
+- Stroyblok component: `featured-categories`;
+- For: products.
 
 Fields:
 - `headline`: for the editorial purpose (for example, "By Style")
 - `lead`: editorial, for describing the categories
-- Background Color: pick a color from the list for the background
-- Cols: number of columns used for listing categories in a kind of grid.
+- `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
+- `cols`: number of columns used for listing products in a kind of grid.
 
 ## Pages
 
