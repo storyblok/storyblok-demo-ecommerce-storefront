@@ -71,11 +71,13 @@ Fields:
 Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`
 Storyblok component: `featured-products`
 
+Product Components useful for showing a list of selected products (best products, selected products for you, etc. )
+
 Fields:
-- `headline`: for the editorial purpose (for example, Latest additions, "Selected products" or "Products of the month")
-- `lead`: editorial, for describing the selected products
-- `Product1`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
-- Background Color: pick a color from the list for the background
+- `headline`: for the editorial purpose (for example, "Latest additions", "Selected products" or "Products of the month");
+- `lead`: editorial, for describing the selected products;
+- `products`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
+- `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
 - Cols: number of columns used for listing products in a kind of grid.
 
 
