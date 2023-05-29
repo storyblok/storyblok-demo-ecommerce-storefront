@@ -1,17 +1,28 @@
 # Storyblok Ecommerce Demo
 
-This Frontend Website is a practical example about how to integrate Your Frontend with Storyblok content and E-commerce catalog.
-The FRontend Website provided in this Open Source repository is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
-The E-commerce platform used is [Swell](swell.is) but you can adapt the fetching data mechanism with any commerece that provides you catalog data via API for retrieving:
-- a list of categories
-- one specific category (by slug)
-- a list of products related to a category (by slug category)
-- a product detail (by slug product)
+This Frontend website is a practical example of how to integrate Your Frontend with Storyblok content and an e-commerce catalog.
+The Frontend website provided in this Open Source repository is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
+The e-commerce platform used is [Swell](swell.is) but you can adapt the fetching data mechanism with any e-commerce that provides you catalog data via API for retrieving:
+
+- a list of categories;
+- one specific category (by slug);
+- a list of products related to a category (by slug category);
+- a product detail (by slug product);
+- filtering products by attributes: category, pricing, name.
 
 
 ## Setup
 
+You can clone locally this repository via `git clone` command, and then you can access the new directory created by the `git clone` command:
+
+```shell
+git clone https://github.com/storyblok/storyblok-demo-ecommerce-swell.git
+cd storyblok-demo-ecommerce-swell
+```
+
 ### Install the dependencies
+
+Once you cloned the repository and you accessed the project directory you can install the packages needed by the project:
 
 ```bash
 npm install
@@ -19,7 +30,7 @@ npm install
 
 ### Set your API Keys
 
-Set your API Keys in the `.env` file, for Storyblok and for Swell e-commerce. Copy the `.env.example` file into `.env` file and fill all the listed parameters with your values:
+Set your API Keys in the `.env` file, for Storyblok and Swell e-commerce. Copy the `.env.example` file into `.env` file and fill all the listed parameters with your values:
 
 ```
 STORYBLOK_SPACE=your-storyblok-space-is
