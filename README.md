@@ -112,35 +112,60 @@ Fields:
 
 ## Pages
 
+Here I'm going to explain the important URLs:
+
+- `/product-categories/product-categories/`
+- `/product-categories/<slug>`
+- `/products/<slug>`
+
+
 ### Categories
 
-Slug: /product-categories/
-Route file: /pages/product-categories/index.vue
-Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+- Slug: `/product-categories/product-categories/`
+- Route file: `/pages/[...slug].vue`
+- Page File: `storyblok/ecommerce/ProductCategoryPageOverview.vue`
 
 With headline, description and cols parameter (for setting the number of columns used to list the categories)
-Loads list of categories from Swell ecommerce.
+Loads list of categories from Swell e-commerce.
 Each category links to the Category page
 
 ### Category page
 
-Slug: /product-categories/<SLUG>
-Route file: /pages/product-categories/[...slug].vue
-Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+- Slug: `/product-categories/<slug>`
+- Route file: `/pages/[...slug].vue`
+- Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
 
 #### Category page HERO
 
+Each category on e-commerce has a specific slug. For example `style-2`.
+On the front-end the category product slug is used to check the existence of a story.
+If a story (with the category product slug) exists, the story is loaded for rendering the product category page.
+If the story with the category product slug doesn't exist, a category product default page (as a fallback) is loaded.
+In this way, you can have some category product HERO pages and Standard category product pages.
+
 #### Category page STANDARD
+
+The story with `product-categories/default` is the story for creating the page for product categories with no specific product category specific story.
+Think of the scenario where you have a lot of product categories in the e-commerce catalog but you don't have the editorial effort/team to create all the product categories stories. In this way, you can create the default (a basic) one.
 
 ### Product page
 
-Slug: /products/<SLUG>
-Route file: /pages/products/[...slug].vue
+Slug: `/products/<slug>`
+Route file: `/pages/products/[...slug].vue`
 Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
 
 #### Product page HERO
 
+Each product on e-commerce has a specific slug. For example `watch-001`.
+On the front-end the product slug is used to check the existence of a story.
+If a story (with the product slug) exists, the story is loaded for rendering the product page.
+If the story with the product slug doesn't exist, a product default page (as a fallback) is loaded.
+In this way, you can have some product HERO pages and Standard product pages.
+
 #### Product page STANDARD
+
+The story with `products/default` is the story for creating the page for a product with no specific product-specific story.
+Think of the scenario where you have a lot of products in the e-commerce catalog but you don't have the editorial effort/team to create all the product stories. In this way, you can create the default (a basic) one.
 
 ### Store Finder
 
