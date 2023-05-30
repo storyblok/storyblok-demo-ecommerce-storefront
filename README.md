@@ -171,6 +171,10 @@ Think of the scenario where you have a lot of products in the e-commerce catalog
 
 Editorial page with Store component (it is just a list of stores, no maps)
 
+- Slug: `/products/<slug>`
+- Route file: `/pages/products/[...slug].vue`
+- Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+
 ## JS functionality
 
 ### Add to cart
