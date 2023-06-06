@@ -1,5 +1,5 @@
 <template>
-    <SingleProduct v-if="story !== null" :blok="story.content" :product-slug="slug" />
+    <SingleProduct v-if="story !== null" :blok="story.content" :product-slug="productSlug" />
     <div v-else>PRODUCT NOT FOUND</div>
 </template>
 
@@ -22,6 +22,9 @@ const apiParams = {
     resolve_links: 'url',
     from_release: releaseId,
 }
+const viewingSingleProduct = await isSingleProduct()
+const productSlug = await getSingleProductSlug()
+
 let data = await getHero(slug, 'default', 'products', apiParams)
 
 if (data) {
