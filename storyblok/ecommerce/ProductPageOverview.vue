@@ -51,9 +51,12 @@ const fetchProducts = () => {
     if (checkedCategories.value.length > 0) {
       filter.category = checkedCategories.value
     }
-    if (rangePrice.value > 0) {
-      filter.price = [rangePrice.value, 99999999]
+    let minPrice = 0
+    minPrice = parseInt(rangePrice.value)
+    if (minPrice > 0) {
+      filter.price = [minPrice, 99999999]
     }
+    console.log(filter)
     swell.products.list({
       search: searchTerm.value,
       $filters: filter
@@ -100,7 +103,7 @@ fetchCategories()
           <fieldset>
             <legend class="font-medium text-lg mb-3">It costs more than</legend>
             <div class="flex flex-col space-y-3">
-              <label :key="rangeprice" :for="rangeprice" class="checkbox flex">
+              <label :key="rangePrice" :for="rangePrice" class="checkbox flex">
                 <input type="range" min="0" max="1000" step="100" v-model="rangePrice" />
 
 
@@ -114,7 +117,7 @@ fetchCategories()
             <button @click.prevent="fetchProducts()" class="mt-4">Apply filters</button>
           </div>
           <div>
-            <button :button="button2" @click.prevent="resetFilters()">Reset filters</button>
+            <button class="btn btn-blue" @click.prevent="resetFilters()">Reset filters</button>
           </div>
         </section>
         <section v-if="!loadingProducts && products.length" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-12">
@@ -129,3 +132,15 @@ fetchCategories()
     </div>
   </section>
 </template>
+
+<style>
+  .btn {
+    @apply  py-2 px-4 rounded;
+  }
+  .btn-blue {
+    @apply bg-neutral-900 text-white;
+  }
+  .btn-blue:hover {
+    @apply bg-neutral-700;
+  }
+</style>
