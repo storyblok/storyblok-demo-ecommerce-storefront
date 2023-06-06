@@ -26,7 +26,7 @@ defineProps({ product: Object, sectionBgColor: String })
         </h3>
         <PriceWithCurrency
           v-if="product.price && product.currency"
-          :price="product.price"
+          :price="String(product.price)"
           :currency="product.currency"
         />
       </div>

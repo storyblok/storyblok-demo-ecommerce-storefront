@@ -52,7 +52,7 @@ const { addToCart } = useCart()
             </div>
           </div>
           <div class="flex items-center space-x-8 mt-12">
-            <PriceWithCurrency v-if="product.price && product.currency" :price="product.price"
+            <PriceWithCurrency v-if="product.price && product.currency" :price="String(product.price)"
               :currency="product.currency" class="text-white text-xl font-serif" />
             <!--TODO: style add to cart button-->
             <button @click.prevent="addToCart(product.id)">Add to cart</button>
