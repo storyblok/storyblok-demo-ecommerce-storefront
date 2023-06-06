@@ -2,7 +2,6 @@ export default async function () {
   const route = useRoute()
 
   let slug = []
-  console.log(route)
   if (route.query.path) {
     /**
      * Check if the path URL parameter is provided.

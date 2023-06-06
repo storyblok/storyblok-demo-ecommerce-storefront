@@ -33,13 +33,13 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
 <template>
   <StoryblokComponent
-    v-for="blok in blok.bloks_above"
-    :key="blok._uid"
-    :blok="blok"
+    v-for="blokabove in blok.bloks_above"
+    :key="blokabove._uid"
+    :blok="blokabove"
   />
   <section
     v-editable="blok"
-    class="page-section single-product"
+    class=""
     :class="'bg-' + blok.background_color"
   >
     <div class="container">
