@@ -2,7 +2,7 @@
 const { query } = useRoute()
 
 const inEditor = computed(() => {
-  return query._storyblok ? true : false
+  return query._storyblok && (window.self !== window.top) ? true : false
 })
 
 const props = defineProps({ item: Object })
