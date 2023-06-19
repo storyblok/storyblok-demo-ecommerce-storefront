@@ -8,6 +8,8 @@ const story = ref(null)
 const slug = await getProcessedSlug()
 const language = await getLanguage(slug)
 const releaseId = await getReleaseId()
+const { customParent } = useRuntimeConfig().public
+
 const resolveRelations = [
     'banner-reference.banners',
     'featured-articles-section.articles',
@@ -31,6 +33,13 @@ if (data) {
     story.value = data.story
 
 }
+onMounted(() => {
+    useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {
+        resolveRelations: resolveRelations,
+        customParent,
+        preventClicks: true,
+    })
+})
 
 
 </script>
