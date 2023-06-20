@@ -33,7 +33,7 @@ const containerColor = computed(() => {
           :text="blok.text"
           :class="{ 'mx-auto': blok.alignment === 'center' }"
         />
-        <div class="mt-8">
+        <div class="flex gap-6 mt-8">
           <Button
             v-for="button in blok.button"
             :key="button._uid"
