@@ -38,19 +38,19 @@ const button = {
     <LoadingSpinner v-if="pending" />
     <div
       v-else-if="!pending && product.images"
-      class="container grid lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 items-start"
+      class="container grid items-start gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
     >
       <div>
         <img
-          class="rounded-lg shadow-2xl pointer-events-none w-full max-w-md lg:max-w-full aspect-square lg:aspect-auto object-cover"
+          class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"
           :src="product.images[0].file.url"
           :alt="product.name"
         />
       </div>
       <div class="text-left">
-        <Headline color="white" class="text-left" v-if="blok.headline">{{
-          blok.headline
-        }}</Headline>
+        <Headline color="white" class="text-left" v-if="blok.headline">
+          {{ blok.headline }}
+        </Headline>
         <RichText :text="blok.description" class="prose-invert" />
         <div class="mt-12">
           <Headline color="white" size="small">{{ product.name }}</Headline>
@@ -62,23 +62,24 @@ const button = {
             </ul>
           </div>
         </div>
-        <div class="flex items-center space-x-8 mt-12">
+        <div class="mt-12 flex items-center space-x-8">
           <PriceWithCurrency
             v-if="product.price && product.currency"
             :price="String(product.price)"
             :currency="product.currency"
-            class="text-white text-xl font-serif"
+            class="font-serif text-xl text-white"
           />
-          <Button @click.prevent="addToCart(product.id)" :button="button"
-            >Add to cart</Button
-          >
+          <Button @click.prevent="addToCart(product.id)" :button="button">
+            Add to cart
+          </Button>
         </div>
       </div>
     </div>
     <div v-else>
       <Headline color="white" class="text-left">
-        Product <span class="text-zinc-400">{{ productSlug }}</span> doesn't
-        exist
+        Product
+        <span class="text-zinc-400">{{ productSlug }}</span>
+        doesn't exist
       </Headline>
     </div>
   </section>

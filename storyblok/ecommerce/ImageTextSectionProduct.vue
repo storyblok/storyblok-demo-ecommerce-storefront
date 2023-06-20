@@ -35,7 +35,7 @@ const button = {
     :class="'bg-' + blok.background_color"
   >
     <div
-      class="container grid lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 items-center"
+      class="container grid items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
     >
       <div
         class="order-last text-left"
@@ -45,8 +45,9 @@ const button = {
           :color="blok.background_color === 'dark' ? 'white' : 'dark'"
           class="text-left"
           v-if="blok.headline"
-          >{{ blok.headline }}</Headline
         >
+          {{ blok.headline }}
+        </Headline>
         <RichText
           :text="blok.text"
           :class="{ 'prose-invert': blok.background_color === 'dark' }"
@@ -58,8 +59,9 @@ const button = {
           "
           v-if="!pending"
           class="mt-8"
-          >Shop now</Button
         >
+          Shop now
+        </Button>
       </div>
       <div>
         <LoadingSpinner v-if="pending" />
@@ -69,7 +71,7 @@ const button = {
               myEcommerceProducts[blok.product.items[0].id].images[0].file.url
             "
             :alt="blok.product.items[0].id"
-            class="rounded-lg shadow-2xl pointer-events-none w-full max-w-md lg:max-w-full aspect-square lg:aspect-auto object-cover"
+            class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"
           />
         </div>
       </div>

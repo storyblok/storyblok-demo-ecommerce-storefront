@@ -2,7 +2,7 @@
 const { query } = useRoute()
 
 const inEditor = computed(() => {
-  return query._storyblok && (window.self !== window.top) ? true : false
+  return query._storyblok && window.self !== window.top ? true : false
 })
 
 const props = defineProps({ item: Object })
@@ -26,7 +26,7 @@ const url = computed(() => {
 <template>
   <NuxtLink
     :to="inEditor ? '' : url"
-    class="transition-colors cursor-pointer"
+    class="cursor-pointer transition-colors"
     v-editable="item"
   >
     {{ item.label }}

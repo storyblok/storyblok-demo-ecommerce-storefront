@@ -4,18 +4,18 @@ const props = defineProps({ blok: Object })
 
 <template>
   <div
-    class="w-full max-w-md lg:max-w-none h-full flex flex-col"
+    class="flex h-full w-full max-w-md flex-col lg:max-w-none"
     v-editable="blok"
   >
     <img
       v-if="blok.image.filename"
       :src="blok.image.filename + '/m/900x600'"
       :alt="blok.name"
-      class="mx-auto mb-6 pointer-events-none rounded-lg shadow-lg"
+      class="pointer-events-none mx-auto mb-6 rounded-lg shadow-lg"
     />
     <div class="grow text-dark">
       <div>
-        <h3 class="font-serif mb-2 text-xl">
+        <h3 class="mb-2 font-serif text-xl">
           {{ blok.name }}
         </h3>
         {{ blok.description }}

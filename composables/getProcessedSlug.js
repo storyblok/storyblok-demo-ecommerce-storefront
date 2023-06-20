@@ -11,7 +11,9 @@ export default async function () {
   } else {
     slug = 'home'
   }
-  if (slug==="") { slug = 'home'}
+  if (slug === '') {
+    slug = 'home'
+  }
 
   return slug
 }

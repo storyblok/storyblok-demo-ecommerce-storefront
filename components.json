@@ -34,9 +34,7 @@
         "image": {
           "type": "asset",
           "pos": 0,
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "key": "Image"
         },
         "headline": {
@@ -116,9 +114,7 @@
       "schema": {
         "profile_picture": {
           "type": "asset",
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "asset_folder_id": null,
           "key": "profile",
           "pos": 0
@@ -172,9 +168,7 @@
         },
         "background_image": {
           "type": "asset",
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "asset_folder_id": null,
           "pos": 2,
           "translatable": true
@@ -306,9 +300,7 @@
           "maximum": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ],
+          "component_whitelist": ["button"],
           "component_group_whitelist": []
         },
         "tab-e29481d7-c515-4647-9b2c-5d1ccffa2291": {
@@ -327,10 +319,7 @@
         },
         "tab-fac2bc37-5ca2-455f-a634-1271af30d8aa": {
           "display_name": "Style",
-          "keys": [
-            "full_width",
-            "text_color"
-          ],
+          "keys": ["full_width", "text_color"],
           "pos": 10,
           "type": "tab",
           "name": "tab-fac2bc37-5ca2-455f-a634-1271af30d8aa"
@@ -452,11 +441,7 @@
         },
         "tab-c759859c-01ed-4426-b4ab-8992abfeca86": {
           "display_name": "Style",
-          "keys": [
-            "button_color",
-            "size",
-            "style"
-          ],
+          "keys": ["button_color", "size", "style"],
           "pos": 5,
           "type": "tab"
         }
@@ -540,11 +525,7 @@
         },
         "tab-c759859c-01ed-4426-b4ab-8992abfeca86": {
           "display_name": "Style",
-          "keys": [
-            "button_color",
-            "size",
-            "style"
-          ],
+          "keys": ["button_color", "size", "style"],
           "pos": 5,
           "type": "tab"
         }
@@ -645,9 +626,7 @@
           "type": "options",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "grid-card"
-          ],
+          "component_whitelist": ["grid-card"],
           "source": "internal_stories",
           "folder_slug": "articles/",
           "filter_content_type": "article-page",
@@ -691,10 +670,7 @@
         },
         "tab-26911bf7-af2a-43c2-baee-632b6313c8af": {
           "display_name": "Style",
-          "keys": [
-            "cols",
-            "background_color"
-          ],
+          "keys": ["cols", "background_color"],
           "pos": 5,
           "type": "tab"
         }
@@ -784,10 +760,7 @@
         },
         "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768": {
           "display_name": "Style",
-          "keys": [
-            "background_color",
-            "cols"
-          ],
+          "keys": ["background_color", "cols"],
           "pos": 4,
           "type": "tab",
           "name": "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768"
@@ -893,20 +866,14 @@
         },
         "tab-88a74501-d9b3-402d-a1e8-8128485f6f86": {
           "display_name": "Products",
-          "keys": [
-            "Product1",
-            "products"
-          ],
+          "keys": ["Product1", "products"],
           "pos": 5,
           "type": "tab",
           "name": "tab-88a74501-d9b3-402d-a1e8-8128485f6f86"
         },
         "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768": {
           "display_name": "Style",
-          "keys": [
-            "background_color",
-            "cols"
-          ],
+          "keys": ["background_color", "cols"],
           "pos": 6,
           "type": "tab",
           "name": "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768"
@@ -1034,18 +1001,14 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ],
+          "component_whitelist": ["button"],
           "maximum": 1,
           "component_group_whitelist": [],
           "pos": 4
         },
         "icon": {
           "type": "asset",
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "pos": 5
         },
         "icon_width": {
@@ -1074,30 +1037,20 @@
         },
         "tab-b83dbb50-10c5-4e9e-a9ae-aeb7e96e089d": {
           "display_name": "Text",
-          "keys": [
-            "label",
-            "text",
-            "button"
-          ],
+          "keys": ["label", "text", "button"],
           "pos": 7,
           "type": "tab",
           "name": "tab-b83dbb50-10c5-4e9e-a9ae-aeb7e96e089d"
         },
         "tab-19a9e969-d6c0-4657-9d73-bd4e6c065c84": {
           "display_name": "Icon",
-          "keys": [
-            "icon",
-            "icon_width"
-          ],
+          "keys": ["icon", "icon_width"],
           "pos": 8,
           "type": "tab"
         },
         "tab-44b6aa3a-9418-4909-a20b-53a5203084fc": {
           "display_name": "Style",
-          "keys": [
-            "background_color",
-            "text_color"
-          ],
+          "keys": ["background_color", "text_color"],
           "pos": 9,
           "type": "tab"
         }
@@ -1156,9 +1109,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "grid-card"
-          ],
+          "component_whitelist": ["grid-card"],
           "pos": 2,
           "component_group_whitelist": []
         },
@@ -1175,19 +1126,14 @@
         },
         "tab-c4c97562-67b1-4ee3-821c-d46ba89b500c": {
           "display_name": "Cards",
-          "keys": [
-            "cards"
-          ],
+          "keys": ["cards"],
           "pos": 5,
           "type": "tab",
           "name": "tab-c4c97562-67b1-4ee3-821c-d46ba89b500c"
         },
         "tab-1a190f7e-99e2-4957-a54b-f92de6766ef4": {
           "display_name": "Style",
-          "keys": [
-            "cols",
-            "background_color"
-          ],
+          "keys": ["cols", "background_color"],
           "pos": 6,
           "type": "tab",
           "name": "tab-1a190f7e-99e2-4957-a54b-f92de6766ef4"
@@ -1216,17 +1162,13 @@
         "background_image": {
           "type": "asset",
           "pos": 0,
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "translatable": true,
           "key": "background_image"
         },
         "background_video": {
           "type": "asset",
-          "filetypes": [
-            "videos"
-          ],
+          "filetypes": ["videos"],
           "pos": 1,
           "key": "background_video",
           "translatable": true
@@ -1252,9 +1194,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ],
+          "component_whitelist": ["button"],
           "maximum": 2,
           "pos": 5,
           "key": "buttons",
@@ -1321,11 +1261,7 @@
         },
         "tab-9dcbdc9e-0aa9-4968-8da7-8f6c1c5d7069": {
           "display_name": "Background",
-          "keys": [
-            "background_image",
-            "background_video",
-            "pattern_overlay"
-          ],
+          "keys": ["background_image", "background_video", "pattern_overlay"],
           "pos": 10,
           "type": "tab",
           "key": "tab-9dcbdc9e-0aa9-4968-8da7-8f6c1c5d7069"
@@ -1367,9 +1303,7 @@
         "image": {
           "type": "asset",
           "pos": 0,
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "translatable": true
         },
         "image_layout": {
@@ -1398,13 +1332,7 @@
           "type": "richtext",
           "pos": 3,
           "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "italic",
-            "olist",
-            "list",
-            "link"
-          ],
+          "toolbar": ["bold", "italic", "olist", "list", "link"],
           "translatable": true
         },
         "button": {
@@ -1412,39 +1340,27 @@
           "maximum": 1,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ],
+          "component_whitelist": ["button"],
           "pos": 4,
           "component_group_whitelist": []
         },
         "tab-a6b55e6b-48ef-4dfc-89e6-970b82383748": {
           "display_name": "Text",
-          "keys": [
-            "headline",
-            "text",
-            "button"
-          ],
+          "keys": ["headline", "text", "button"],
           "pos": 5,
           "type": "tab",
           "name": "tab-a6b55e6b-48ef-4dfc-89e6-970b82383748"
         },
         "tab-04deb8e3-8533-461b-ace6-ddef66bf40dd": {
           "display_name": "Image",
-          "keys": [
-            "image",
-            "image_layout"
-          ],
+          "keys": ["image", "image_layout"],
           "pos": 6,
           "type": "tab",
           "name": "tab-04deb8e3-8533-461b-ace6-ddef66bf40dd"
         },
         "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75": {
           "display_name": "Style",
-          "keys": [
-            "background_color",
-            "reverse_layout"
-          ],
+          "keys": ["background_color", "reverse_layout"],
           "pos": 7,
           "type": "tab",
           "name": "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75"
@@ -1503,13 +1419,7 @@
           "type": "richtext",
           "pos": 3,
           "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "italic",
-            "olist",
-            "list",
-            "link"
-          ],
+          "toolbar": ["bold", "italic", "olist", "list", "link"],
           "translatable": true
         },
         "button": {
@@ -1517,28 +1427,20 @@
           "maximum": 1,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button",
-            "button-product"
-          ],
+          "component_whitelist": ["button", "button-product"],
           "pos": 4,
           "component_group_whitelist": []
         },
         "tab-44a2e3d0-c4be-4c73-b0b8-d23c8c7c91f4": {
           "display_name": "Product",
-          "keys": [
-            "product"
-          ],
+          "keys": ["product"],
           "pos": 5,
           "type": "tab",
           "name": "tab-44a2e3d0-c4be-4c73-b0b8-d23c8c7c91f4"
         },
         "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75": {
           "display_name": "Style",
-          "keys": [
-            "background_color",
-            "reverse_layout"
-          ],
+          "keys": ["background_color", "reverse_layout"],
           "pos": 6,
           "type": "tab",
           "name": "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75"
@@ -1642,9 +1544,7 @@
         },
         "returning_visitor": {
           "type": "section",
-          "keys": [
-            "returning_visitor_blocks"
-          ],
+          "keys": ["returning_visitor_blocks"],
           "pos": 1
         },
         "returning_visitor_blocks": {
@@ -1653,16 +1553,12 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
-          ]
+          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"]
         },
         "new_visitor": {
           "type": "section",
           "pos": 3,
-          "keys": [
-            "new_visitor_blocks"
-          ]
+          "keys": ["new_visitor_blocks"]
         },
         "new_visitor_blocks": {
           "type": "bloks",
@@ -1670,9 +1566,7 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
-          ]
+          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"]
         }
       },
       "image": null,
@@ -1726,10 +1620,7 @@
         },
         "tab-58bb4e5c-fe41-40c7-8dfe-bf577616528b": {
           "display_name": "Style",
-          "keys": [
-            "cols",
-            "background_color"
-          ],
+          "keys": ["cols", "background_color"],
           "pos": 2,
           "type": "tab"
         }
@@ -1759,25 +1650,18 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
-          ]
+          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"]
         },
         "bloks_below": {
           "type": "bloks",
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
-          ]
+          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"]
         },
         "tab-de6c9e10-a6bb-4de3-891c-98cf90a5feae": {
           "display_name": "Style",
-          "keys": [
-            "cols",
-            "background_color"
-          ],
+          "keys": ["cols", "background_color"],
           "pos": 0,
           "type": "tab"
         },
@@ -1858,19 +1742,11 @@
           "translatable": true,
           "pos": 2,
           "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "undo",
-            "redo",
-            "italic"
-          ]
+          "toolbar": ["bold", "undo", "redo", "italic"]
         },
         "tab-74327b12-6053-4d5a-b0db-ea4cf1474750": {
           "display_name": "Style",
-          "keys": [
-            "cols",
-            "background_color"
-          ],
+          "keys": ["cols", "background_color"],
           "pos": 3,
           "type": "tab"
         },
@@ -1947,9 +1823,7 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
-          ],
+          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"],
           "key": "bloks_above",
           "pos": 0
         },
@@ -1958,9 +1832,7 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
-          ],
+          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"],
           "display_name": "Blocks below Product",
           "pos": 1,
           "key": "blocks_below"
@@ -2016,19 +1888,11 @@
           "translatable": true,
           "pos": 2,
           "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "undo",
-            "redo",
-            "italic"
-          ]
+          "toolbar": ["bold", "undo", "redo", "italic"]
         },
         "tab-74327b12-6053-4d5a-b0db-ea4cf1474750": {
           "display_name": "Style",
-          "keys": [
-            "cols",
-            "background_color"
-          ],
+          "keys": ["cols", "background_color"],
           "pos": 3,
           "type": "tab"
         },
@@ -2064,17 +1928,13 @@
         "footer_logo": {
           "type": "asset",
           "pos": 0,
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "key": "footer_logo"
         },
         "footer_about": {
           "type": "richtext",
           "customize_toolbar": true,
-          "toolbar": [
-            "bold"
-          ],
+          "toolbar": ["bold"],
           "translatable": true,
           "pos": 1
         },
@@ -2087,9 +1947,7 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "nav-item"
-          ]
+          "component_whitelist": ["nav-item"]
         },
         "footer_nav_2_headline": {
           "type": "text",
@@ -2099,9 +1957,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "nav-item"
-          ],
+          "component_whitelist": ["nav-item"],
           "pos": 5
         },
         "footer_nav_3_headline": {
@@ -2110,9 +1966,7 @@
         },
         "header_logo": {
           "type": "asset",
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "pos": 7,
           "key": "header_logo",
           "description": ""
@@ -2132,9 +1986,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "nav-item"
-          ],
+          "component_whitelist": ["nav-item"],
           "maximum": 4,
           "pos": 10,
           "key": "header_nav",
@@ -2284,18 +2136,11 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "nav-item"
-          ]
+          "component_whitelist": ["nav-item"]
         },
         "tab-b1874564-33fe-45eb-9fa5-8fed14320ee7": {
           "display_name": "Social",
-          "keys": [
-            "twitter",
-            "instagram",
-            "youtube",
-            "facebook"
-          ],
+          "keys": ["twitter", "instagram", "youtube", "facebook"],
           "pos": 0,
           "type": "tab"
         },
@@ -2333,9 +2178,7 @@
       "schema": {
         "image": {
           "type": "asset",
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "pos": 0,
           "translatable": false
         },
@@ -2359,11 +2202,7 @@
         },
         "tab-a88c9d6e-d677-44a3-8ff6-abe846e28729": {
           "display_name": "Location",
-          "keys": [
-            "address",
-            "latitude",
-            "longitude"
-          ],
+          "keys": ["address", "latitude", "longitude"],
           "pos": 5,
           "type": "tab"
         },
@@ -2407,9 +2246,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "store"
-          ],
+          "component_whitelist": ["store"],
           "pos": 2
         }
       },
@@ -2436,9 +2273,7 @@
         "image": {
           "type": "asset",
           "pos": 0,
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "translatable": true
         },
         "headline": {
@@ -2457,9 +2292,7 @@
           "maximum": 1,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ]
+          "component_whitelist": ["button"]
         }
       },
       "image": null,
@@ -2533,13 +2366,7 @@
         "text": {
           "type": "richtext",
           "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "italic",
-            "list",
-            "olist",
-            "link"
-          ],
+          "toolbar": ["bold", "italic", "list", "olist", "link"],
           "pos": 2,
           "translatable": true
         },
@@ -2549,9 +2376,7 @@
           "maximum": 2,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ],
+          "component_whitelist": ["button"],
           "pos": 3,
           "component_group_whitelist": []
         },
@@ -2581,11 +2406,7 @@
         },
         "tab-d8c6b3bd-d5b4-413d-ba3a-0fe8d594b135": {
           "display_name": "Style",
-          "keys": [
-            "background_color",
-            "alignment",
-            "overlap_preceding_hero"
-          ],
+          "keys": ["background_color", "alignment", "overlap_preceding_hero"],
           "pos": 6,
           "type": "tab"
         },

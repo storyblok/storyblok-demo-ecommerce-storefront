@@ -15,7 +15,6 @@ export default async function () {
     if (route.params?.slug) {
       slug = route.params.slug.slice()
     }
-
   }
 
   return slug

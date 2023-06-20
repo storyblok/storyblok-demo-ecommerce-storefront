@@ -48,9 +48,7 @@ try {
   }
   if (data) {
     story.value = data.story
-
   }
-
 
   onMounted(() => {
     useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {

@@ -71,10 +71,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <header class="fixed z-[99] top-0 left-0 w-full">
+  <header class="fixed left-0 top-0 z-[99] w-full">
     <div aria-label="Top header" class="bg-light text-dark">
       <ul
-        class="max-w-[1536px] mx-auto w-full flex justify-end py-2 px-4 lg:px-8 space-x-4 lg:space-x-8"
+        class="mx-auto flex w-full max-w-[1536px] justify-end space-x-4 px-4 py-2 lg:space-x-8 lg:px-8"
       >
         <li>
           <a href="#">Sign In</a>
@@ -88,17 +88,17 @@ onMounted(() => {
       aria-label="Main header"
     >
       <div
-        class="max-w-[1536px] mx-auto w-full px-4 lg:px-8 h-full flex items-center gap-8 lg:gap-0 lg:justify-start"
+        class="mx-auto flex h-full w-full max-w-[1536px] items-center gap-8 px-4 lg:justify-start lg:gap-0 lg:px-8"
       >
         <NuxtLink to="/" class="flex shrink-0">
           <img
             :src="logo.filename"
             :alt="logo.alt"
-            class="max-w-[180px] xl:max-w-[250px] max-h-[80px] w-full object-contain transition-transform origin-left duration-700 pointer-events-none"
+            class="pointer-events-none max-h-[80px] w-full max-w-[180px] origin-left object-contain transition-transform duration-700 xl:max-w-[250px]"
             :class="logoScale"
           />
         </NuxtLink>
-        <nav class="main-nav mx-auto invisible hidden lg:visible lg:block">
+        <nav class="main-nav invisible mx-auto hidden lg:visible lg:block">
           <ul v-if="!auto_nav">
             <li v-for="item in nav" :key="item._uid">
               <NavItem
@@ -112,7 +112,7 @@ onMounted(() => {
             <li v-for="story in folderStories" :key="story.uuid">
               <NuxtLink
                 :to="story.full_slug"
-                class="transition-colors cursor-pointer hover:underline hover:underline-offset-2"
+                class="cursor-pointer transition-colors hover:underline hover:underline-offset-2"
                 :class="light ? 'text-primary' : 'text-white'"
               >
                 {{ story.name }}
@@ -139,7 +139,7 @@ onMounted(() => {
 
 <style scoped>
 header nav.main-nav a.router-link-active {
-  @apply underline underline-offset-4 decoration-4 decoration-primary;
+  @apply underline decoration-primary decoration-4 underline-offset-4;
 }
 
 header nav.main-nav ul {

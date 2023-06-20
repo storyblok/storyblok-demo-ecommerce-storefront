@@ -37,26 +37,22 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
     :key="blokabove._uid"
     :blok="blokabove"
   />
-  <section
-    v-editable="blok"
-    class=""
-    :class="'bg-' + blok.background_color"
-  >
+  <section v-editable="blok" class="" :class="'bg-' + blok.background_color">
     <div class="container">
       <LoadingSpinner v-if="pendingCategory" />
       <div
         v-else
-        class="relative w-full h-[500px] flex items-center justify-center mb-12"
+        class="relative mb-12 flex h-[500px] w-full items-center justify-center"
       >
         <img
           v-if="category?.images[0]?.file.url"
           :src="category?.images[0]?.file.url"
           :alt="category.images[0].file.url && category.meta_title"
-          class="absolute top-0 left-0 z-0 w-full h-full object-cover pointer-events-none"
+          class="pointer-events-none absolute left-0 top-0 z-0 h-full w-full object-cover"
         />
-        <Headline class="relative z-10 text-white">{{
-          category.name
-        }}</Headline>
+        <Headline class="relative z-10 text-white">
+          {{ category.name }}
+        </Headline>
       </div>
       <LoadingSpinner v-if="pendingProducts" />
       <div v-else :class="gridClasses">

@@ -97,30 +97,30 @@ const button2 = {
     v-editable="blok"
   >
     <div class="container">
-      <Headline v-if="blok.headline">{{ blok.headline }} </Headline>
+      <Headline v-if="blok.headline">{{ blok.headline }}</Headline>
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>
 
-      <section class="flex my-16">
+      <section class="my-16 flex">
         <aside
-          class="flex-col space-y-6 md:w-[210px] xl:w-[240px] flex-shrink-0 md:mr-6 xl:mr-12 hidden invisible md:visible md:flex text-dark"
+          class="invisible hidden flex-shrink-0 flex-col space-y-6 text-dark md:visible md:mr-6 md:flex md:w-[210px] xl:mr-12 xl:w-[240px]"
         >
           <div>
-            <label for="search" class="block font-medium text-lg mb-3"
-              >Search for a term</label
-            >
+            <label for="search" class="mb-3 block text-lg font-medium">
+              Search for a term
+            </label>
             <input
               type="search"
               name="search"
               id="search"
               v-model="searchTerm"
-              class="border border-dark px-4 py-2 rounded-full focus:outline-none bg-transparent"
+              class="rounded-full border border-dark bg-transparent px-4 py-2 focus:outline-none"
               @keypress.enter="fetchProducts()"
             />
           </div>
           <fieldset>
-            <legend class="font-medium text-lg mb-3">Select a category</legend>
+            <legend class="mb-3 text-lg font-medium">Select a category</legend>
             <div
               v-if="!loadingProducts && categories.length"
               class="flex flex-col space-y-3"
@@ -137,7 +137,7 @@ const button2 = {
                   :name="category.slug"
                   :value="category.slug"
                   v-model="checkedCategories"
-                  class="hidden invisible"
+                  class="invisible hidden"
                 />
                 <Indicator />
                 <span>{{ category.name }}</span>
@@ -166,13 +166,14 @@ const button2 = {
               :button="button1"
               @click.prevent="fetchProducts()"
               class="mt-4"
-              >Apply filters</Button
             >
+              Apply filters
+            </Button>
           </div>
           <div>
-            <Button :button="button2" @click.prevent="resetFilters()"
-              >Reset filters</Button
-            >
+            <Button :button="button2" @click.prevent="resetFilters()">
+              Reset filters
+            </Button>
           </div>
         </aside>
         <section

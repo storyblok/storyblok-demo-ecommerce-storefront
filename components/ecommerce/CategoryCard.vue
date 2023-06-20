@@ -6,17 +6,17 @@ const props = defineProps({ category: Object, sectionBgColor: String })
   <NuxtLink
     :to="'/product-categories/' + props.category.slug"
     v-if="category"
-    class="max-w-md w-full flex flex-col h-full rounded-lg overflow-hidden group transform transition-all duration-300 group"
+    class="group group flex h-full w-full max-w-md transform flex-col overflow-hidden rounded-lg transition-all duration-300"
   >
-    <div class="w-full aspect-square overflow-hidden">
+    <div class="aspect-square w-full overflow-hidden">
       <img
         v-if="category?.images[0]?.file.url"
         :src="category?.images[0]?.file.url"
         :alt="category.images[0].file.url && category.meta_title"
-        class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 transform pointer-events-none"
+        class="pointer-events-none h-full w-full transform object-cover transition-all duration-700 group-hover:scale-110"
       />
     </div>
-    <div class="grow mt-4 text-left flex justify-between">
+    <div class="mt-4 flex grow justify-between text-left">
       <div>
         <h3
           class="text-xl"

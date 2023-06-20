@@ -10,7 +10,6 @@ The e-commerce platform used is [Swell](swell.is) but you can adapt the fetching
 - a product detail (by slug product);
 - filtering products by attributes: category, pricing, name.
 
-
 ## Setup
 
 You can clone locally this repository via `git clone` command, and then you can access the new directory created by the `git clone` command:
@@ -49,7 +48,6 @@ npm run dev
 
 Your project will now be served on [https://localhost:3000](https://localhost:3000).
 
-
 ## Features
 
 ### Banner with 1 product
@@ -59,12 +57,13 @@ Your project will now be served on [https://localhost:3000](https://localhost:30
 - For: product.
 
 Fields:
+
 - `text`: a Richtext field for adding more text;
 - `headline`: a plain text field for the title, for example, "New Arrival", "Best product", etc;
 - `product` : the plugin field for referencing an e-commerce product;
 - `buttons`: call to actions:
-    - button internal link to a page;
-    - button product, link to a product detail page;
+  - button internal link to a page;
+  - button product, link to a product detail page;
 - `reverse_layout`: image on the left or on the right;
 - `backgound_color`: back ground color , picked from `eCommerce `Background Colors` data source.
 
@@ -77,12 +76,12 @@ Fields:
 Product Components useful for showing a list of selected products (best products, selected products for you, etc. )
 
 Fields:
+
 - `headline`: for the editorial purpose (for example, "Latest additions", "Selected products" or "Products of the month");
 - `lead`: editorial, for describing the selected products;
 - `products`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
 - `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
 - `cols`: number of columns used for listing products in a kind of grid.
-
 
 ### Banner listing categories
 
@@ -91,12 +90,12 @@ Fields:
 - For: articles.
 
 Fields:
+
 - `headline`: title of the block for selected articles (for example, "Important additions", "Our Stories" or "Best articles")
 - `lead`: editorial, for describing the selected articles
 - `articles`: list of selected articles. The articles are selected manually by the content editor via the Storyblok UI.
 - `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
 - `cols`: number of columns used for listing products in a kind of grid.
-
 
 ### Categories listing
 
@@ -105,6 +104,7 @@ Fields:
 - For: products.
 
 Fields:
+
 - `headline`: for the editorial purpose (for example, "By Style")
 - `lead`: editorial, for describing the categories
 - `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
@@ -117,7 +117,6 @@ Here I'm going to explain the important URLs:
 - `/product-categories/product-categories/`
 - `/product-categories/<slug>`
 - `/products/<slug>`
-
 
 ### Categories
 
@@ -182,8 +181,8 @@ Editorial page with Store component (it is just a list of stores, no maps)
 Add to the Swell Cart the selected product
 See: TBD
 
-
 ### Composables
+
 - getCart
 - getLanguage
 - getPathArray
