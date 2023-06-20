@@ -37,7 +37,10 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
         :color="blok.background_color === 'dark' ? 'white' : 'dark'"
         >{{ blok.headline }}</Headline
       >
-      <Lead v-if="blok.lead">
+      <Lead
+        v-if="blok.lead"
+        :class="blok.background_color === 'dark' ? 'text-white' : 'text-dark'"
+      >
         {{ blok.lead }}
       </Lead>
       <div :class="gridClasses">

@@ -26,15 +26,16 @@ const fetchCategories = () => {
 
   swell.init(config.public.swellStoreName, config.public.swellAccessToken)
 
-
   watchEffect(async () => {
-    swell.categories.list({
-      active: true,
-      sort: 'name asc',
-    }).then((result) => {
-      categories.value = result.results
-      loadingCategories.value = false
-    })
+    swell.categories
+      .list({
+        active: true,
+        sort: 'name asc',
+      })
+      .then((result) => {
+        categories.value = result.results
+        loadingCategories.value = false
+      })
   })
 }
 
@@ -44,7 +45,6 @@ const fetchProducts = () => {
   const config = useRuntimeConfig()
 
   swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-
 
   watchEffect(async () => {
     let filter = {}
@@ -57,13 +57,15 @@ const fetchProducts = () => {
       filter.price = [minPrice, 99999999]
     }
     console.log(filter)
-    swell.products.list({
-      search: searchTerm.value,
-      $filters: filter
-    }).then((result) => {
-      products.value = result.results
-      loadingProducts.value = false
-    })
+    swell.products
+      .list({
+        search: searchTerm.value,
+        $filters: filter,
+      })
+      .then((result) => {
+        products.value = result.results
+        loadingProducts.value = false
+      })
   })
 }
 
@@ -72,29 +74,61 @@ fetchCategories()
 </script>
 
 <template>
-  <section class="page-section product-overview" :class="'bg-' + blok.background_color" v-editable="blok">
+  <section
+    class="page-section product-overview"
+    :class="'bg-' + blok.background_color"
+    v-editable="blok"
+  >
     <div class="container">
-      <Headline v-if="blok.headline" :color="blok.background_color === 'dark' ? 'white' : 'dark'">{{ blok.headline }}
+      <Headline
+        v-if="blok.headline"
+        :color="blok.background_color === 'dark' ? 'white' : 'dark'"
+        >{{ blok.headline }}
       </Headline>
-      <Lead v-if="blok.lead">
+      <Lead
+        v-if="blok.lead"
+        :class="blok.background_color === 'dark' ? 'text-white' : 'text-dark'"
+      >
         {{ blok.lead }}
       </Lead>
 
       <section class="flex my-16">
         <section
-          class="flex-col space-y-6 md:w-[210px] xl:w-[240px] flex-shrink-0 md:mr-6 xl:mr-12 hidden invisible md:visible md:flex">
+          class="flex-col space-y-6 md:w-[210px] xl:w-[240px] flex-shrink-0 md:mr-6 xl:mr-12 hidden invisible md:visible md:flex"
+        >
           <div>
-            <label for="search" class="block font-medium text-lg mb-3">Search for a term</label>
-            <input type="search" name="search" id="search" v-model="searchTerm"
-              class="border border-medium px-4 py-2 rounded-full focus:outline-none" @keypress.enter="fetchProducts()" />
+            <label for="search" class="block font-medium text-lg mb-3"
+              >Search for a term</label
+            >
+            <input
+              type="search"
+              name="search"
+              id="search"
+              v-model="searchTerm"
+              class="border border-medium px-4 py-2 rounded-full focus:outline-none"
+              @keypress.enter="fetchProducts()"
+            />
           </div>
           <fieldset>
             <legend class="font-medium text-lg mb-3">Select a category</legend>
-            <div v-if="!loadingProducts && categories.length" class="flex flex-col space-y-3">
-              <label v-for="category in categories" :key="category.slug" :for="category.slug" class="checkbox flex">
-
-                <input type="checkbox" :id="category.slug" :name="category.slug" :value="category.slug"
-                  v-model="checkedCategories" class="" />
+            <div
+              v-if="!loadingProducts && categories.length"
+              class="flex flex-col space-y-3"
+            >
+              <label
+                v-for="category in categories"
+                :key="category.slug"
+                :for="category.slug"
+                class="checkbox flex"
+              >
+                <input
+                  type="checkbox"
+                  :id="category.slug"
+                  :name="category.slug"
+                  :value="category.slug"
+                  v-model="checkedCategories"
+                  class=""
+                />
 
                 <span>{{ category.name }}</span>
               </label>
@@ -104,43 +138,56 @@ fetchCategories()
             <legend class="font-medium text-lg mb-3">It costs more than</legend>
             <div class="flex flex-col space-y-3">
               <label :key="rangePrice" :for="rangePrice" class="checkbox flex">
-                <input type="range" min="0" max="1000" step="100" v-model="rangePrice" />
-
+                <input
+                  type="range"
+                  min="0"
+                  max="1000"
+                  step="100"
+                  v-model="rangePrice"
+                />
 
                 <span>{{ rangePrice }}</span>
               </label>
             </div>
           </fieldset>
 
-
           <div>
-            <button @click.prevent="fetchProducts()" class="mt-4">Apply filters</button>
+            <button @click.prevent="fetchProducts()" class="mt-4">
+              Apply filters
+            </button>
           </div>
           <div>
-            <button class="btn btn-blue" @click.prevent="resetFilters()">Reset filters</button>
+            <button class="btn btn-blue" @click.prevent="resetFilters()">
+              Reset filters
+            </button>
           </div>
         </section>
-        <section v-if="!loadingProducts && products.length" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-12">
-
-          <ProductCard v-for="product in products" :product="product" sectionBgColor="white" />
+        <section
+          v-if="!loadingProducts && products.length"
+          class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-12"
+        >
+          <ProductCard
+            v-for="product in products"
+            :product="product"
+            sectionBgColor="white"
+          />
         </section>
         <section v-else-if="!loadingProducts && !products.length">
           Unfortunately, no products matched your criteria.
         </section>
       </section>
-
     </div>
   </section>
 </template>
 
 <style>
-  .btn {
-    @apply  py-2 px-4 rounded;
-  }
-  .btn-blue {
-    @apply bg-neutral-900 text-white;
-  }
-  .btn-blue:hover {
-    @apply bg-neutral-700;
-  }
+.btn {
+  @apply py-2 px-4 rounded;
+}
+.btn-blue {
+  @apply bg-neutral-900 text-white;
+}
+.btn-blue:hover {
+  @apply bg-neutral-700;
+}
 </style>
