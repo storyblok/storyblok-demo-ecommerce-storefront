@@ -20,6 +20,12 @@ watch(ecommerceProducts, (newEcommercProducts) => {
     return acc
   }, {})
 })
+
+const button = {
+  size: 'default',
+  style: 'ghost',
+  button_color: 'white',
+}
 </script>
 
 <template>
@@ -45,15 +51,15 @@ watch(ecommerceProducts, (newEcommercProducts) => {
           :text="blok.text"
           :class="{ 'prose-invert': blok.background_color === 'dark' }"
         />
-
-        <div v-if="!pending && blok.button.length" class="mt-8">
-          <ButtonProduct
-            v-for="button in blok.button"
-            :key="button._uid"
-            :product="myEcommerceProducts[blok.product.items[0].id]"
-            :button="button"
-          />
-        </div>
+        <Button
+          :button="button"
+          :link="
+            'products/' + myEcommerceProducts[blok.product.items[0].id].slug
+          "
+          v-if="!pending"
+          class="mt-8"
+          >Shop now</Button
+        >
       </div>
       <div>
         <LoadingSpinner v-if="pending" />
