@@ -1,11 +1,14 @@
 <script setup>
 const cartOpen = ref(false)
 const { cart, getCart } = useCart()
-//let cart = reactive({})
 await getCart()
 
-const toggleCart = async () => {
+const toggleCart = () => {
   cartOpen.value = !cartOpen.value
+}
+
+const closeCart = () => {
+  cartOpen.value = false
 }
 </script>
 
@@ -25,10 +28,26 @@ const toggleCart = async () => {
     <Transition>
       <div
         v-show="cartOpen"
-        class="absolute top-1/2 right-0 translate-y-8 bg-white w-[300px] rounded-lg p-6 shadow-sm"
+        class="absolute top-1/2 right-0 translate-y-8 bg-white w-[300px] rounded-lg px-6 pt-12 pb-6 shadow-sm text-dark"
       >
+        <button @click="closeCart()" class="absolute top-2 right-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
         <div
-          class="absolute right-6 top-0 -translate-y-1/2 w-4 h-4 bg-white rotate-45 pointer-events-none"
+          class="absolute right-12 top-0 -translate-y-1/2 w-4 h-4 bg-white rotate-45 pointer-events-none"
         ></div>
         <div class="flex flex-col space-y-2">
           <div class="flex flex-row">
