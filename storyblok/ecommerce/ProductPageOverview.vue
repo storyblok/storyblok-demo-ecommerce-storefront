@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const gridClasses = computed(() => getGridClasses(props.blok.cols))
+const gridClasses = computed(() => getGridClasses('4'))
 
 const searchTerm = ref('')
 const checkedCategories = ref([])
@@ -134,7 +134,7 @@ fetchCategories()
               </label>
             </div>
           </fieldset>
-          <fieldset>
+          <!-- <fieldset>
             <legend class="font-medium text-lg mb-3">It costs more than</legend>
             <div class="flex flex-col space-y-3">
               <label :key="rangePrice" :for="rangePrice" class="checkbox flex">
@@ -149,7 +149,7 @@ fetchCategories()
                 <span>{{ rangePrice }}</span>
               </label>
             </div>
-          </fieldset>
+          </fieldset> -->
 
           <div>
             <button @click.prevent="fetchProducts()" class="mt-4">
@@ -164,14 +164,16 @@ fetchCategories()
         </section>
         <section
           v-if="!loadingProducts && products.length"
-          class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-12"
+          :class="gridClasses"
         >
           <ProductCard
             v-for="product in products"
+            :key="product.id"
             :product="product"
-            sectionBgColor="white"
+            :section-bg-color="blok.background_color"
           />
         </section>
+
         <section v-else-if="!loadingProducts && !products.length">
           Unfortunately, no products matched your criteria.
         </section>
