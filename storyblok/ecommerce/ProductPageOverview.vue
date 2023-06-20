@@ -56,7 +56,6 @@ const fetchProducts = () => {
     if (minPrice > 0) {
       filter.price = [minPrice, 99999999]
     }
-    console.log(filter)
     swell.products
       .list({
         search: searchTerm.value,
@@ -71,6 +70,24 @@ const fetchProducts = () => {
 
 fetchProducts()
 fetchCategories()
+
+const button1 = {
+  link: {
+    linktype: 'url',
+  },
+  size: 'small',
+  style: 'default',
+  button_color: 'primary',
+}
+
+const button2 = {
+  link: {
+    linktype: 'url',
+  },
+  size: 'small',
+  style: 'ghost',
+  button_color: 'primary',
+}
 </script>
 
 <template>
@@ -80,21 +97,14 @@ fetchCategories()
     v-editable="blok"
   >
     <div class="container">
-      <Headline
-        v-if="blok.headline"
-        :color="blok.background_color === 'dark' ? 'white' : 'dark'"
-        >{{ blok.headline }}
-      </Headline>
-      <Lead
-        v-if="blok.lead"
-        :class="blok.background_color === 'dark' ? 'text-white' : 'text-dark'"
-      >
+      <Headline v-if="blok.headline">{{ blok.headline }} </Headline>
+      <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>
 
       <section class="flex my-16">
-        <section
-          class="flex-col space-y-6 md:w-[210px] xl:w-[240px] flex-shrink-0 md:mr-6 xl:mr-12 hidden invisible md:visible md:flex"
+        <aside
+          class="flex-col space-y-6 md:w-[210px] xl:w-[240px] flex-shrink-0 md:mr-6 xl:mr-12 hidden invisible md:visible md:flex text-dark"
         >
           <div>
             <label for="search" class="block font-medium text-lg mb-3"
@@ -105,7 +115,7 @@ fetchCategories()
               name="search"
               id="search"
               v-model="searchTerm"
-              class="border border-medium px-4 py-2 rounded-full focus:outline-none"
+              class="border border-dark px-4 py-2 rounded-full focus:outline-none bg-transparent"
               @keypress.enter="fetchProducts()"
             />
           </div>
@@ -127,9 +137,9 @@ fetchCategories()
                   :name="category.slug"
                   :value="category.slug"
                   v-model="checkedCategories"
-                  class=""
+                  class="hidden invisible"
                 />
-
+                <Indicator />
                 <span>{{ category.name }}</span>
               </label>
             </div>
@@ -152,19 +162,23 @@ fetchCategories()
           </fieldset> -->
 
           <div>
-            <button @click.prevent="fetchProducts()" class="mt-4">
-              Apply filters
-            </button>
+            <Button
+              :button="button1"
+              @click.prevent="fetchProducts()"
+              class="mt-4"
+              >Apply filters</Button
+            >
           </div>
           <div>
-            <button class="btn btn-blue" @click.prevent="resetFilters()">
-              Reset filters
-            </button>
+            <Button :button="button2" @click.prevent="resetFilters()"
+              >Reset filters</Button
+            >
           </div>
-        </section>
+        </aside>
         <section
           v-if="!loadingProducts && products.length"
           :class="gridClasses"
+          class="mt-0 md:mt-0"
         >
           <ProductCard
             v-for="product in products"
@@ -174,7 +188,10 @@ fetchCategories()
           />
         </section>
 
-        <section v-else-if="!loadingProducts && !products.length">
+        <section
+          v-else-if="!loadingProducts && !products.length"
+          class="text-dark"
+        >
           Unfortunately, no products matched your criteria.
         </section>
       </section>
@@ -182,14 +199,13 @@ fetchCategories()
   </section>
 </template>
 
-<style>
-.btn {
-  @apply py-2 px-4 rounded;
+<style scoped>
+.checkbox :deep(div.indicator > svg),
+.radio :deep(div.indicator > svg) {
+  @apply invisible hidden;
 }
-.btn-blue {
-  @apply bg-neutral-900 text-white;
-}
-.btn-blue:hover {
-  @apply bg-neutral-700;
+.checkbox :deep(input:checked + div.indicator > sv)g,
+.radio :deep(input:checked + div.indicator > svg) {
+  @apply visible block;
 }
 </style>
