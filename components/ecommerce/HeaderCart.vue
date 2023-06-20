@@ -51,17 +51,14 @@ const toggleCart = async () => {
     </Transition>
   </div>
   <div v-else>
-        <div
-
-        class="flex space-x-2 items-center text-white"
-      >
-        <img
-          src="~/assets/images/cart.svg"
-          width="20"
-          class="block mx-auto pointer-events-none"
-          alt="Cart Icon"
-        /><span>My Cart</span>
-      </div>
+    <div class="flex space-x-2 items-center text-white">
+      <img
+        src="~/assets/images/cart.svg"
+        width="20"
+        class="block mx-auto pointer-events-none"
+        alt="Cart Icon"
+      /><span>My Cart</span>
+    </div>
   </div>
 </template>
 

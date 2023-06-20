@@ -88,7 +88,7 @@ onMounted(() => {
       aria-label="Main header"
     >
       <div
-        class="max-w-[1536px] mx-auto w-full px-4 lg:px-8 h-full flex items-center justify-between lg:justify-start"
+        class="max-w-[1536px] mx-auto w-full px-4 lg:px-8 h-full flex items-center gap-8 lg:gap-0 lg:justify-start"
       >
         <NuxtLink to="/" class="flex shrink-0">
           <img
@@ -120,7 +120,7 @@ onMounted(() => {
             </li>
           </ul>
         </nav>
-        <HeaderCart />
+        <HeaderCart class="ml-auto lg:ml-0" />
         <MobileNavToggle
           @click="toggleMobileNav"
           :color="light ? 'bg-dark' : 'bg-light'"
