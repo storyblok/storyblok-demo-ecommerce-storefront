@@ -12,15 +12,11 @@ defineProps({
   <ul class="flex space-x-8" :class="text_color">
     <!-- Icons by https://simpleicons.org/ -->
     <li v-if="twitter.cached_url">
-      <a
-        :href="twitter.cached_url"
-        target="_blank"
-        class="hover:text-primary transition-colors"
-      >
+      <a :href="twitter.cached_url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"
-          class="w-6 h-6 fill-current pointer-events-none"
+          class="w-6 h-6 fill-current pointer-events-none group-hover:scale-110 scale-100 duration-500 transition-all"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>Twitter</title>
@@ -30,15 +26,11 @@ defineProps({
       ></a>
     </li>
     <li v-if="instagram.cached_url">
-      <a
-        :href="instagram.cached_url"
-        target="_blank"
-        class="hover:text-primary transition-colors"
-      >
+      <a :href="instagram.cached_url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"
-          class="w-6 h-6 fill-current pointer-events-none"
+          class="w-6 h-6 fill-current pointer-events-none group-hover:scale-110 scale-100 duration-500 transition-all"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>Instagram</title>
@@ -48,15 +40,11 @@ defineProps({
       ></a>
     </li>
     <li v-if="youtube.cached_url">
-      <a
-        :href="youtube.cached_url"
-        target="_blank"
-        class="hover:text-primary transition-colors"
-      >
+      <a :href="youtube.cached_url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"
-          class="w-6 h-6 fill-current pointer-events-none"
+          class="w-6 h-6 fill-current pointer-events-none group-hover:scale-110 scale-100 duration-500 transition-all"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>YouTube</title>
@@ -67,15 +55,11 @@ defineProps({
       </a>
     </li>
     <li v-if="facebook.cached_url">
-      <a
-        :href="facebook.cached_url"
-        target="_blank"
-        class="hover:text-primary transition-colors"
-      >
+      <a :href="facebook.cached_url" target="_blank" class="group">
         <svg
           role="img"
           viewBox="0 0 24 24"
-          class="w-6 h-6 fill-current pointer-events-none"
+          class="w-6 h-6 fill-current pointer-events-none group-hover:scale-110 scale-100 duration-500 transition-all"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title>Facebook</title>
