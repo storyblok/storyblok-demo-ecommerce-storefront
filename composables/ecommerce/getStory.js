@@ -1,6 +1,6 @@
 export default async function (slug, apiParams) {
-  let data = await getEndpoint('cdn/stories/' + slug, apiParams)
-  return data.data
+  let { data } = await getEndpoint('cdn/stories/' + slug, apiParams)
+  return data
 }
 
 async function getEndpoint(endpoint, apiParams) {
