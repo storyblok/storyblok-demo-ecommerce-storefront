@@ -1,11 +1,12 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const optimizedArticleImage = computed(
-  () => props.blok.image.filename + '/m/2000x0'
+console.log(props.blok.image)
+const optimizedArticleImage = computed(() =>
+  getOptimizedImage(props.blok.image, 2000)
 )
-const optimizedAuthorImage = computed(
-  () => props.blok.author.content.profile_picture.filename + '/m/200x0'
+const optimizedAuthorImage = computed(() =>
+  getOptimizedImage(props.blok.author.content.profile_picture, 200)
 )
 </script>
 
@@ -43,7 +44,7 @@ const optimizedAuthorImage = computed(
           class="sticky top-32 flex w-full max-w-[300px] shrink-0 flex-col space-y-6"
         >
           <div class="flex flex-col space-y-1.5 rounded-lg bg-light p-4">
-            <h4 class="text-sm font-normal uppercase tracking-wide text-medium">
+            <h4 class="text-sm font-normal uppercase tracking-wide">
               Categories
             </h4>
             <ul class="flex flex-col space-y-1.5">
@@ -71,7 +72,7 @@ const optimizedAuthorImage = computed(
                 <h4 class="mb-1.5 text-sm font-normal uppercase tracking-wide">
                   Author
                 </h4>
-                <h5 class="text-secondary">{{ blok.author.name }}</h5>
+                <h5 class="text-primary">{{ blok.author.name }}</h5>
               </div>
             </div>
             <div class="text-sm font-light leading-relaxed">

@@ -1,8 +1,7 @@
 <script setup>
-let slug = await getProcessedSlug()
-
+const slug = await getSlug()
+const processedSlug = await getProcessedSlug()
 const language = await getLanguage(slug)
-
 const releaseId = await getReleaseId()
 const resolveRelations = [
   'banner-reference.banners',
@@ -38,13 +37,13 @@ const viewingSingleProductCategory = await isSingleProductCategory()
 const productCategorySlug = await getSingleProductCategorySlug()
 
 try {
-  if (slug === 'error-404') error404.value = true
+  if (processedSlug === 'error-404') error404.value = true
   let type = viewingSingleProductCategory ? 'product-categories' : ''
   let data = false
   if (viewingSingleProductCategory) {
     data = await getHero(productCategorySlug, 'default', type, apiParams)
   } else {
-    data = await getStory(slug, apiParams)
+    data = await getStory(processedSlug, apiParams)
   }
   if (data) {
     story.value = data.story
