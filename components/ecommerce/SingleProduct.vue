@@ -39,6 +39,7 @@ const button = {
     <div
       v-else-if="!pending && product.images"
       class="container grid items-start gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
+      :id="product.slug"
     >
       <div>
         <img
