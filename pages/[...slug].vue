@@ -42,6 +42,8 @@ try {
   let data = false
   if (viewingSingleProductCategory) {
     data = await getHero(productCategorySlug, 'default', type, apiParams)
+  } else if (viewingSingleProduct) {
+    data = await getHero(productSlug, 'default', 'products', apiParams)
   } else {
     data = await getStory(processedSlug, apiParams)
   }
