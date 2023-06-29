@@ -22,7 +22,7 @@ const optimizedAuthorImage = computed(() =>
       />
       <div v-if="blok.headline" class="container relative z-10 text-white">
         <h1
-          class="mb-4 text-2xl font-black leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight"
+          class="mb-4 font-serif text-2xl font-black leading-tight sm:text-3xl sm:leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight"
         >
           {{ blok.headline }}
         </h1>

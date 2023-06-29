@@ -28,6 +28,7 @@ defineProps({ product: Object, sectionBgColor: String })
           v-if="product.price && product.currency"
           :price="String(product.price)"
           :currency="product.currency"
+          :class="sectionBgColor === 'dark' ? 'text-white' : 'text-medium'"
         />
       </div>
     </div>

@@ -4,7 +4,8 @@ const defaultColors = {
   //'--secondary': '#D34E24',
   '--secondary': '#38726C',
   '--light': '#e3d9c6',
-  '--medium': '#8D919C',
+  //'--medium': '#8D919C',
+  '--medium': '#333333',
   '--dark': '#171717',
 }
 
@@ -151,6 +152,8 @@ section.page-section.bg-white:not(.banner-section)
   + section.page-section.bg-white:not(.banner-section),
 section.page-section.bg-light:not(.banner-section)
   + section.page-section.bg-light:not(.banner-section),
+section.page-section.bg-dark:not(.banner-section)
+  + section.page-section.bg-dark:not(.banner-section),
 section.banner-section + section.banner-section {
   @apply pt-0;
 }
