@@ -57,6 +57,10 @@ const headerTransparency = computed(() => {
   return props.disable_transparency ? '' : 'bg-opacity-80 backdrop-blur-lg'
 })
 
+const cartTextColor = computed(() => {
+  return props.light ? 'text-dark' : 'text-white'
+})
+
 onMounted(() => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 60) {
@@ -120,7 +124,7 @@ onMounted(() => {
             </li>
           </ul>
         </nav>
-        <HeaderCart class="ml-auto lg:ml-0" />
+        <HeaderCart class="ml-auto lg:ml-0" :class="cartTextColor" />
         <MobileNavToggle
           @click="toggleMobileNav"
           :color="light ? 'bg-dark' : 'bg-light'"
@@ -134,7 +138,6 @@ onMounted(() => {
     :autoNav="auto_nav"
     :folderStories="folderStories"
   />
-  <pre></pre>
 </template>
 
 <style scoped>

@@ -72,7 +72,7 @@ onMounted(() => {
       :auto_nav_folder="story.content.header_auto_nav_folder"
       :nav="story.content.header_nav"
       :buttons="story.content.header_buttons"
-      :light="false"
+      :light="story.content.header_light"
     />
     <div
       v-if="viewingSiteConfig && story.content.use_custom_colors"
