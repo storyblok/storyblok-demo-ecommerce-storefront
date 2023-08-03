@@ -67,6 +67,11 @@ Fields:
 - `reverse_layout`: image on the left or on the right;
 - `backgound_color`: back ground color , picked from `eCommerce `Background Colors` data source.
 
+For retrieving product information from the Swell catalog, for example, retrieving latest products you can access the Swell documentation:
+
+- for sorting try to use this syntax: https://developers.swell.is/backend-api/querying/sorting
+- for limiting this one: https://developers.swell.is/backend-api/querying/sorting#limiting
+
 ### Banner with selected products
 
 - Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`;
@@ -179,11 +184,8 @@ Editorial page with Store component (it is just a list of stores, no maps)
 ### Add to cart
 
 Add to the Swell Cart the selected product
-See: TBD
+See the functions in [the useCart.js file](composables/ecommerce/useCart.js).
 
 ### Composables
 
-- getCart
-- getLanguage
-- getPathArray
-- getSlug
+In the [composable directory](composables/ecommerce/) are listed a set of functions for simplifying the access and management of the Cart, the multilanguage, the path, etc.
