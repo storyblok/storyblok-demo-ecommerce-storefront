@@ -17,6 +17,7 @@ const { pending, data: ecommerceProducts } = await useLazyAsyncData(
 watch(ecommerceProducts, (newEcommercProducts) => {
   myEcommerceProducts = newEcommercProducts.reduce((acc, curr) => {
     acc[curr.id] = curr
+    console.log(curr)
     return acc
   }, {})
 })
@@ -57,7 +58,7 @@ const button = {
           :link="
             'products/' + myEcommerceProducts[blok.product.items[0].id].slug
           "
-          v-if="!pending"
+          v-if="!pending && blok.product.items && blok.product.items.length > 0"
           class="mt-8"
         >
           Shop now
@@ -67,10 +68,11 @@ const button = {
         <LoadingSpinner v-if="pending" />
         <div v-else>
           <img
+            v-if="blok.product.items && blok.product.items.length > 0"
             :src="
               myEcommerceProducts[blok.product.items[0].id].images[0].file.url
             "
-            :alt="blok.product.items[0].id"
+            :alt="blok.product.items[0].name"
             class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"
           />
         </div>
