@@ -1,10 +1,8 @@
 <script setup>
 const defaultColors = {
   '--primary': '#171717',
-  //'--secondary': '#D34E24',
   '--secondary': '#38726C',
   '--light': '#e3d9c6',
-  //'--medium': '#8D919C',
   '--medium': '#333333',
   '--dark': '#171717',
 }
@@ -156,10 +154,6 @@ section.page-section.bg-dark:not(.banner-section)
   + section.page-section.bg-dark:not(.banner-section),
 section.banner-section + section.banner-section {
   @apply pt-0;
-}
-
-section.page-section.bg-white + section.banner-reference-section {
-  @apply -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-28 xl:-mt-32;
 }
 
 section.hero-section + section.text-section.overlap-preceding-hero {
