@@ -1,60 +1,60 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({ blok: Object });
 
-const gridClasses = computed(() => getGridClasses('4'))
+const gridClasses = computed(() => getGridClasses("4"));
 
-const searchTerm = ref('')
-const checkedCategories = ref([])
-const rangePrice = ref(0)
+const searchTerm = ref("");
+const checkedCategories = ref([]);
+const rangePrice = ref(0);
 
-const loadingProducts = ref(true)
-const loadingCategories = ref(true)
+const loadingProducts = ref(true);
+const loadingCategories = ref(true);
 
-const products = ref([])
-const categories = ref([])
-import swell from 'swell-js'
+const products = ref([]);
+const categories = ref([]);
+import swell from "swell-js";
 
 const resetFilters = async () => {
-  searchTerm.value = ''
-  checkedCategories.value = []
-  rangePrice.value = 0
-}
+  searchTerm.value = "";
+  checkedCategories.value = [];
+  rangePrice.value = 0;
+};
 const fetchCategories = () => {
-  loadingCategories.value = true
-  categories.value = []
-  const config = useRuntimeConfig()
+  loadingCategories.value = true;
+  categories.value = [];
+  const config = useRuntimeConfig();
 
-  swell.init(config.public.swellStoreName, config.public.swellAccessToken)
+  swell.init(config.public.swellStoreName, config.public.swellAccessToken);
 
   watchEffect(async () => {
     swell.categories
       .list({
         active: true,
-        sort: 'name asc',
+        sort: "name asc",
       })
       .then((result) => {
-        categories.value = result.results
-        loadingCategories.value = false
-      })
-  })
-}
+        categories.value = result.results;
+        loadingCategories.value = false;
+      });
+  });
+};
 
 const fetchProducts = () => {
-  loadingProducts.value = true
-  products.value = []
-  const config = useRuntimeConfig()
+  loadingProducts.value = true;
+  products.value = [];
+  const config = useRuntimeConfig();
 
-  swell.init(config.public.swellStoreName, config.public.swellAccessToken)
+  swell.init(config.public.swellStoreName, config.public.swellAccessToken);
 
   watchEffect(async () => {
-    let filter = {}
+    let filter = {};
     if (checkedCategories.value.length > 0) {
-      filter.category = checkedCategories.value
+      filter.category = checkedCategories.value;
     }
-    let minPrice = 0
-    minPrice = parseInt(rangePrice.value)
+    let minPrice = 0;
+    minPrice = parseInt(rangePrice.value);
     if (minPrice > 0) {
-      filter.price = [minPrice, 99999999]
+      filter.price = [minPrice, 99999999];
     }
     swell.products
       .list({
@@ -62,32 +62,23 @@ const fetchProducts = () => {
         $filters: filter,
       })
       .then((result) => {
-        products.value = result.results
-        loadingProducts.value = false
-      })
-  })
-}
+        products.value = result.results;
+        loadingProducts.value = false;
+      });
+  });
+};
 
-fetchProducts()
-fetchCategories()
+fetchProducts();
+fetchCategories();
 
-const button1 = {
+const button = {
   link: {
-    linktype: 'url',
+    linktype: "url",
   },
-  size: 'small',
-  style: 'default',
-  button_color: 'primary',
-}
-
-const button2 = {
-  link: {
-    linktype: 'url',
-  },
-  size: 'small',
-  style: 'ghost',
-  button_color: 'primary',
-}
+  size: "small",
+  style: "ghost",
+  button_color: "primary",
+};
 </script>
 
 <template>
@@ -162,16 +153,7 @@ const button2 = {
           </fieldset> -->
 
           <div>
-            <Button
-              :button="button1"
-              @click.prevent="fetchProducts()"
-              class="mt-4"
-            >
-              Apply filters
-            </Button>
-          </div>
-          <div>
-            <Button :button="button2" @click.prevent="resetFilters()">
+            <Button :button="button" @click.prevent="resetFilters()">
               Reset filters
             </Button>
           </div>
