@@ -5,10 +5,8 @@ const currencySymbol = computed(() => {
   switch (props.currency) {
     case 'EUR':
       return '€'
-      break
     case 'USD':
       return '$'
-      break
   }
 })
 </script>

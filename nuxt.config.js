@@ -25,6 +25,8 @@ export default defineNuxtConfig({
       customParent: process.env.STORYBLOK_CUSTOM_PARENT,
       swellStoreName: process.env.SWELL_STORE_NAME,
       swellAccessToken: process.env.SWELL_ACCESS_TOKEN,
+      shopifyDomain: process.env.SHOPIFY_DOMAIN,
+      shopifyToken: process.env.SHOPIFY_TOKEN,
     },
   },
   vite: {

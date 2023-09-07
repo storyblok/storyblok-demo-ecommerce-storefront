@@ -1,25 +1,12 @@
 <script setup>
-import swell from 'swell-js'
-
-const config = useRuntimeConfig()
 const props = defineProps({ blok: Object })
 
-let myEcommerceProducts = []
-swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-const { pending, data: ecommerceProducts } = await useLazyAsyncData(
-  'ecommerceProducts',
-  () =>
-    Promise.all(
-      props.blok.product.items.map((product) => swell.products.get(product.id))
-    )
-)
+const product = ref(null)
 
-watch(ecommerceProducts, (newEcommercProducts) => {
-  myEcommerceProducts = newEcommercProducts.reduce((acc, curr) => {
-    acc[curr.id] = curr
-    console.log(curr)
-    return acc
-  }, {})
+watchEffect(async () => {
+  product.value =
+    props.blok?.product?.items[0]?.id &&
+    (await fetchShopifyProductData(props.blok?.product?.items[0]?.id))
 })
 
 const button = {
@@ -55,27 +42,21 @@ const button = {
         />
         <Button
           :button="button"
-          :link="
-            'products/' + myEcommerceProducts[blok.product.items[0].id].slug
-          "
-          v-if="!pending && blok.product.items && blok.product.items.length > 0"
+          :link="`products/${product.slug}`"
+          v-if="product"
           class="mt-8"
         >
           Shop now
         </Button>
       </div>
       <div>
-        <LoadingSpinner v-if="pending" />
-        <div v-else>
-          <img
-            v-if="blok.product.items && blok.product.items.length > 0"
-            :src="
-              myEcommerceProducts[blok.product.items[0].id].images[0].file.url
-            "
-            :alt="blok.product.items[0].name"
-            class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"
-          />
-        </div>
+        <img
+          v-if="product"
+          :src="product.image"
+          :alt="product.title"
+          class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"
+        />
+        <LoadingSpinner v-else />
       </div>
     </div>
   </section>

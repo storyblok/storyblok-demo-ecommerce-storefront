@@ -24,6 +24,16 @@
     "swiper": "^10.2.0"
   },
   "dependencies": {
+    "shopify-buy": "^2.20.1",
     "swell-js": "^3.22.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "tabWidth": 2,
+    "htmlWhitespaceSensitivity": "ignore",
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   }
 }

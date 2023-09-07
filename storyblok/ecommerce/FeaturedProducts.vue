@@ -1,25 +1,5 @@
 <script setup>
-import swell from 'swell-js'
-
-const config = useRuntimeConfig()
 const props = defineProps({ blok: Object })
-
-let myEcommerceProducts = []
-swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-const { pending, data: ecommerceProducts } = useLazyAsyncData(
-  'ecommerceProductsFP',
-  () =>
-    Promise.all(
-      props.blok.products.items.map((product) => swell.products.get(product.id))
-    )
-)
-
-watch(ecommerceProducts, (newEcommercProducts) => {
-  myEcommerceProducts = newEcommercProducts.reduce((acc, curr) => {
-    acc[curr.id] = curr
-    return acc
-  }, {})
-})
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
@@ -45,12 +25,10 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
         {{ blok.lead }}
       </Lead>
       <div :class="gridClasses">
-        <LoadingSpinner v-if="pending" />
         <ProductCard
-          v-else
           v-for="product in blok.products.items"
           :key="product.id"
-          :product="myEcommerceProducts[product.id]"
+          :productID="product.id"
           :section-bg-color="blok.background_color"
         />
       </div>
