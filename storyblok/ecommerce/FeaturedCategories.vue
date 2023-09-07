@@ -1,28 +1,8 @@
 <script setup>
-import swell from 'swell-js'
-
-const config = useRuntimeConfig()
 const props = defineProps({ blok: Object })
 
-let categories = []
-swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-const { pending, data: ecommerceCategories } = await useLazyAsyncData(
-  'ecommerceCategoriesFeatured',
-  () =>
-    swell.categories.list({
-      limit: 4,
-      page: 1,
-      active: true,
-      sort: 'name asc',
-    })
-)
-
-watch(ecommerceCategories, (newEcommerceCategories) => {
-  categories = newEcommerceCategories.results.reduce((acc, curr) => {
-    acc[curr.id] = curr
-    return acc
-  }, {})
-})
+const categories = await fetchShopifyAllCollections()
+console.log(categories)
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
@@ -47,14 +27,14 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
         {{ blok.lead }}
       </Lead>
       <div :class="gridClasses">
-        <LoadingSpinner v-if="pending" />
         <CategoryCard
-          v-else
+          v-if="categories"
           v-for="category in categories"
           :key="category.id"
           :category="category"
           :section-bg-color="blok.background_color"
         />
+        <LoadingSpinner v-else />
       </div>
     </div>
   </section>

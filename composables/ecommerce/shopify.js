@@ -43,3 +43,8 @@ export const fetchShopifyProductsByCategory = async (categoryID) => {
 
   return products
 }
+
+export const fetchShopifyAllCollections = async () => {
+  const categories = await shopifyClient.collection.fetchAllWithProducts()
+  return categories
+}
