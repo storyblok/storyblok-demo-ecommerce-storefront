@@ -1,18 +1,25 @@
-import swell from 'swell-js'
 const cart = ref({})
 
 export default function useCart() {
   async function getCart() {
-    const config = useRuntimeConfig()
-    swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-    cart.value = await swell.cart.get()
+    if (!cart.value.id) {
+      console.log('notcreated')
+      cart.value = await createShopifyCheckout()
+      console.log(await createShopifyCheckout())
+    } else {
+      console.log('already created')
+      cart.value = await fetchShopifyCheckout(cart.value.id)
+    }
   }
 
-  async function addToCart(id) {
-    cart.value = await swell.cart.addItem({
-      product_id: id,
-      quantity: 1,
-    })
+  async function addToCart(variantId) {
+    const itemsToAdd = [
+      {
+        variantId,
+        quantity: 1,
+      },
+    ]
+    cart.value = await addToShopifyCheckout(cart.value.id, itemsToAdd)
   }
 
   return {

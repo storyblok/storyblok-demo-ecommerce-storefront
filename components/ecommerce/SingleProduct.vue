@@ -61,7 +61,10 @@ const button = {
             :currency="product.priceCurrency"
             class="font-serif text-xl text-white"
           />
-          <Button @click.prevent="addToCart(product.id)" :button="button">
+          <Button
+            @click.prevent="addToCart(product.variantId)"
+            :button="button"
+          >
             Add to cart
           </Button>
         </div>

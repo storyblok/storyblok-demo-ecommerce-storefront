@@ -11,6 +11,7 @@ const assignProductData = (fetchedProduct) => {
   product.id = fetchedProduct.id
   product.slug = fetchedProduct.handle
   product.title = fetchedProduct.title
+  product.variantId = fetchedProduct.variants[0]?.id
   product.description = fetchedProduct?.description
   product.image = fetchedProduct?.images[0]?.src
   product.priceCurrency = fetchedProduct?.variants[0]?.price?.currencyCode
@@ -29,6 +30,16 @@ const assignCategoryData = (fetchedCollection) => {
   category.image = fetchedCollection?.image?.src
 
   return category
+}
+
+const assignCheckoutData = (fetchedCheckout) => {
+  const checkout = {}
+  checkout.id = fetchedCheckout.id
+  checkout.lineItems = fetchedCheckout.lineItems
+  checkout.total = fetchedCheckout.totalPriceV2?.amount
+  checkout.currency = fetchedCheckout.totalPriceV2?.currency
+
+  return checkout
 }
 
 export const fetchShopifyProductByID = async (productID) => {
@@ -126,4 +137,31 @@ export const fetchShopifyAllCollections = async () => {
     })
 
   return categories
+}
+
+export const createShopifyCheckout = async () => {
+  const checkout = reactive({})
+  shopifyClient.checkout.create().then((fetchedCheckout) => {
+    Object.assign(checkout, assignCheckoutData(fetchedCheckout))
+  })
+  return checkout
+}
+
+export const fetchShopifyCheckout = async (checkoutId) => {
+  const checkout = reactive({})
+  shopifyClient.checkout.fetch(checkoutId).then((fetchedCheckout) => {
+    Object.assign(checkout, assignCheckoutData(fetchedCheckout))
+  })
+  return checkout
+}
+
+export const addToShopifyCheckout = async (checkoutId, itemsToAdd) => {
+  const checkout = reactive({})
+  shopifyClient.checkout
+    .addLineItems(checkoutId, itemsToAdd)
+    .then((fetchedCheckout) => {
+      console.log(fetchedCheckout)
+      Object.assign(checkout, assignCheckoutData(fetchedCheckout))
+    })
+  return checkout
 }

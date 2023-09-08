@@ -1,12 +1,11 @@
 <script setup>
-const cartOpen = ref(false)
 const { cart, getCart } = useCart()
 await getCart()
 
+const cartOpen = ref(false)
 const toggleCart = () => {
   cartOpen.value = !cartOpen.value
 }
-
 const closeCart = () => {
   cartOpen.value = false
 }
@@ -61,15 +60,20 @@ const closeCart = () => {
             <span class="w-[calc(100%-125px)] font-black">Product</span>
             <span class="w-[75px] text-right font-black">Price</span>
           </div>
-          <div v-for="item in cart.items" :key="item.id" class="flex flex-row">
+          <!-- <div
+            v-for="item in cart.lineItems"
+            :key="item.id"
+            class="flex flex-row"
+          >
             <span class="w-[50px]">{{ item.quantity }}</span>
-            <span class="w-[calc(100%-125px)]">{{ item.product.name }}</span>
+            <span class="w-[calc(100%-125px)]">{{ item.title }}</span>
             <span class="w-[75px] text-right">
-              {{ item.price_total }} {{ cart.currency }}
+              {{ item.variant?.price?.amount }}
+              {{ item.variant?.price?.currencyCode }}
             </span>
-          </div>
+          </div> -->
           <div class="border-t border-dark pt-2 text-right font-black">
-            <span>{{ cart.grand_total }} {{ cart.currency }}</span>
+            <span>{{ cart.total }} {{ cart.currency }}</span>
           </div>
         </div>
       </div>
