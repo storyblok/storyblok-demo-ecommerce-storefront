@@ -12,7 +12,7 @@ const { pending, data: ecommerceCategories } = await useLazyAsyncData(
     swell.categories.list({
       active: true,
       sort: 'name asc',
-    })
+    }),
 )
 
 watch(ecommerceCategories, (newEcommerceCategories) => {

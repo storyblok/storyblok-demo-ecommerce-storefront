@@ -2,7 +2,7 @@ export default async function (
   slug,
   standardSlug,
   type = 'products',
-  apiParams
+  apiParams,
 ) {
   if (standardSlug == null) {
     standardSlug = 'default'
@@ -11,7 +11,7 @@ export default async function (
   if (!data) {
     data = await getEndpoint(
       'cdn/stories/' + type + '/' + standardSlug,
-      apiParams
+      apiParams,
     )
     if (!data) {
       return data.data
