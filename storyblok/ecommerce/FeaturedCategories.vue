@@ -2,7 +2,6 @@
 const props = defineProps({ blok: Object })
 
 const categories = await fetchShopifyAllCollections()
-console.log(categories)
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>

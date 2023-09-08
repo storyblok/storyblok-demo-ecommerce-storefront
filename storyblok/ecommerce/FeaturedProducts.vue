@@ -28,7 +28,7 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
         <ProductCard
           v-for="product in blok.products.items"
           :key="product.id"
-          :productID="product.id"
+          :product-id="product.id"
           :section-bg-color="blok.background_color"
         />
       </div>

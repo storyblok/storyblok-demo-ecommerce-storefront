@@ -2,22 +2,20 @@
 /**
  * Note: This component is used to render both product-page-hero and product-page-default
  */
-import swell from 'swell-js'
+
 const props = defineProps({ blok: Object, productSlug: String })
 
-const config = useRuntimeConfig()
+const product = ref(null)
+const pending = ref(true)
 
-let product = {}
-swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-const { pending, data: ecommerceProduct } = useLazyAsyncData(
-  'ecommerceProduct',
-  function () {
-    return swell.products.get(props.productSlug)
+watchEffect(async () => {
+  try {
+    product.value = await fetchShopifyProductByHandle(props.productSlug)
+    pending.value = false
+  } catch (error) {
+    console.log(error)
+    pending.value = false
   }
-)
-
-watch(ecommerceProduct, (newEcommerceProduct) => {
-  product = newEcommerceProduct
 })
 
 const { addToCart } = useCart()
@@ -35,17 +33,18 @@ const button = {
     :blok="blok"
   />
   <section v-editable="blok" class="page-section single-product bg-dark">
-    <LoadingSpinner v-if="pending" />
+    <LoadingSpinner v-if="pending && !product" />
     <div
-      v-else-if="!pending && product.images"
+      v-if="!pending && product"
       class="container grid items-start gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"
       :id="product.slug"
     >
       <div>
         <img
+          v-if="product"
+          :src="product.image"
+          :alt="product.title"
           class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"
-          :src="product.images[0].file.url"
-          :alt="product.name"
         />
       </div>
       <div class="text-left">
@@ -54,20 +53,14 @@ const button = {
         </Headline>
         <RichText :text="blok.description" class="prose-invert" />
         <div class="mt-12">
-          <Headline color="white" size="small">{{ product.name }}</Headline>
-          <div class="prose prose-invert">
-            <ul>
-              <li v-for="benefit in product.content.product_benefits">
-                {{ benefit.text }}
-              </li>
-            </ul>
-          </div>
+          <Headline color="white" size="small">{{ product.title }}</Headline>
+          <div class="prose prose-invert" v-html="product.description"></div>
         </div>
         <div class="mt-12 flex items-center space-x-8">
           <PriceWithCurrency
-            v-if="product.price && product.currency"
+            v-if="product.price && product.priceCurrency"
             :price="String(product.price)"
-            :currency="product.currency"
+            :currency="product.priceCurrency"
             class="font-serif text-xl text-white"
           />
           <Button @click.prevent="addToCart(product.id)" :button="button">
@@ -76,11 +69,11 @@ const button = {
         </div>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="container">
       <Headline color="white" class="text-left">
         Product
-        <span class="text-zinc-400">{{ productSlug }}</span>
-        doesn't exist
+        <span class="text-light">{{ productSlug }}</span>
+        doesn't exist.
       </Headline>
     </div>
   </section>

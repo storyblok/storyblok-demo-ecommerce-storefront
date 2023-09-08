@@ -1,11 +1,11 @@
 <script setup>
-const props = defineProps({ productID: String, sectionBgColor: String })
+const props = defineProps({ productId: String, sectionBgColor: String })
 
 const product = ref(null)
 
 watchEffect(async () => {
   product.value =
-    props.productID && (await fetchShopifyProductData(props.productID))
+    props.productId && (await fetchShopifyProductByID(props.productId))
 })
 </script>
 

@@ -6,7 +6,7 @@ const product = ref(null)
 watchEffect(async () => {
   product.value =
     props.blok?.product?.items[0]?.id &&
-    (await fetchShopifyProductData(props.blok?.product?.items[0]?.id))
+    (await fetchShopifyProductByID(props.blok?.product?.items[0]?.id))
 })
 
 const button = {

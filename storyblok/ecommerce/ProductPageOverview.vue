@@ -1,84 +1,47 @@
 <script setup>
-const props = defineProps({ blok: Object });
+const props = defineProps({ blok: Object })
 
-const gridClasses = computed(() => getGridClasses("4"));
+const searchTerm = ref('')
+const checkedCategories = ref([])
+const rangePrice = ref(0)
 
-const searchTerm = ref("");
-const checkedCategories = ref([]);
-const rangePrice = ref(0);
+const resetFilters = () => {
+  searchTerm.value = ''
+  checkedCategories.value = []
+  rangePrice.value = 0
+}
 
-const loadingProducts = ref(true);
-const loadingCategories = ref(true);
+const categories = await fetchShopifyAllCollections()
 
-const products = ref([]);
-const categories = ref([]);
-import swell from "swell-js";
+const products = ref([])
 
-const resetFilters = async () => {
-  searchTerm.value = "";
-  checkedCategories.value = [];
-  rangePrice.value = 0;
-};
-const fetchCategories = () => {
-  loadingCategories.value = true;
-  categories.value = [];
-  const config = useRuntimeConfig();
+const fetchProducts = async () => {
+  try {
+    products.value = await fetchShopifyProductsByCustomQuery(
+      searchTerm.value,
+      checkedCategories.value,
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-  swell.init(config.public.swellStoreName, config.public.swellAccessToken);
+fetchProducts()
 
-  watchEffect(async () => {
-    swell.categories
-      .list({
-        active: true,
-        sort: "name asc",
-      })
-      .then((result) => {
-        categories.value = result.results;
-        loadingCategories.value = false;
-      });
-  });
-};
+watch([searchTerm, checkedCategories], () => {
+  fetchProducts()
+})
 
-const fetchProducts = () => {
-  loadingProducts.value = true;
-  products.value = [];
-  const config = useRuntimeConfig();
-
-  swell.init(config.public.swellStoreName, config.public.swellAccessToken);
-
-  watchEffect(async () => {
-    let filter = {};
-    if (checkedCategories.value.length > 0) {
-      filter.category = checkedCategories.value;
-    }
-    let minPrice = 0;
-    minPrice = parseInt(rangePrice.value);
-    if (minPrice > 0) {
-      filter.price = [minPrice, 99999999];
-    }
-    swell.products
-      .list({
-        search: searchTerm.value,
-        $filters: filter,
-      })
-      .then((result) => {
-        products.value = result.results;
-        loadingProducts.value = false;
-      });
-  });
-};
-
-fetchProducts();
-fetchCategories();
+const gridClasses = computed(() => getGridClasses('4'))
 
 const button = {
   link: {
-    linktype: "url",
+    linktype: 'url',
   },
-  size: "small",
-  style: "ghost",
-  button_color: "primary",
-};
+  size: 'small',
+  style: 'ghost',
+  button_color: 'primary',
+}
 </script>
 
 <template>
@@ -92,7 +55,6 @@ const button = {
       <Lead v-if="blok.lead">
         {{ blok.lead }}
       </Lead>
-
       <section class="my-16 flex">
         <aside
           class="invisible hidden flex-shrink-0 flex-col space-y-6 text-dark md:visible md:mr-6 md:flex md:w-[210px] xl:mr-12 xl:w-[240px]"
@@ -112,26 +74,23 @@ const button = {
           </div>
           <fieldset>
             <legend class="mb-3 text-lg font-medium">Select a category</legend>
-            <div
-              v-if="!loadingProducts && categories.length"
-              class="flex flex-col space-y-3"
-            >
+            <div v-if="categories" class="flex flex-col space-y-3">
               <label
                 v-for="category in categories"
-                :key="category.slug"
-                :for="category.slug"
+                :key="category.id"
+                :for="category.handle"
                 class="checkbox flex"
               >
                 <input
                   type="checkbox"
-                  :id="category.slug"
-                  :name="category.slug"
-                  :value="category.slug"
+                  :id="category.handle"
+                  :name="category.handle"
+                  :value="category.handle"
                   v-model="checkedCategories"
                   class="invisible hidden"
                 />
                 <Indicator />
-                <span>{{ category.name }}</span>
+                <span>{{ category.title }}</span>
               </label>
             </div>
           </fieldset>
@@ -151,30 +110,21 @@ const button = {
               </label>
             </div>
           </fieldset> -->
-
           <div>
             <Button :button="button" @click.prevent="resetFilters()">
               Reset filters
             </Button>
           </div>
         </aside>
-        <section
-          v-if="!loadingProducts && products.length"
-          :class="gridClasses"
-          class="mt-0 md:mt-0"
-        >
+        <section v-if="products" :class="gridClasses" class="mt-0 md:mt-0">
           <ProductCard
             v-for="product in products"
             :key="product.id"
-            :product="product"
+            :product-id="product.id"
             :section-bg-color="blok.background_color"
           />
         </section>
-
-        <section
-          v-else-if="!loadingProducts && !products.length"
-          class="text-dark"
-        >
+        <section v-else class="text-dark">
           Unfortunately, no products matched your criteria.
         </section>
       </section>

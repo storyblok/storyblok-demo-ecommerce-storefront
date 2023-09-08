@@ -10,7 +10,6 @@ const resolveRelations = [
   'article-page.author',
 ]
 const story = ref(null)
-const storyblokApi = useStoryblokApi()
 
 const apiParams = {
   version: 'draft',
