@@ -8,15 +8,13 @@ const props = defineProps({ blok: Object, productSlug: String })
 const product = ref(null)
 const pending = ref(true)
 
-watchEffect(async () => {
-  try {
-    product.value = await fetchShopifyProductByHandle(props.productSlug)
-    pending.value = false
-  } catch (error) {
-    console.log(error)
-    pending.value = false
-  }
-})
+try {
+  product.value = await fetchShopifyProductByHandle(props.productSlug)
+  pending.value = false
+} catch (error) {
+  console.log(error)
+  pending.value = false
+}
 
 const { addToCart } = useCart()
 

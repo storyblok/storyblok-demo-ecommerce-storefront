@@ -1,7 +1,16 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const categories = await fetchShopifyAllCollections()
+const categories = ref(null)
+const pending = ref(true)
+
+try {
+  categories.value = await fetchShopifyAllCollections()
+  pending.value = false
+} catch (error) {
+  console.log(error)
+  pending.value = false
+}
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
@@ -26,14 +35,14 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
         {{ blok.lead }}
       </Lead>
       <div :class="gridClasses">
+        <LoadingSpinner v-if="pending" />
         <CategoryCard
-          v-if="categories"
+          v-else
           v-for="category in categories"
           :key="category.id"
           :category="category"
           :section-bg-color="blok.background_color"
         />
-        <LoadingSpinner v-else />
       </div>
     </div>
   </section>

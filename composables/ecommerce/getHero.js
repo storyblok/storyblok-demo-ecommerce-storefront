@@ -1,16 +1,16 @@
 export default async function (
   slug,
-  standardSlug,
+  defaultSlug,
   type = 'products',
   apiParams,
 ) {
-  if (standardSlug == null) {
-    standardSlug = 'default'
+  if (defaultSlug == null) {
+    defaultSlug = 'default'
   }
   let data = await getEndpoint('cdn/stories/' + type + '/' + slug, apiParams)
   if (!data) {
     data = await getEndpoint(
-      'cdn/stories/' + type + '/' + standardSlug,
+      'cdn/stories/' + type + '/' + defaultSlug,
       apiParams,
     )
     if (!data) {

@@ -11,7 +11,7 @@ const props = defineProps({ category: Object, sectionBgColor: String })
     <div class="aspect-square w-full overflow-hidden">
       <img
         v-if="category.image"
-        :src="category.image?.src"
+        :src="category.image"
         :alt="category.title"
         class="pointer-events-none h-full w-full transform object-cover transition-all duration-700 group-hover:scale-110"
       />

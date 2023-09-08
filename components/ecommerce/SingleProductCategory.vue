@@ -2,32 +2,29 @@
 /**
  * Note: This component is used to render both product-category-page-hero and product-category-page-default
  */
-import swell from 'swell-js'
 const props = defineProps({ blok: Object, productCategorySlug: String })
 
-const config = useRuntimeConfig()
-
-swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-
-const category = ref({})
+const category = ref(null)
 const pendingCategory = ref(true)
-watchEffect(async () => {
-  swell.categories.get(props.productCategorySlug).then((result) => {
-    category.value = result
-    pendingCategory.value = false
-  })
-})
-
-const products = ref({})
+const products = ref(null)
 const pendingProducts = ref(true)
-watchEffect(async () => {
-  swell.products
-    .list({ category: props.productCategorySlug })
-    .then((result) => {
-      products.value = result
-      pendingProducts.value = false
-    })
-})
+
+try {
+  category.value = await fetchShopifyCollectionByHandle(
+    props.productCategorySlug,
+  )
+  pendingCategory.value = false
+  try {
+    products.value = await fetchShopifyProductsByCategory(category.value.id)
+    pendingProducts.value = false
+  } catch (error) {
+    console.log(error)
+    pendingProducts.value = false
+  }
+} catch (error) {
+  console.log(error)
+  pendingCategory.value = false
+}
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>
@@ -37,32 +34,42 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols))
     :key="blokabove._uid"
     :blok="blokabove"
   />
-  <section v-editable="blok" class="" :class="'bg-' + blok.background_color">
-    <div class="container">
-      <LoadingSpinner v-if="pendingCategory" />
+  <section
+    v-editable="blok"
+    class="page-section"
+    :class="'bg-' + blok.background_color"
+  >
+    <LoadingSpinner v-if="pendingCategory && !category" />
+    <div v-if="!pendingCategory && category" class="container">
       <div
-        v-else
         class="relative mb-12 flex h-[500px] w-full items-center justify-center"
       >
         <img
-          v-if="category?.images[0]?.file.url"
-          :src="category?.images[0]?.file.url"
-          :alt="category.images[0].file.url && category.meta_title"
+          v-if="category.image"
+          :src="category.image"
+          :alt="category.title"
           class="pointer-events-none absolute left-0 top-0 z-0 h-full w-full object-cover"
         />
         <Headline class="relative z-10 text-white">
-          {{ category.name }}
+          {{ category.title }}
         </Headline>
       </div>
-      <LoadingSpinner v-if="pendingProducts" />
-      <div v-else :class="gridClasses">
+      <LoadingSpinner v-if="pendingProducts && !products" />
+      <div v-if="!pendingProducts && products" :class="gridClasses">
         <ProductCard
-          v-for="product in products.results"
+          v-for="product in products"
           :key="product.id"
           :product-id="product.id"
           :section-bg-color="blok.background_color"
         />
       </div>
+    </div>
+    <div v-else class="container">
+      <Headline color="white" class="text-left">
+        Category
+        <span class="text-light">{{ productCategorySlug }}</span>
+        doesn't exist.
+      </Headline>
     </div>
   </section>
   <StoryblokComponent

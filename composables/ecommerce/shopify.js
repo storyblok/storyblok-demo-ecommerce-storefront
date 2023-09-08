@@ -9,15 +9,26 @@ const shopifyClient = Client.buildClient({
 const assignProductData = (fetchedProduct) => {
   const product = {}
   product.id = fetchedProduct.id
-  product.title = fetchedProduct.title
-  product.description = fetchedProduct.description
   product.slug = fetchedProduct.handle
-  product.image = fetchedProduct.images[0].src
-  product.priceCurrency = fetchedProduct.variants[0].price.currencyCode
-  product.price = fetchedProduct.variants[0].price.amount
-  product.availability = fetchedProduct.variants[0].available
+  product.title = fetchedProduct.title
+  product.description = fetchedProduct?.description
+  product.image = fetchedProduct?.images[0]?.src
+  product.priceCurrency = fetchedProduct?.variants[0]?.price?.currencyCode
+  product.price = fetchedProduct?.variants[0]?.price.amount
+  product.availability = fetchedProduct?.variants[0]?.available
 
   return product
+}
+
+const assignCategoryData = (fetchedCollection) => {
+  const category = {}
+  category.id = fetchedCollection.id
+  category.slug = fetchedCollection.handle
+  category.title = fetchedCollection.title
+  category.description = fetchedCollection?.description
+  category.image = fetchedCollection?.image?.src
+
+  return category
 }
 
 export const fetchShopifyProductByID = async (productID) => {
@@ -76,7 +87,7 @@ export const fetchShopifyProductsByCustomQuery = async (
     categoriesQuery += `AND tag:'${categories[i]}'`
   }
 
-  let query = {
+  const query = {
     query: `${searchQuery} ${categoriesQuery}`,
   }
 
@@ -89,14 +100,28 @@ export const fetchShopifyProductsByCustomQuery = async (
   return products
 }
 
+export const fetchShopifyCollectionByHandle = async (categoryHandle) => {
+  if (categoryHandle === '' || !categoryHandle) return
+
+  const category = reactive({})
+
+  await shopifyClient.collection
+    .fetchByHandle(categoryHandle)
+    .then((fetchedCollection) => {
+      Object.assign(category, assignCategoryData(fetchedCollection))
+    })
+
+  return category
+}
+
 export const fetchShopifyAllCollections = async () => {
-  const categories = []
+  const categories = reactive([])
 
   await shopifyClient.collection
     .fetchAllWithProducts()
     .then((fetchedCollections) => {
       fetchedCollections.forEach((fetchedCollection) => {
-        categories.push(fetchedCollection)
+        categories.push(assignCategoryData(fetchedCollection))
       })
     })
 

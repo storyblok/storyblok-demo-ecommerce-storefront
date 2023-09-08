@@ -1,26 +1,16 @@
 <script setup>
-import swell from 'swell-js'
-
-const config = useRuntimeConfig()
 const props = defineProps({ blok: Object })
 
-let categories = []
-swell.init(config.public.swellStoreName, config.public.swellAccessToken)
-const { pending, data: ecommerceCategories } = await useLazyAsyncData(
-  'ecommerceCategoriesFeatured',
-  () =>
-    swell.categories.list({
-      active: true,
-      sort: 'name asc',
-    }),
-)
+const categories = ref(null)
+const pending = ref(true)
 
-watch(ecommerceCategories, (newEcommerceCategories) => {
-  categories = newEcommerceCategories.results.reduce((acc, curr) => {
-    acc[curr.id] = curr
-    return acc
-  }, {})
-})
+try {
+  categories.value = await fetchShopifyAllCollections()
+  pending.value = false
+} catch (error) {
+  console.log(error)
+  pending.value = false
+}
 
 const gridClasses = computed(() => getGridClasses(props.blok.cols))
 </script>

@@ -37,10 +37,14 @@ const productCategorySlug = await getSingleProductCategorySlug()
 
 try {
   if (processedSlug === 'error-404') error404.value = true
-  let type = viewingSingleProductCategory ? 'product-categories' : ''
-  let data = false
+  let data = null
   if (viewingSingleProductCategory) {
-    data = await getHero(productCategorySlug, 'default', type, apiParams)
+    data = await getHero(
+      productCategorySlug,
+      'default',
+      'product-categories',
+      apiParams,
+    )
   } else if (viewingSingleProduct) {
     data = await getHero(productSlug, 'default', 'products', apiParams)
   } else {

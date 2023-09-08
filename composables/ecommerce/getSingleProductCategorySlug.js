@@ -4,5 +4,5 @@ export default async function () {
   /**
    * Return a default product category unless a hero product category is viewed.
    */
-  return productCategorySlug !== 'default' ? productCategorySlug : 'style-1'
+  return productCategorySlug !== 'default' ? productCategorySlug : 'style-001'
 }
