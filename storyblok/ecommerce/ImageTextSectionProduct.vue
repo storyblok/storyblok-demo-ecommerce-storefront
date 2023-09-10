@@ -7,7 +7,7 @@ const product = ref(null)
 const pending = ref(true)
 watchEffect(async () => {
   try {
-    product.value = await fetchShopifyProductByID(productId)
+    product.value = productId && (await fetchShopifyProductByID(productId))
     pending.value = false
   } catch (error) {
     console.log(error)
