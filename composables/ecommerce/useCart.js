@@ -3,11 +3,8 @@ const cart = ref({})
 export default function useCart() {
   async function getCart() {
     if (!cart.value.id) {
-      console.log('notcreated')
       cart.value = await createShopifyCheckout()
-      console.log(await createShopifyCheckout())
     } else {
-      console.log('already created')
       cart.value = await fetchShopifyCheckout(cart.value.id)
     }
   }

@@ -9,8 +9,6 @@ const toggleCart = () => {
 const closeCart = () => {
   cartOpen.value = false
 }
-
-console.log(cart.value)
 </script>
 
 <template>

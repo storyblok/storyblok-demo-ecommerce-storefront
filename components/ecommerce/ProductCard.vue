@@ -6,9 +6,7 @@ const pending = ref(true)
 
 watchEffect(async () => {
   try {
-    product.value = await fetchShopifyProductByID(
-      props.blok?.product?.items[0]?.id,
-    )
+    product.value = await fetchShopifyProductByID(props.productId)
     pending.value = false
   } catch (error) {
     console.log(error)
