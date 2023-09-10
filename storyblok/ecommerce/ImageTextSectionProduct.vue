@@ -3,8 +3,7 @@ const props = defineProps({ blok: Object })
 
 const product = ref(null)
 const pending = ref(true)
-
-const fetchProduct = async () => {
+watchEffect(async () => {
   try {
     product.value =
       props.blok?.product?.items[0]?.id &&
@@ -14,11 +13,7 @@ const fetchProduct = async () => {
     console.log(error)
     pending.value = false
   }
-}
-
-fetchProduct()
-
-watchEffect(props.blok?.product?.items[0]?.id, fetchProduct())
+})
 
 const button = {
   size: 'default',
