@@ -1,20 +1,7 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const product = ref(null)
-const pending = ref(true)
-
-watchEffect(async () => {
-  try {
-    product.value = await fetchShopifyProductByID(
-      props.blok?.product?.items[0]?.id,
-    )
-    pending.value = false
-  } catch (error) {
-    console.log(error)
-    pending.value = false
-  }
-})
+const product = await fetchShopifyProductByID(props.blok?.product?.items[0]?.id)
 
 const button = {
   size: 'default',
@@ -57,9 +44,8 @@ const button = {
         </Button>
       </div>
       <div>
-        <LoadingSpinner v-if="pending && !product" />
         <img
-          v-if="!pending && product"
+          v-if="product && product.image"
           :src="product.image"
           :alt="product.title"
           class="pointer-events-none aspect-square w-full max-w-md rounded-lg object-cover shadow-2xl lg:aspect-auto lg:max-w-full"

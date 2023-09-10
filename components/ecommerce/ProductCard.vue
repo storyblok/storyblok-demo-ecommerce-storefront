@@ -1,25 +1,13 @@
 <script setup>
 const props = defineProps({ productId: String, sectionBgColor: String })
 
-const product = ref(null)
-const pending = ref(true)
-
-watchEffect(async () => {
-  try {
-    product.value = await fetchShopifyProductByID(props.productId)
-    pending.value = false
-  } catch (error) {
-    console.log(error)
-    pending.value = false
-  }
-})
+const product = await fetchShopifyProductByID(props.productId)
 </script>
 
 <template>
-  <LoadingSpinner v-if="pending && !product" />
   <NuxtLink
     :to="`/products/${product.slug}`"
-    v-if="!pending && product"
+    v-if="product"
     class="group group flex h-full w-full max-w-md transform flex-col overflow-hidden rounded-lg transition-all duration-300"
   >
     <div class="aspect-square w-full overflow-hidden">
