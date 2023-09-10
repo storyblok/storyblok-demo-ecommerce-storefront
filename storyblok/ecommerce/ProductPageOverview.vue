@@ -11,10 +11,11 @@ const resetFilters = () => {
   rangePrice.value = 0
 }
 
-const categories = await fetchShopifyAllCollections()
+const categories = ref([])
+categories.value = await fetchShopifyAllCollections()
+console.log(categories.value)
 
 const products = ref([])
-
 const fetchProducts = async () => {
   try {
     products.value = await fetchShopifyProductsByCustomQuery(
@@ -78,14 +79,14 @@ const button = {
               <label
                 v-for="category in categories"
                 :key="category.id"
-                :for="category.handle"
+                :for="category.slug"
                 class="checkbox flex"
               >
                 <input
                   type="checkbox"
-                  :id="category.handle"
-                  :name="category.handle"
-                  :value="category.handle"
+                  :id="category.slug"
+                  :name="category.slug"
+                  :value="category.slug"
                   v-model="checkedCategories"
                   class="invisible hidden"
                 />

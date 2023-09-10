@@ -55,10 +55,10 @@ const assignCheckoutData = (fetchedCheckout) => {
 export const fetchShopifyProductByID = async (productID) => {
   if (productID === '' || !productID) return
 
-  const product = reactive({})
+  let product = null
 
   await shopifyClient.product.fetch(productID).then((fetchedProduct) => {
-    Object.assign(product, assignProductData(fetchedProduct))
+    product = assignProductData(fetchedProduct)
   })
 
   return product
@@ -67,12 +67,12 @@ export const fetchShopifyProductByID = async (productID) => {
 export const fetchShopifyProductByHandle = async (productHandle) => {
   if (productHandle === '' || !productHandle) return
 
-  const product = reactive({})
+  let product = null
 
   await shopifyClient.product
     .fetchByHandle(productHandle)
     .then((fetchedProduct) => {
-      Object.assign(product, assignProductData(fetchedProduct))
+      product = assignProductData(fetchedProduct)
     })
 
   return product
@@ -81,7 +81,7 @@ export const fetchShopifyProductByHandle = async (productHandle) => {
 export const fetchShopifyProductsByCategory = async (categoryID) => {
   if (categoryID === '' || !categoryID) return
 
-  const products = reactive([])
+  let products = []
 
   await shopifyClient.collection
     .fetchWithProducts(categoryID, { productsFirst: 10 })
@@ -98,7 +98,7 @@ export const fetchShopifyProductsByCustomQuery = async (
   searchTerm,
   categories,
 ) => {
-  const products = reactive([])
+  let products = []
 
   const searchQuery = searchTerm ? `title:'${searchTerm}'` : ''
 
@@ -124,7 +124,7 @@ export const fetchShopifyProductsByCustomQuery = async (
 export const fetchShopifyCollectionByHandle = async (categoryHandle) => {
   if (categoryHandle === '' || !categoryHandle) return
 
-  const category = reactive({})
+  let category = {}
 
   await shopifyClient.collection
     .fetchByHandle(categoryHandle)
@@ -136,7 +136,7 @@ export const fetchShopifyCollectionByHandle = async (categoryHandle) => {
 }
 
 export const fetchShopifyAllCollections = async () => {
-  const categories = reactive([])
+  let categories = []
 
   await shopifyClient.collection
     .fetchAllWithProducts()
@@ -150,7 +150,7 @@ export const fetchShopifyAllCollections = async () => {
 }
 
 export const createShopifyCheckout = async () => {
-  const checkout = reactive({})
+  let checkout = {}
   shopifyClient.checkout.create().then((fetchedCheckout) => {
     Object.assign(checkout, assignCheckoutData(fetchedCheckout))
   })
@@ -158,7 +158,7 @@ export const createShopifyCheckout = async () => {
 }
 
 export const fetchShopifyCheckout = async (checkoutId) => {
-  const checkout = reactive({})
+  let checkout = {}
   shopifyClient.checkout.fetch(checkoutId).then((fetchedCheckout) => {
     Object.assign(checkout, assignCheckoutData(fetchedCheckout))
   })
@@ -166,7 +166,7 @@ export const fetchShopifyCheckout = async (checkoutId) => {
 }
 
 export const addToShopifyCheckout = async (checkoutId, itemsToAdd) => {
-  const checkout = reactive({})
+  let checkout = {}
   shopifyClient.checkout
     .addLineItems(checkoutId, itemsToAdd)
     .then((fetchedCheckout) => {
