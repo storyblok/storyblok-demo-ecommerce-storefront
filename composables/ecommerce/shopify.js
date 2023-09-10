@@ -15,7 +15,7 @@ const assignProductData = (fetchedProduct) => {
   product.description = fetchedProduct?.description
   product.image = fetchedProduct?.images[0]?.src
   product.priceCurrency = fetchedProduct?.variants[0]?.price?.currencyCode
-  product.price = fetchedProduct?.variants[0]?.price.amount
+  product.price = Math.floor(fetchedProduct?.variants[0]?.price.amount)
   product.availability = fetchedProduct?.variants[0]?.available
 
   return product
@@ -170,7 +170,6 @@ export const addToShopifyCheckout = async (checkoutId, itemsToAdd) => {
   shopifyClient.checkout
     .addLineItems(checkoutId, itemsToAdd)
     .then((fetchedCheckout) => {
-      console.log(fetchedCheckout)
       Object.assign(checkout, assignCheckoutData(fetchedCheckout))
     })
   return checkout
