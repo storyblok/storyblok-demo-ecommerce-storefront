@@ -9,6 +9,8 @@ const toggleCart = () => {
 const closeCart = () => {
   cartOpen.value = false
 }
+
+console.log(cart.value)
 </script>
 
 <template>
@@ -28,7 +30,7 @@ const closeCart = () => {
           d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
         />
       </svg>
-      <span>My Cart ({{ cart?.item_quantity || '0' }})</span>
+      <span>My Cart ({{ cart.quantity || '0' }})</span>
     </button>
     <Transition v-if="cart">
       <div
@@ -60,20 +62,18 @@ const closeCart = () => {
             <span class="w-[calc(100%-125px)] font-black">Product</span>
             <span class="w-[75px] text-right font-black">Price</span>
           </div>
-          <!-- <div
-            v-for="item in cart.lineItems"
-            :key="item.id"
-            class="flex flex-row"
-          >
+          <div v-for="item in cart.items" :key="item.id" class="flex flex-row">
             <span class="w-[50px]">{{ item.quantity }}</span>
             <span class="w-[calc(100%-125px)]">{{ item.title }}</span>
             <span class="w-[75px] text-right">
-              {{ item.variant?.price?.amount }}
-              {{ item.variant?.price?.currencyCode }}
+              {{ item.price }}
+              {{ cart.currency }}
             </span>
-          </div> -->
+          </div>
           <div class="border-t border-dark pt-2 text-right font-black">
-            <span>{{ cart.total }} {{ cart.currency }}</span>
+            <span v-if="cart.total > 0">
+              {{ cart.total }} {{ cart.currency }}
+            </span>
           </div>
         </div>
       </div>

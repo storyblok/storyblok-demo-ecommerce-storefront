@@ -34,11 +34,21 @@ const assignCategoryData = (fetchedCollection) => {
 
 const assignCheckoutData = (fetchedCheckout) => {
   const checkout = {}
+  const items = []
+  let itemCount = 0
+  fetchedCheckout.lineItems.forEach((item) => {
+    itemCount = itemCount + parseInt(item.quantity)
+    items.push({
+      title: item.title,
+      quantity: item.quantity,
+      price: Math.floor(item.variant?.priceV2?.amount),
+    })
+  })
+  checkout.quantity = itemCount
   checkout.id = fetchedCheckout.id
-  checkout.lineItems = fetchedCheckout.lineItems
-  checkout.total = fetchedCheckout.totalPriceV2?.amount
-  checkout.currency = fetchedCheckout.totalPriceV2?.currency
-
+  checkout.items = items
+  checkout.total = Math.floor(fetchedCheckout.totalPriceV2?.amount)
+  checkout.currency = fetchedCheckout.currencyCode
   return checkout
 }
 
