@@ -1,13 +1,13 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const productId = props.blok?.product?.items[0]?.id
-
 const product = ref(null)
 const pending = ref(true)
 watchEffect(async () => {
   try {
-    product.value = productId && (await fetchShopifyProductByID(productId))
+    product.value =
+      props.blok?.product?.items[0]?.id &&
+      (await fetchShopifyProductByID(props.blok?.product?.items[0]?.id))
     pending.value = false
   } catch (error) {
     console.log(error)
