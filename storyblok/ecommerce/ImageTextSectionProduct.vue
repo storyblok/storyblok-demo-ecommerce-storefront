@@ -34,6 +34,7 @@ watch(productId, fetchProduct, {
 })
 
 onMounted(async () => {
+  console.log('life cycle check')
   await fetchProduct()
 })
 
