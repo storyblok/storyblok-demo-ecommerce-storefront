@@ -18,21 +18,23 @@ const pending = ref(true)
   }
 }) */
 
-watch(
-  productId,
-  async (value) => {
-    try {
-      product.value = await fetchShopifyProductByID(productId.value)
-      pending.value = false
-    } catch (error) {
-      console.log(error)
-      pending.value = false
-    }
-  },
-  {
-    immediate: true,
-  },
-)
+const fetchProduct = async () => {
+  try {
+    product.value = await fetchShopifyProductByID(productId.value)
+    pending.value = false
+  } catch (error) {
+    console.log(error)
+    pending.value = false
+  }
+}
+
+watch(productId, fetchProduct, {
+  immediate: true,
+})
+
+onMounted(() => {
+  fetchProduct()
+})
 
 const button = {
   size: 'default',
