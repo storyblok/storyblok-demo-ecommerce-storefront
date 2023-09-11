@@ -2,7 +2,6 @@
 const props = defineProps({ productId: String, sectionBgColor: String })
 
 const productId = computed(() => props.productId)
-
 const product = ref(null)
 const pending = ref(true)
 

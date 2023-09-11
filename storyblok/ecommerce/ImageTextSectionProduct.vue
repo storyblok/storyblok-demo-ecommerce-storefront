@@ -1,22 +1,19 @@
 <script setup>
 const props = defineProps({ blok: Object })
-const { blok } = toRefs(props)
-const pending = ref(true)
-const product = ref(null)
-const productId = computed(() => blok.value.product?.items[0]?.id)
 
-watch(
-  () => blok.value,
-  async () => {
-    if (blok.value.product?.items[0]?.id) {
-      product.value = await fetchShopifyProductByID(productId.value)
-      pending.value = false
-    } else {
-      product.value = null
-      pending.value = true
-    }
-  },
-)
+const productId = computed(() => props.blok?.product?.items[0]?.id)
+const product = ref(null)
+const pending = ref(true)
+
+watchEffect(async () => {
+  try {
+    product.value = await fetchShopifyProductByID(productId.value)
+    pending.value = false
+  } catch (error) {
+    console.log(error)
+    pending.value = false
+  }
+})
 
 const button = {
   size: 'default',
