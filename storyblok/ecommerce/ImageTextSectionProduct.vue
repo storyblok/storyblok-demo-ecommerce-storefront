@@ -1,42 +1,16 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const productId = computed(
-  () => props.blok?.product?.items[0] && props.blok?.product?.items[0]?.id,
-)
-
-const product = ref(null)
 const pending = ref(true)
-
-/* watchEffect(async () => {
-  try {
-    product.value = await fetchShopifyProductByID(productId.value)
-    pending.value = false
-  } catch (error) {
-    console.log(error)
-    pending.value = false
-  }
-}) */
+const productId = computed(() => props.blok?.product?.items[0]?.id)
 
 const fetchProduct = async () => {
-  try {
-    product.value = await fetchShopifyProductByID(productId.value)
-    console.log('check product value: ' + productId.value)
-    pending.value = false
-  } catch (error) {
-    console.log(error)
-    pending.value = false
-  }
+  const product = await fetchShopifyProductByID(productId.value)
+  pending.value = false
+  return product
 }
-
-watch(productId, fetchProduct, {
-  immediate: true,
-})
-
-onMounted(async () => {
-  console.log('life cycle check')
-  await fetchProduct()
-})
+const product = await fetchProduct()
+//const pending = ref(true)
 
 const button = {
   size: 'default',
