@@ -2,15 +2,35 @@
 const props = defineProps({ blok: Object })
 
 const pending = ref(true)
-const productId = computed(() => props.blok?.product?.items[0]?.id)
+//const productId = computed(() => props.blok?.product?.items[0]?.id)
+
+const productId = ref()
+const product = ref(null)
+
+productId.value = 'gid://shopify/Product/5826191523993'
+
+setTimeout(() => {
+  productId.value = 'gid://shopify/Product/5826194702489'
+}, 500)
 
 const fetchProduct = async () => {
-  const product = await fetchShopifyProductByID(productId.value)
-  pending.value = false
-  return product
+  try {
+    product.value = await fetchShopifyProductByID(productId.value)
+    console.log('check product value: ' + productId.value)
+    pending.value = false
+  } catch (error) {
+    console.log(error)
+    pending.value = false
+  }
 }
-const product = await fetchProduct()
-//const pending = ref(true)
+
+watch(productId, fetchProduct, {
+  immediate: true,
+})
+
+onMounted(async () => {
+  await fetchProduct()
+})
 
 const button = {
   size: 'default',
