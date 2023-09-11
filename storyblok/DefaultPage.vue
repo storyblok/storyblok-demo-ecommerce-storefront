@@ -4,11 +4,13 @@ defineProps({ blok: Object, uuid: String })
 
 <template>
   <div v-editable="blok">
-    <ComponentCheck
-      v-for="(blok, index) in blok.body"
-      :key="blok._uid"
-      :blok="blok"
-      :index="index"
-    />
+    <Suspense>
+      <ComponentCheck
+        v-for="(blok, index) in blok.body"
+        :key="blok._uid"
+        :blok="blok"
+        :index="index"
+      />
+    </Suspense>
   </div>
 </template>
