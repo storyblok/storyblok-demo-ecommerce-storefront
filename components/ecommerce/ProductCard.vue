@@ -1,11 +1,14 @@
 <script setup>
 const props = defineProps({ productId: String, sectionBgColor: String })
 
+const productId = computed(() => props.productId)
+
 const product = ref(null)
 const pending = ref(true)
+
 watchEffect(async () => {
   try {
-    product.value = await fetchShopifyProductByID(props.productId)
+    product.value = await fetchShopifyProductByID(productId.value)
     pending.value = false
   } catch (error) {
     console.log(error)
