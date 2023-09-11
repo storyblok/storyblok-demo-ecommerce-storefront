@@ -21,6 +21,7 @@ const pending = ref(true)
 const fetchProduct = async () => {
   try {
     product.value = await fetchShopifyProductByID(productId.value)
+    console.log('check product value: ' + product.value)
     pending.value = false
   } catch (error) {
     console.log(error)
