@@ -8,7 +8,7 @@ const productId = computed(
 const product = ref(null)
 const pending = ref(true)
 
-watchEffect(async () => {
+/* watchEffect(async () => {
   try {
     product.value = await fetchShopifyProductByID(productId.value)
     pending.value = false
@@ -16,7 +16,23 @@ watchEffect(async () => {
     console.log(error)
     pending.value = false
   }
-})
+}) */
+
+watch(
+  productId,
+  async (value) => {
+    try {
+      product.value = await fetchShopifyProductByID(productId.value)
+      pending.value = false
+    } catch (error) {
+      console.log(error)
+      pending.value = false
+    }
+  },
+  {
+    immediate: true,
+  },
+)
 
 const button = {
   size: 'default',
