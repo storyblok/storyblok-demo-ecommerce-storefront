@@ -21,7 +21,7 @@ const pending = ref(true)
 const fetchProduct = async () => {
   try {
     product.value = await fetchShopifyProductByID(productId.value)
-    console.log('check product value: ' + product.value)
+    console.log('check product value: ' + productId.value)
     pending.value = false
   } catch (error) {
     console.log(error)
@@ -33,8 +33,8 @@ watch(productId, fetchProduct, {
   immediate: true,
 })
 
-onMounted(() => {
-  fetchProduct()
+onMounted(async () => {
+  await fetchProduct()
 })
 
 const button = {
