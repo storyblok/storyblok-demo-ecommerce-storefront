@@ -55,10 +55,10 @@ const assignCheckoutData = (fetchedCheckout) => {
 export const fetchShopifyProductByID = async (productID) => {
   if (productID === '' || !productID) return
 
-  let product = reactive({})
+  let product = {}
 
   await shopifyClient.product.fetch(productID).then((fetchedProduct) => {
-    Object.assign(product, assignProductData(fetchedProduct))
+    product = assignProductData(fetchedProduct)
   })
 
   return product
