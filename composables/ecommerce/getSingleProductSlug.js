@@ -4,5 +4,5 @@ export default async function () {
   /**
    * Return a default product unless a hero product is viewed.
    */
-  return productSlug !== 'default' ? productSlug : 'watch-001'
+  return productSlug !== 'default' ? productSlug : 'nebula-nova'
 }
