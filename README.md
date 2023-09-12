@@ -1,123 +1,111 @@
-# Storyblok Ecommerce Demo
+# Storyblok eCommerce Demo Storefront
 
-This Frontend website is a practical example of how to integrate Your Frontend with Storyblok content and an e-commerce catalog.
-The Frontend website provided in this Open Source repository is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
-The e-commerce platform used is [Swell](swell.is) but you can adapt the fetching data mechanism with any e-commerce that provides you catalog data via API for retrieving:
+This documentation provides a practical example of integrating your frontend with Storyblok content and an eCommerce catalog. The frontend is constructed using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/). While we use Shopify as the eCommerce platform in this demo, you can adapt the data fetching mechanism to work with any eCommerce platform that provides catalog data via APIs. This integration allows you to retrieve:
 
-- a list of categories;
-- one specific category (by slug);
-- a list of products related to a category (by slug category);
-- a product detail (by slug product);
-- filtering products by attributes: category, pricing, name.
+- A list of categories.
+- A specific category (identified by its slug).
+- A list of products related to a category (by the category's slug).
+- Details of a specific product (identified by its slug).
+- The ability to filter products by attributes such as category, pricing, and name.
 
 ## Setup
 
-You can clone locally this repository via `git clone` command, and then you can access the new directory created by the `git clone` command:
+To get started, clone this repository locally using the `git clone` command and navigate to the newly created directory:
 
 ```shell
-git clone https://github.com/storyblok/storyblok-demo-ecommerce-swell.git
+git clone https://github.com/storyblok/storyblok-demo-ecommerce-storefront.git
 cd storyblok-demo-ecommerce-swell
 ```
 
-### Install the dependencies
+### Install Dependencies
 
-Once you cloned the repository and accessed the project directory you can install the packages needed by the project (using `npm` or `pnpm` or `yarn`):
+Once you've cloned the repository and accessed the project directory, install the necessary packages using `npm`, `pnpm`, or `yarn`:
 
 ```bash
 npm install
 ```
 
-### Set your API Keys
+### Set Your API Keys
 
-Set your API Keys in the `.env` file, for Storyblok and Swell e-commerce. Copy the `.env.example` file into `.env` file and fill all the listed parameters with your values:
+You need to configure your API Keys in the `.env` file for Storyblok and Shopify. Copy the `.env.example` file to `.env` and populate it with your specific values:
 
-```
-STORYBLOK_SPACE=your-storyblok-space-is
-STORYBLOK_PREVIEW_TOKEN=your-storyblok-access-token
-
-SWELL_STORE_NAME=your-swell-ecommerce-name
-SWELL_ACCESS_TOKEN=your-swell-access-token
-
+```plaintext
+STORYBLOK_TOKEN=your-storyblok-token
+SHOPIFY_DOMAIN=your-shopify-domain
+SHOPIFY_TOKEN=your-shopify-token
 ```
 
-### Run the project
+### Run the Project
+
+Execute the following command to run the project:
 
 ```bash
 npm run dev
 ```
 
-Your project will now be served on [https://localhost:3000](https://localhost:3000).
+Your project will now be accessible at [https://localhost:3000](https://localhost:3000).
 
 ## Features
 
-### Banner with 1 product
+### Banner with a Single Product
 
-- Frontend File: `storyblok/ecommerce/ImageTextSectionProduct.vue`;
-- Storyblok component: `image-text-section-product`;
-- For: product.
-
-Fields:
-
-- `text`: a Richtext field for adding more text;
-- `headline`: a plain text field for the title, for example, "New Arrival", "Best product", etc;
-- `product` : the plugin field for referencing an e-commerce product;
-- `buttons`: call to actions:
-  - button internal link to a page;
-  - button product, link to a product detail page;
-- `reverse_layout`: image on the left or on the right;
-- `backgound_color`: back ground color , picked from `eCommerce `Background Colors` data source.
-
-For retrieving product information from the Swell catalog, for example, retrieving latest products you can access the Swell documentation:
-
-- for sorting try to use this syntax: https://developers.swell.is/backend-api/querying/sorting
-- for limiting this one: https://developers.swell.is/backend-api/querying/sorting#limiting
-
-### Banner with selected products
-
-- Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`;
-- Storyblok component: `featured-products`;
-- For: products.
-
-Product Components useful for showing a list of selected products (best products, selected products for you, etc. )
+- Frontend File: `storyblok/ecommerce/ImageTextSectionProduct.vue`
+- Storyblok component: `image-text-section-product`
+- Intended for displaying a single product.
 
 Fields:
 
-- `headline`: for the editorial purpose (for example, "Latest additions", "Selected products" or "Products of the month");
-- `lead`: editorial, for describing the selected products;
-- `products`: list of selected products. The products are selected manually by the content editor via the Storyblok UI. The Field plugin retrieves the products directly from the Swell commerce
-- `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
-- `cols`: number of columns used for listing products in a kind of grid.
+- `text`: A rich text field for adding additional text.
+- `headline`: A plain text field for the title, such as "New Arrival" or "Best Product."
+- `product`: A plugin field for referencing an eCommerce product.
+- `buttons`: Call to action buttons, which can link to internal pages or product detail pages.
+- `reverse_layout`: Choose whether the image is on the left or right.
+- `background_color`: Select a background color from the "eCommerce Background Colors" data source.
 
-### Banner listing categories
+### Banner with Selected Products
 
-- Frontend File: `storyblok/FeaturedArticlesSection.vue`;
-- Stroyblok component: `featured-articles-section`;
-- For: articles.
-
-Fields:
-
-- `headline`: title of the block for selected articles (for example, "Important additions", "Our Stories" or "Best articles")
-- `lead`: editorial, for describing the selected articles
-- `articles`: list of selected articles. The articles are selected manually by the content editor via the Storyblok UI.
-- `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
-- `cols`: number of columns used for listing products in a kind of grid.
-
-### Categories listing
-
-- Frontend File: `storyblok/ecommerce/FeaturesCategories.vue`;
-- Stroyblok component: `featured-categories`;
-- For: products.
+- Frontend File: `storyblok/ecommerce/FeaturedProducts.vue`
+- Storyblok component: `featured-products`
+- Designed for displaying a list of selected products, such as best products or personalized recommendations.
 
 Fields:
 
-- `headline`: for the editorial purpose (for example, "By Style")
-- `lead`: editorial, for describing the categories
-- `background_color`: pick a color from `eCommerce Background Colors` data source, for the background;
-- `cols`: number of columns used for listing products in a kind of grid.
+- `headline`: For editorial purposes (e.g., "Latest Additions," "Selected Products," or "Products of the Month").
+- `lead`: Editorial content for describing the selected products.
+- `products`: A list of selected products, manually chosen by the content editor via the Storyblok UI. The field plugin retrieves these products directly from the Shopify instance.
+- `background_color`: Choose a color from the "eCommerce Background Colors" data source for the background.
+- `cols`: Specify the number of columns for listing products in a grid.
+
+### Banner Listing Categories
+
+- Frontend File: `storyblok/FeaturedArticlesSection.vue`
+- Storyblok component: `featured-articles-section`
+- Designed for listing selected articles, such as "Important Additions," "Our Stories," or "Best Articles."
+
+Fields:
+
+- `headline`: The title of the block for selected articles.
+- `lead`: Editorial content for describing the selected articles.
+- `articles`: A list of selected articles, chosen manually by the content editor via the Storyblok UI.
+- `background_color`: Choose a color from the "eCommerce Background Colors" data source for the background.
+- `cols`: Specify the number of columns for listing products in a grid.
+
+### Categories Listing
+
+- Frontend File: `storyblok/ecommerce/FeaturesCategories.vue`
+- Storyblok component: `featured-categories`
+- Designed for listing product categories, such as "By Style."
+
+Fields:
+
+- `headline`: For editorial purposes (e.g., "By Style").
+- `lead`: Editorial content for describing the categories.
+- `background_color`: Choose a color from the "eCommerce Background Colors" data source for the background.
+- `cols`: Specify the number of columns for listing products in a grid.
 
 ## Pages
 
-Here I'm going to explain the important URLs:
+This section explains important URLs within the project:
 
 - `/product-categories/product-categories/`
 - `/product-categories/<slug>`
@@ -129,63 +117,52 @@ Here I'm going to explain the important URLs:
 - Route file: `/pages/[...slug].vue`
 - Page File: `storyblok/ecommerce/ProductCategoryPageOverview.vue`
 
-With headline, description and cols parameter (for setting the number of columns used to list the categories)
-Loads list of categories from Swell e-commerce.
-Each category links to the Category page
+This page displays a list of categories along with their headlines, descriptions, and the number of columns used to list the categories. It loads the list of categories from Shopify, and each category links to its respective Category page.
 
-### Category page
+### Category Page
 
 - Slug: `/product-categories/<slug>`
 - Route file: `/pages/[...slug].vue`
-- Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+- Page File: Not used (components loaded directly from the route file due to a fixed structure).
 
-#### Category page HERO
+#### Category Page Hero
 
-Each category on e-commerce has a specific slug. For example `style-2`.
-On the front-end the category product slug is used to check the existence of a story.
-If a story (with the category product slug) exists, the story is loaded for rendering the product category page.
-If the story with the category product slug doesn't exist, a category product default page (as a fallback) is loaded.
-In this way, you can have some category product HERO pages and Standard category product pages.
+Each eCommerce category has a specific slug (e.g., `style-2`). The category product slug is used to check for the existence of a story on the frontend. If a story with the category product slug exists, it is loaded to render the product category page. If no such story exists, a default category product page is loaded as a fallback. This approach allows for the creation of both category product HERO pages and standard category product pages.
 
-#### Category page STANDARD
+#### Category Page Standard
 
-The story with `product-categories/default` is the story for creating the page for product categories with no specific product category specific story.
-Think of the scenario where you have a lot of product categories in the e-commerce catalog but you don't have the editorial effort/team to create all the product categories stories. In this way, you can create the default (a basic) one.
+The story with the slug `product-categories/default` serves as a template for creating standard category product pages when specific stories are not available. This is useful when you have numerous product categories in your eCommerce catalog, but you lack the editorial resources to create individual stories for each category.
 
-### Product page
-
-Slug: `/products/<slug>`
-Route file: `/pages/products/[...slug].vue`
-Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
-
-#### Product page HERO
-
-Each product on e-commerce has a specific slug. For example `watch-001`.
-On the front-end the product slug is used to check the existence of a story.
-If a story (with the product slug) exists, the story is loaded for rendering the product page.
-If the story with the product slug doesn't exist, a product default page (as a fallback) is loaded.
-In this way, you can have some product HERO pages and Standard product pages.
-
-#### Product page STANDARD
-
-The story with `products/default` is the story for creating the page for a product with no specific product-specific story.
-Think of the scenario where you have a lot of products in the e-commerce catalog but you don't have the editorial effort/team to create all the product stories. In this way, you can create the default (a basic) one.
-
-### Store Finder
-
-Editorial page with Store component (it is just a list of stores, no maps)
+### Product Page
 
 - Slug: `/products/<slug>`
 - Route file: `/pages/products/[...slug].vue`
-- Page File: not used (components loaded directly from the route file, because it is a "fixed structure")
+- Page File: Not used (components loaded directly from the route file due to a fixed structure).
 
-## JS functionality
+#### Product Page Hero
 
-### Add to cart
+Similar to category pages, each product in the eCommerce catalog has a specific slug (e.g., `watch-001`). The product slug is used to determine whether a corresponding story exists on the frontend. If a story with the product slug exists, it is loaded to render the product page. Otherwise, a default product page is loaded as a fallback. This approach allows for the creation of both product HERO pages and standard product pages.
 
-Add to the Swell Cart the selected product
-See the functions in [the useCart.js file](composables/ecommerce/useCart.js).
+#### Product Page Standard
+
+The story with the slug `products/default` is the template for creating standard product pages when specific product stories are not available. This is particularly useful when you have numerous products in your eCommerce catalog but lack the editorial resources to create individual stories for each product.
+
+### Store Finder
+
+This editorial page includes a Store component, which is essentially a list of stores (without maps).
+
+- Slug: `/products/<slug>`
+- Route file: `/pages/products/[...slug].vue`
+- Page File: Not used (components loaded directly from
+
+the route file due to a fixed structure).
+
+## JavaScript Functionality
+
+### Add to Cart
+
+The "Add to Cart" functionality allows users to add selected products to the Shopify Cart. Refer to the functions defined in the [useCart.js file](composables/ecommerce/useCart.js) for more details.
 
 ### Composables
 
-In the [composable directory](composables/ecommerce/) are listed a set of functions for simplifying the access and management of the Cart, the multilanguage, the path, etc.
+The [composable directory](composables/ecommerce/) contains a collection of functions designed to simplify tasks such as accessing and managing the Cart, handling multilanguage support, managing paths, and more.
