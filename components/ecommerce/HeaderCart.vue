@@ -1,6 +1,14 @@
 <script setup>
-const { cart, getCart } = useCart()
-await getCart()
+const cartIdCookie = useCookie('shopify-cart-id')
+const { cart, cartId } = await useCart(cartIdCookie.value)
+
+watchEffect(() => {
+  console.log(cartId.value)
+  if (cartId.value !== null) {
+    console.log('update cookie')
+    cartIdCookie.value = cartId.value
+  }
+})
 
 const cartOpen = ref(false)
 const toggleCart = () => {
@@ -35,6 +43,7 @@ const closeCart = () => {
         v-show="cartOpen"
         class="absolute right-0 top-1/2 w-[300px] translate-y-8 rounded-lg bg-white px-6 pb-6 pt-12 text-dark shadow-sm"
       >
+        <pre>{{ cart }}</pre>
         <button @click="closeCart()" class="absolute right-2 top-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

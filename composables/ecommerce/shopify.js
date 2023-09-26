@@ -149,28 +149,29 @@ export const fetchShopifyAllCollections = async () => {
   return categories
 }
 
-export const createShopifyCheckout = async () => {
-  let checkout = {}
-  shopifyClient.checkout.create().then((fetchedCheckout) => {
-    Object.assign(checkout, assignCheckoutData(fetchedCheckout))
-  })
-  return checkout
-}
-
-export const fetchShopifyCheckout = async (checkoutId) => {
-  let checkout = {}
-  shopifyClient.checkout.fetch(checkoutId).then((fetchedCheckout) => {
-    Object.assign(checkout, assignCheckoutData(fetchedCheckout))
-  })
-  return checkout
+export const fetchShopifyCheckout = async (existingCartId) => {
+  const cart = ref({})
+  const cartId = ref(null)
+  if (existingCartId) {
+    console.log('existing checkout id, load checkout')
+    shopifyClient.checkout.fetch(existingCartId).then((fetchedCheckout) => {
+      cartId.value = fetchedCheckout.id
+      console.log(cartId.value)
+      Object.assign(cart.value, assignCheckoutData(fetchedCheckout))
+    })
+  } else {
+    console.log('no existing checkout id, create new checkout')
+    shopifyClient.checkout.create().then((fetchedCheckout) => {
+      cartId.value = fetchedCheckout.id
+      console.log(cartId.value)
+      Object.assign(cart.value, assignCheckoutData(fetchedCheckout))
+    })
+  }
+  return { cart, cartId }
 }
 
 export const addToShopifyCheckout = async (checkoutId, itemsToAdd) => {
-  let checkout = {}
-  shopifyClient.checkout
-    .addLineItems(checkoutId, itemsToAdd)
-    .then((fetchedCheckout) => {
-      Object.assign(checkout, assignCheckoutData(fetchedCheckout))
-    })
-  return checkout
+  shopifyClient.checkout.addLineItems(checkoutId, itemsToAdd).then(() => {
+    console.log('product added to cart')
+  })
 }

@@ -16,7 +16,21 @@ try {
   pending.value = false
 }
 
-const { addToCart } = useCart()
+const cartIdCookie = useCookie('shopify-cart-id')
+console.log('cookie check')
+console.log(cartIdCookie.value)
+
+const addToCart = async (variantId) => {
+  const itemsToAdd = [
+    {
+      variantId,
+      quantity: 1,
+    },
+  ]
+  await addToShopifyCheckout(cartIdCookie.value, itemsToAdd)
+  console.log('added to cart')
+  updateCart()
+}
 
 const button = {
   size: 'default',
