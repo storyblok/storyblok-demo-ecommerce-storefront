@@ -25,7 +25,7 @@ async function getEndpoint(endpoint, apiParams) {
   try {
     return await storyblokApi.get(endpoint, apiParams)
   } catch (e) {
-    console.log(e)
+    //console.log(e)
     return false
   }
 }

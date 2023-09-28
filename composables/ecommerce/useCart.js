@@ -32,17 +32,13 @@ export default function useCart() {
 
   async function getCart(existingCartId) {
     if (existingCartId) {
-      console.log('existing checkout id, load checkout')
       shopifyClient.checkout.fetch(existingCartId).then((fetchedCheckout) => {
         cartId.value = fetchedCheckout.id
-        console.log(cartId.value)
         cart.value = assignCheckoutData(fetchedCheckout)
       })
     } else {
-      console.log('no existing checkout id, create new checkout')
       shopifyClient.checkout.create().then((fetchedCheckout) => {
         cartId.value = fetchedCheckout.id
-        console.log(cartId.value)
         cart.value = assignCheckoutData(fetchedCheckout)
       })
     }
@@ -58,8 +54,6 @@ export default function useCart() {
     shopifyClient.checkout
       .addLineItems(cartId.value, itemsToAdd)
       .then((fetchedCheckout) => {
-        console.log('product added to cart')
-        console.log(cart.value)
         cart.value = assignCheckoutData(fetchedCheckout)
       })
   }
