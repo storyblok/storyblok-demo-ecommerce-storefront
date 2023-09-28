@@ -1,6 +1,8 @@
 <script setup>
 const cartIdCookie = useCookie('shopify-cart-id')
-const { cart, cartId } = await useCart(cartIdCookie.value)
+const { cart, cartId, getCart } = useCart()
+console.log(cartIdCookie.value)
+await getCart(cartIdCookie.value)
 
 watchEffect(() => {
   console.log(cartId.value)

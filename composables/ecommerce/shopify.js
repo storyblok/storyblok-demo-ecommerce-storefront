@@ -32,26 +32,6 @@ const assignCategoryData = (fetchedCollection) => {
   return category
 }
 
-const assignCheckoutData = (fetchedCheckout) => {
-  const checkout = {}
-  const items = []
-  let itemCount = 0
-  fetchedCheckout.lineItems.forEach((item) => {
-    itemCount = itemCount + parseInt(item.quantity)
-    items.push({
-      title: item.title,
-      quantity: item.quantity,
-      price: Math.floor(item.variant?.priceV2?.amount),
-    })
-  })
-  checkout.quantity = itemCount
-  checkout.id = fetchedCheckout.id
-  checkout.items = items
-  checkout.total = Math.floor(fetchedCheckout.totalPriceV2?.amount)
-  checkout.currency = fetchedCheckout.currencyCode
-  return checkout
-}
-
 export const fetchShopifyProductByID = async (productID) => {
   if (productID === '' || !productID) return
 
@@ -147,31 +127,4 @@ export const fetchShopifyAllCollections = async () => {
     })
 
   return categories
-}
-
-export const fetchShopifyCheckout = async (existingCartId) => {
-  const cart = ref({})
-  const cartId = ref(null)
-  if (existingCartId) {
-    console.log('existing checkout id, load checkout')
-    shopifyClient.checkout.fetch(existingCartId).then((fetchedCheckout) => {
-      cartId.value = fetchedCheckout.id
-      console.log(cartId.value)
-      Object.assign(cart.value, assignCheckoutData(fetchedCheckout))
-    })
-  } else {
-    console.log('no existing checkout id, create new checkout')
-    shopifyClient.checkout.create().then((fetchedCheckout) => {
-      cartId.value = fetchedCheckout.id
-      console.log(cartId.value)
-      Object.assign(cart.value, assignCheckoutData(fetchedCheckout))
-    })
-  }
-  return { cart, cartId }
-}
-
-export const addToShopifyCheckout = async (checkoutId, itemsToAdd) => {
-  shopifyClient.checkout.addLineItems(checkoutId, itemsToAdd).then(() => {
-    console.log('product added to cart')
-  })
 }

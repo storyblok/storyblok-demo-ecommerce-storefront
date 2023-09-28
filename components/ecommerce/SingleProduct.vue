@@ -5,6 +5,8 @@
 
 const props = defineProps({ blok: Object, productSlug: String })
 
+const { addToCart } = useCart()
+
 const product = ref(null)
 const pending = ref(true)
 
@@ -14,22 +16,6 @@ try {
 } catch (error) {
   console.log(error)
   pending.value = false
-}
-
-const cartIdCookie = useCookie('shopify-cart-id')
-console.log('cookie check')
-console.log(cartIdCookie.value)
-
-const addToCart = async (variantId) => {
-  const itemsToAdd = [
-    {
-      variantId,
-      quantity: 1,
-    },
-  ]
-  await addToShopifyCheckout(cartIdCookie.value, itemsToAdd)
-  console.log('added to cart')
-  updateCart()
 }
 
 const button = {
