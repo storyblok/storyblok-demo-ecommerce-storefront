@@ -32,26 +32,6 @@ const assignCategoryData = (fetchedCollection) => {
   return category
 }
 
-const assignCheckoutData = (fetchedCheckout) => {
-  const checkout = {}
-  const items = []
-  let itemCount = 0
-  fetchedCheckout.lineItems.forEach((item) => {
-    itemCount = itemCount + parseInt(item.quantity)
-    items.push({
-      title: item.title,
-      quantity: item.quantity,
-      price: Math.floor(item.variant?.priceV2?.amount),
-    })
-  })
-  checkout.quantity = itemCount
-  checkout.id = fetchedCheckout.id
-  checkout.items = items
-  checkout.total = Math.floor(fetchedCheckout.totalPriceV2?.amount)
-  checkout.currency = fetchedCheckout.currencyCode
-  return checkout
-}
-
 export const fetchShopifyProductByID = async (productID) => {
   if (productID === '' || !productID) return
 
@@ -147,30 +127,4 @@ export const fetchShopifyAllCollections = async () => {
     })
 
   return categories
-}
-
-export const createShopifyCheckout = async () => {
-  let checkout = {}
-  shopifyClient.checkout.create().then((fetchedCheckout) => {
-    Object.assign(checkout, assignCheckoutData(fetchedCheckout))
-  })
-  return checkout
-}
-
-export const fetchShopifyCheckout = async (checkoutId) => {
-  let checkout = {}
-  shopifyClient.checkout.fetch(checkoutId).then((fetchedCheckout) => {
-    Object.assign(checkout, assignCheckoutData(fetchedCheckout))
-  })
-  return checkout
-}
-
-export const addToShopifyCheckout = async (checkoutId, itemsToAdd) => {
-  let checkout = {}
-  shopifyClient.checkout
-    .addLineItems(checkoutId, itemsToAdd)
-    .then((fetchedCheckout) => {
-      Object.assign(checkout, assignCheckoutData(fetchedCheckout))
-    })
-  return checkout
 }

@@ -1,6 +1,14 @@
 <script setup>
-const { cart, getCart } = useCart()
-await getCart()
+const cartIdCookie = useCookie('shopify-cart-id')
+const { cart, cartId, getCart } = useCart()
+
+await getCart(cartIdCookie.value)
+
+watchEffect(() => {
+  if (cartId.value !== null) {
+    cartIdCookie.value = cartId.value
+  }
+})
 
 const cartOpen = ref(false)
 const toggleCart = () => {

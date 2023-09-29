@@ -5,6 +5,8 @@
 
 const props = defineProps({ blok: Object, productSlug: String })
 
+const { addToCart } = useCart()
+
 const product = ref(null)
 const pending = ref(true)
 
@@ -15,8 +17,6 @@ try {
   console.log(error)
   pending.value = false
 }
-
-const { addToCart } = useCart()
 
 const button = {
   size: 'default',
