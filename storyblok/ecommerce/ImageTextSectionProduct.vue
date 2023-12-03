@@ -16,9 +16,13 @@ watchEffect(async () => {
 })
 
 const button = {
+  link: {
+    linktype: 'url',
+  },
   size: 'default',
   style: 'ghost',
-  button_color: 'white',
+  text_color: 'dark',
+  background_color: 'light',
 }
 </script>
 

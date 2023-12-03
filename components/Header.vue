@@ -76,16 +76,6 @@ onMounted(() => {
 
 <template>
   <header class="fixed left-0 top-0 z-[99] w-full">
-    <div aria-label="Top header" class="bg-light text-dark">
-      <ul
-        class="mx-auto flex w-full max-w-[1536px] justify-end space-x-4 px-4 py-2 lg:space-x-8 lg:px-8"
-      >
-        <li>
-          <a href="#">Sign In</a>
-        </li>
-        <li><a href="#">Create an Account</a></li>
-      </ul>
-    </div>
     <div
       class="transition-all duration-700"
       :class="[headerClasses, headerBg, headerTransparency]"

@@ -41,7 +41,8 @@ const button = {
   },
   size: 'small',
   style: 'ghost',
-  button_color: 'primary',
+  text_color: 'light',
+  background_color: 'dark',
 }
 </script>
 

@@ -19,9 +19,13 @@ try {
 }
 
 const button = {
+  link: {
+    linktype: 'url',
+  },
   size: 'default',
-  style: 'default',
-  button_color: 'white',
+  style: 'ghost',
+  text_color: 'dark',
+  background_color: 'light',
 }
 </script>
 <template>
