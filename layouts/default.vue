@@ -58,8 +58,18 @@ const cssVariables = computed(() => {
     theme['--light'] = story.value.content.light.color
     theme['--medium'] = story.value.content.medium.color
     theme['--dark'] = story.value.content.dark.color
+    if (story.value.content.colored_headlines) {
+      theme['--headline-color'] = story.value.content.primary.color
+    } else {
+      theme['--headline-color'] = story.value.content.dark.color
+    }
   } else {
     Object.assign(theme, defaultColors)
+    if (story.value.content.colored_headlines) {
+      theme['--headline-color'] = defaultColors['--primary']
+    } else {
+      theme['--headline-color'] = defaultColors['--dark']
+    }
   }
   if (story.value.content.disable_rounded_corners) {
     for (const key in theme) {
@@ -72,23 +82,10 @@ const cssVariables = computed(() => {
 })
 
 const autoNavFolder = computed(() => {
+  if (!story.value.content.header_auto_nav_folder) return ''
   if (!story.value.content.header_auto_nav_folder[0]?.slug) return ''
   return story.value.content.header_auto_nav_folder[0].slug
 })
-
-const enableBreadcrumbs = useState(
-  'enableBreadcrumbs',
-  () => story.value.content.enable_breadcrumbs,
-)
-
-const breadcrumbsExcludedStories = useState(
-  'breadcrumbsExcludedStories',
-  () => story.value.content.breadcrumbs_excluded_stories,
-)
-
-/* const altStyleBreadcrumbs = computed(
-  () => processedSlug.startsWith('articles/') && processedSlug !== 'articles/',
-) */
 
 const viewingSiteConfig = await isSiteConfig()
 const { customParent } = useRuntimeConfig().public
@@ -182,13 +179,9 @@ section.page-section.no-padding {
   @apply py-0;
 }
 
-section.page-section.bg-white:not(.banner-section)
-  + section.page-section.bg-white:not(.banner-section),
-section.page-section.bg-light:not(.banner-section)
-  + section.page-section.bg-light:not(.banner-section),
-section.page-section.bg-dark:not(.banner-section)
-  + section.page-section.bg-dark:not(.banner-section),
-section.banner-section + section.banner-section {
+section.page-section.bg-white + section.page-section.bg-white,
+section.page-section.bg-light + section.page-section.bg-light,
+section.page-section.bg-dark + section.page-section.bg-dark {
   @apply pt-0;
 }
 
@@ -203,13 +196,6 @@ section.hero-section
 }
 
 section.banner-section.padding:first-child {
-  @apply pt-0;
-}
-
-section.banner-section.padding.bg-white + section.page-section.bg-white,
-section.banner-section.padding.bg-light + section.page-section.bg-light,
-section.page-section.bg-white + section.banner-section.padding.bg-white,
-section.page-section.bg-light + section.banner-section.padding.bg-light {
   @apply pt-0;
 }
 

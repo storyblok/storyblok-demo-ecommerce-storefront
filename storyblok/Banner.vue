@@ -34,7 +34,6 @@ const filters = computed(() => {
 })
 
 const optimizedImage = computed(() => {
-  console.log(isSvg.value)
   let filename = props.blok.background_image?.filename
   if (!isSvg.value) filename += '/m/2000x0'
   return filename
@@ -54,10 +53,10 @@ const showVideo = computed(() => {
 
 <template>
   <section
-    class="page-section banner-section bg-white"
+    class="page-section banner-section"
     :class="[
-      { 'no-padding': blok.full_width },
-      { padding: !blok.full_width },
+      { 'no-padding': blok.full_width || referenced },
+      { 'padding bg-white': !blok.full_width && !referenced },
       { 'pointer-events-none': referenced },
     ]"
     v-editable="blok"
@@ -68,9 +67,13 @@ const showVideo = computed(() => {
         :class="[
           { 'rounded-lg': !blok.full_width },
           blok.overlay !== 'no-overlay' ? blok.overlay : '',
-          { 'bg-light': !blok.background_color?.color },
+          { 'bg-light': !blok.enable_background_color },
         ]"
-        :style="`background-color: ${blok.background_color?.color}`"
+        :style="
+          blok.enable_background_color && blok.background_color?.color
+            ? `background-color: ${blok.background_color?.color}`
+            : ''
+        "
       >
         <div class="relative z-30">
           <h2

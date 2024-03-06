@@ -63,7 +63,7 @@ try {
   }
 
   onMounted(() => {
-    useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory), {
+    useStoryblokBridge(story.value?.id, (evStory) => (story.value = evStory), {
       resolveRelations: resolveRelations,
       customParent,
       preventClicks: false,
