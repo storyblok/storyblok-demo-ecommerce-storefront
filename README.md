@@ -14,7 +14,7 @@ To get started, clone this repository locally using the `git clone` command and 
 
 ```shell
 git clone https://github.com/storyblok/storyblok-demo-ecommerce-storefront.git
-cd storyblok-demo-ecommerce-swell
+cd storyblok-demo-ecommerce-storefront
 ```
 
 ### Install Dependencies
