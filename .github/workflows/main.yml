@@ -15,7 +15,7 @@ jobs:
         uses: dabreadman/sync-upstream-repo@v1.2.0.b
         with:
           # URL of gitHub public upstream repo
-          upstream_repo: https://github.com/storyblok/storyblok-demo-ecommerce-storefront.git
+          upstream_repo: https://x-access-token:${GITHUB_TOKEN}@github.com/storyblok/storyblok-demo-ecommerce-storefront.git
           # Branch to merge from upstream (defaults to downstream branch)
           upstream_branch: main
           # Branch to merge into downstream
