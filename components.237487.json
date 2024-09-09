@@ -3,9 +3,9 @@
     {
       "name": "article-overview-page",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.349Z",
-      "updated_at": "2023-12-03T12:24:24.079Z",
-      "id": 4816599,
+      "created_at": "2023-06-22T10:09:23.041Z",
+      "updated_at": "2023-06-22T10:09:23.041Z",
+      "id": 4160559,
       "schema": {
         "headline": {
           "type": "text",
@@ -31,9 +31,9 @@
     {
       "name": "article-page",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.438Z",
-      "updated_at": "2024-03-21T10:43:37.134Z",
-      "id": 4816603,
+      "created_at": "2023-06-22T10:09:23.025Z",
+      "updated_at": "2024-03-21T10:38:24.672Z",
+      "id": 4160558,
       "schema": {
         "image": {
           "type": "asset",
@@ -82,7 +82,7 @@
           "translatable": true,
           "restrict_type": "groups",
           "restrict_components": true,
-          "component_group_whitelist": ["9f2565df-aeb2-4cd0-b988-fddec0ef7b4b"]
+          "component_group_whitelist": ["e4165c3d-b636-41a6-8466-cc4f6ca35639"]
         },
         "author": {
           "type": "option",
@@ -124,9 +124,9 @@
     {
       "name": "author",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.419Z",
-      "updated_at": "2023-11-01T09:46:08.419Z",
-      "id": 4816602,
+      "created_at": "2023-06-22T10:09:23.174Z",
+      "updated_at": "2023-06-22T10:09:23.174Z",
+      "id": 4160566,
       "schema": {
         "profile_picture": {
           "type": "asset",
@@ -158,9 +158,9 @@
     {
       "name": "badge",
       "display_name": null,
-      "created_at": "2023-12-03T12:24:24.740Z",
-      "updated_at": "2023-12-03T12:24:24.740Z",
-      "id": 4972782,
+      "created_at": "2023-10-22T13:29:09.769Z",
+      "updated_at": "2023-10-22T13:29:38.021Z",
+      "id": 4764473,
       "schema": {
         "badge": {
           "type": "asset",
@@ -176,7 +176,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "badge",
-      "component_group_uuid": "bb72fdd6-8ecc-4c8d-9dac-66a6b9f3bf5f",
+      "component_group_uuid": "85d48780-1a61-4655-832d-683a8a2859fa",
       "color": "#00b3b0",
       "icon": null,
       "internal_tags_list": [],
@@ -187,9 +187,9 @@
     {
       "name": "banner",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:07.760Z",
-      "updated_at": "2024-03-21T10:43:37.578Z",
-      "id": 4816574,
+      "created_at": "2023-06-22T10:09:22.978Z",
+      "updated_at": "2024-03-21T10:24:17.760Z",
+      "id": 4160557,
       "schema": {
         "background_image": {
           "type": "asset",
@@ -433,7 +433,26 @@
       "is_root": true,
       "preview_tmpl": "<div>{{it.headline}}</div>\n{{@image(it.background_image.filename)/}} ",
       "is_nestable": true,
-      "all_presets": [],
+      "all_presets": [
+        {
+          "id": 2079005,
+          "name": "Still want to learn more?",
+          "component_id": 4160557,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        },
+        {
+          "id": 1809956,
+          "name": "Top Five Discoveries",
+          "component_id": 4160557,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
       "preset_id": null,
       "real_name": "banner",
       "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
@@ -447,9 +466,9 @@
     {
       "name": "banner-reference",
       "display_name": "Banner (Reference)",
-      "created_at": "2023-11-01T09:46:08.182Z",
-      "updated_at": "2024-03-21T10:43:37.722Z",
-      "id": 4816592,
+      "created_at": "2023-06-22T10:09:23.158Z",
+      "updated_at": "2024-03-21T10:33:23.708Z",
+      "id": 4160565,
       "schema": {
         "banners": {
           "type": "options",
@@ -483,9 +502,9 @@
     {
       "name": "button",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:07.869Z",
-      "updated_at": "2023-12-03T12:24:26.306Z",
-      "id": 4816578,
+      "created_at": "2023-06-22T10:09:22.957Z",
+      "updated_at": "2023-07-19T09:09:32.680Z",
+      "id": 4160556,
       "schema": {
         "style": {
           "type": "option",
@@ -623,11 +642,59 @@
       "component_group_name": "level-2"
     },
     {
+      "name": "car-configurator-page",
+      "display_name": null,
+      "created_at": "2023-10-30T15:16:54.135Z",
+      "updated_at": "2024-03-05T11:57:56.388Z",
+      "id": 4806869,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "key": "Headline",
+          "pos": 0
+        },
+        "accentMaterials": {
+          "type": "custom",
+          "field_type": "sb-tres-material-plugin",
+          "options": []
+        },
+        "tab-d8a0df27-838c-4662-8208-0509b14a3f46": {
+          "display_name": "Materials",
+          "keys": ["baseMaterials", "accentMaterials"],
+          "pos": 1,
+          "type": "tab",
+          "key": "tab-d8a0df27-838c-4662-8208-0509b14a3f46"
+        },
+        "baseMaterials": {
+          "type": "custom",
+          "field_type": "sb-tres-material-plugin",
+          "options": [],
+          "key": "baseMaterials",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "car-configurator-page",
+      "component_group_uuid": "f64f6c6e-9be6-4469-972d-1675cbed0e55",
+      "color": "#1b243f",
+      "icon": "block-arrow-pointer",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "3d"
+    },
+    {
       "name": "category",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.327Z",
-      "updated_at": "2023-12-03T12:24:26.694Z",
-      "id": 4816598,
+      "created_at": "2023-06-22T10:09:23.142Z",
+      "updated_at": "2023-06-22T10:09:23.142Z",
+      "id": 4160564,
       "schema": {
         "headline": {
           "type": "text",
@@ -656,9 +723,9 @@
     {
       "name": "complex-hero-section",
       "display_name": null,
-      "created_at": "2023-12-03T12:24:27.647Z",
-      "updated_at": "2024-03-21T10:43:38.210Z",
-      "id": 4972784,
+      "created_at": "2023-10-22T12:09:38.021Z",
+      "updated_at": "2024-03-21T10:33:40.290Z",
+      "id": 4764357,
       "schema": {
         "background_color": {
           "type": "option",
@@ -859,9 +926,9 @@
     {
       "name": "default-page",
       "display_name": "Default Page",
-      "created_at": "2023-11-01T09:46:08.304Z",
-      "updated_at": "2023-12-03T12:24:27.870Z",
-      "id": 4816597,
+      "created_at": "2023-06-22T10:09:23.127Z",
+      "updated_at": "2023-06-22T10:09:23.127Z",
+      "id": 4160563,
       "schema": {
         "body": {
           "type": "bloks",
@@ -888,9 +955,9 @@
     {
       "name": "featured-articles-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:07.803Z",
-      "updated_at": "2024-03-21T10:43:38.521Z",
-      "id": 4816576,
+      "created_at": "2023-06-22T10:09:23.111Z",
+      "updated_at": "2024-03-21T10:38:15.832Z",
+      "id": 4160562,
       "schema": {
         "cols": {
           "type": "option",
@@ -978,231 +1045,11 @@
       "component_group_name": "level-1"
     },
     {
-      "name": "featured-categories",
-      "display_name": "Featured Categories",
-      "created_at": "2023-11-01T09:46:07.911Z",
-      "updated_at": "2023-11-01T09:46:07.911Z",
-      "id": 4816580,
-      "schema": {
-        "cols": {
-          "type": "option",
-          "min_value": 1,
-          "max_value": 4,
-          "default_value": "3",
-          "pos": 0,
-          "display_name": "Columns",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "7492f1f6-15ca-4290-a2ec-182925b87935",
-              "name": "Two",
-              "value": "2"
-            },
-            {
-              "_uid": "8eba2bf8-4b7a-4719-89ae-d759faa3674b",
-              "value": "3",
-              "name": "Three"
-            },
-            {
-              "_uid": "5f1e59d1-1575-4277-b600-19a1dcbfe997",
-              "value": "4",
-              "name": "Four"
-            }
-          ],
-          "exclude_empty_option": true
-        },
-        "background_color": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "c4920e99-770b-4237-adbc-1e68a0020ea7",
-              "name": "Light (Gray) Background",
-              "value": "light"
-            },
-            {
-              "_uid": "fbdf7046-b363-4634-b9d8-bf348ffcef35",
-              "value": "white",
-              "name": "White Background"
-            },
-            {
-              "_uid": "92299074-d784-41d6-b796-4c06d170df6f",
-              "value": "dark",
-              "name": "Dark"
-            }
-          ],
-          "exclude_empty_option": true,
-          "default_value": "white",
-          "source": "internal",
-          "datasource_slug": "ecommerce-background-colors",
-          "pos": 1
-        },
-        "headline": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "lead": {
-          "type": "textarea",
-          "pos": 3,
-          "translatable": true
-        },
-        "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768": {
-          "display_name": "Style",
-          "keys": ["background_color", "cols"],
-          "pos": 4,
-          "type": "tab",
-          "name": "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768"
-        }
-      },
-      "image": "//a.storyblok.com/f/192355/x/da30d346b5/feature-article-section-preview.png",
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": "<div>{{headline}}</div>",
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Featured Categories",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "featured-products",
-      "display_name": "Featured Products",
-      "created_at": "2023-11-01T09:46:07.932Z",
-      "updated_at": "2023-11-01T09:46:07.932Z",
-      "id": 4816581,
-      "schema": {
-        "cols": {
-          "type": "option",
-          "min_value": 1,
-          "max_value": 4,
-          "default_value": "3",
-          "pos": 0,
-          "display_name": "Columns",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "38f771f0-1a86-4f17-b143-b69d1e59f58e",
-              "name": "Two",
-              "value": "2"
-            },
-            {
-              "_uid": "e3b790b7-383c-4f0e-b17e-f217a47b5189",
-              "value": "3",
-              "name": "Three"
-            },
-            {
-              "_uid": "26e9b525-e08d-49bf-aedd-ec8581b1147e",
-              "value": "4",
-              "name": "Four"
-            }
-          ],
-          "exclude_empty_option": true
-        },
-        "background_color": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "c4920e99-770b-4237-adbc-1e68a0020ea7",
-              "name": "Light (Gray) Background",
-              "value": "light"
-            },
-            {
-              "_uid": "fbdf7046-b363-4634-b9d8-bf348ffcef35",
-              "value": "white",
-              "name": "White Background"
-            },
-            {
-              "_uid": "92299074-d784-41d6-b796-4c06d170df6f",
-              "value": "dark",
-              "name": "Dark"
-            }
-          ],
-          "exclude_empty_option": true,
-          "default_value": "dark",
-          "source": "internal",
-          "datasource_slug": "ecommerce-background-colors",
-          "pos": 1
-        },
-        "products": {
-          "type": "custom",
-          "field_type": "sb-shopify",
-          "options": [
-            {
-              "name": "endpoint",
-              "value": "https://demo-store-storyblok.myshopify.com",
-              "_uid": "eacbc108-3b18-4001-9692-38a08b975904"
-            },
-            {
-              "name": "token",
-              "value": "20e6cb81679f34864bad5edb4af975b9",
-              "_uid": "4fb03d33-2c37-494e-80d7-9dd21005c570"
-            },
-            {
-              "name": "limit",
-              "value": "8",
-              "_uid": "66f9d09c-cb18-4168-b8b2-7a48b3b4cb37"
-            },
-            {
-              "name": "selectOnly",
-              "value": "product",
-              "_uid": "97923d60-92f8-423a-bc9b-d50179bda0de"
-            }
-          ],
-          "pos": 2
-        },
-        "headline": {
-          "type": "text",
-          "pos": 3
-        },
-        "lead": {
-          "type": "textarea",
-          "pos": 4
-        },
-        "tab-88a74501-d9b3-402d-a1e8-8128485f6f86": {
-          "display_name": "Products",
-          "keys": ["Product1", "products"],
-          "pos": 5,
-          "type": "tab",
-          "name": "tab-88a74501-d9b3-402d-a1e8-8128485f6f86"
-        },
-        "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768": {
-          "display_name": "Style",
-          "keys": ["background_color", "cols"],
-          "pos": 6,
-          "type": "tab",
-          "name": "tab-b8fc0bd4-e3a8-4a38-b93b-57fb13528768"
-        }
-      },
-      "image": "//a.storyblok.com/f/192355/x/337849a0a3/feature-article-section-preview.png",
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": "<div>{{headline}}</div>\n<div>With <strong>{{products.items.length}}</strong> products</div>",
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Featured Products",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
       "name": "form-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.400Z",
-      "updated_at": "2023-12-03T12:24:28.371Z",
-      "id": 4816601,
+      "created_at": "2023-06-22T10:09:22.670Z",
+      "updated_at": "2023-11-01T15:27:17.906Z",
+      "id": 4160548,
       "schema": {
         "headline": {
           "type": "text",
@@ -1301,9 +1148,9 @@
     {
       "name": "grid-card",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.279Z",
-      "updated_at": "2024-03-06T18:02:51.847Z",
-      "id": 4816596,
+      "created_at": "2023-06-22T10:09:22.939Z",
+      "updated_at": "2024-01-25T07:47:57.856Z",
+      "id": 4160555,
       "schema": {
         "label": {
           "type": "text",
@@ -1427,9 +1274,9 @@
     {
       "name": "grid-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.251Z",
-      "updated_at": "2024-03-21T10:43:38.967Z",
-      "id": 4816595,
+      "created_at": "2023-06-22T10:09:23.071Z",
+      "updated_at": "2024-03-21T10:34:08.536Z",
+      "id": 4160561,
       "schema": {
         "cards": {
           "type": "bloks",
@@ -1500,7 +1347,26 @@
       "is_root": false,
       "preview_tmpl": "<div>{{it.headline}}</div>\n<div>With <strong>{{it.cards.length}}</strong> grid cards</div>",
       "is_nestable": true,
-      "all_presets": [],
+      "all_presets": [
+        {
+          "id": 1813321,
+          "name": "Embark on Epic Adventures Beyond Earth",
+          "component_id": 4160561,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        },
+        {
+          "id": 1809957,
+          "name": "Space Facts",
+          "component_id": 4160561,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
       "preset_id": null,
       "real_name": "grid-section",
       "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
@@ -1514,9 +1380,9 @@
     {
       "name": "hero-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.159Z",
-      "updated_at": "2024-03-21T10:43:39.112Z",
-      "id": 4816591,
+      "created_at": "2023-06-22T10:09:22.906Z",
+      "updated_at": "2024-03-21T10:34:18.794Z",
+      "id": 4160554,
       "schema": {
         "headline": {
           "type": "text",
@@ -1646,7 +1512,17 @@
       "is_root": false,
       "preview_tmpl": "<div>{{it.headline}}</div>\n{{@image(it.background_image.filename)/}} ",
       "is_nestable": true,
-      "all_presets": [],
+      "all_presets": [
+        {
+          "id": 2079006,
+          "name": "Demo Space Adventure",
+          "component_id": 4160554,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
       "preset_id": null,
       "real_name": "hero-section",
       "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
@@ -1660,9 +1536,9 @@
     {
       "name": "image-text-section",
       "display_name": "Image Text Section",
-      "created_at": "2023-11-01T09:46:07.783Z",
-      "updated_at": "2024-03-21T10:43:39.270Z",
-      "id": 4816575,
+      "created_at": "2023-06-22T10:09:22.859Z",
+      "updated_at": "2024-03-21T10:34:31.868Z",
+      "id": 4160553,
       "schema": {
         "headline": {
           "type": "text",
@@ -1748,7 +1624,26 @@
       "is_root": false,
       "preview_tmpl": "<div>{{it.headline}}</div>\n{{@image(it.image.filename)/}} ",
       "is_nestable": true,
-      "all_presets": [],
+      "all_presets": [
+        {
+          "id": 1809952,
+          "name": "What do astronauts do for fun?",
+          "component_id": 4160553,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        },
+        {
+          "id": 2079007,
+          "name": "What's in space now?",
+          "component_id": 4160553,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
       "preset_id": null,
       "real_name": "Image Text Section",
       "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
@@ -1760,100 +1655,11 @@
       "component_group_name": "level-1"
     },
     {
-      "name": "image-text-section-product",
-      "display_name": "Image Text Product",
-      "created_at": "2023-11-01T09:46:07.953Z",
-      "updated_at": "2023-11-01T09:46:07.953Z",
-      "id": 4816582,
-      "schema": {
-        "reverse_layout": {
-          "type": "boolean",
-          "pos": 0
-        },
-        "background_color": {
-          "type": "option",
-          "source": "internal",
-          "datasource_slug": "ecommerce-background-colors",
-          "exclude_empty_option": true,
-          "default_value": "dark",
-          "pos": 1
-        },
-        "headline": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "text": {
-          "type": "richtext",
-          "pos": 3,
-          "customize_toolbar": true,
-          "toolbar": ["bold", "italic", "olist", "list", "link", "color"],
-          "translatable": true
-        },
-        "tab-44a2e3d0-c4be-4c73-b0b8-d23c8c7c91f4": {
-          "display_name": "Product",
-          "keys": ["product"],
-          "pos": 5,
-          "type": "tab",
-          "name": "tab-44a2e3d0-c4be-4c73-b0b8-d23c8c7c91f4"
-        },
-        "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75": {
-          "display_name": "Style",
-          "keys": ["background_color", "reverse_layout"],
-          "pos": 6,
-          "type": "tab",
-          "name": "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75"
-        },
-        "product": {
-          "type": "custom",
-          "field_type": "sb-shopify",
-          "options": [
-            {
-              "name": "endpoint",
-              "value": "https://demo-store-storyblok.myshopify.com",
-              "_uid": "ce224f52-4374-4712-8cc9-85d47762569d"
-            },
-            {
-              "name": "token",
-              "value": "20e6cb81679f34864bad5edb4af975b9",
-              "_uid": "ab6c0e19-59bf-44da-a4d4-2c0c4f828420"
-            },
-            {
-              "name": "limit",
-              "value": "1",
-              "_uid": "ab220393-1faa-42d0-8f68-b009fc7346a1"
-            },
-            {
-              "name": "selectOnly",
-              "value": "product",
-              "_uid": "4a315eee-b732-4f8d-848a-4c923bf6f07a"
-            }
-          ],
-          "pos": 7
-        }
-      },
-      "image": "//a.storyblok.com/f/192355/x/d1652c0fa2/image-text-section-preview.png",
-      "preview_field": "headline",
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Image Text Product",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
       "name": "label",
       "display_name": null,
-      "created_at": "2023-12-03T12:24:29.518Z",
-      "updated_at": "2023-12-03T12:24:29.518Z",
-      "id": 4972785,
+      "created_at": "2023-10-22T13:28:07.395Z",
+      "updated_at": "2023-10-22T13:30:20.260Z",
+      "id": 4764472,
       "schema": {
         "label": {
           "type": "text",
@@ -1872,7 +1678,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "label",
-      "component_group_uuid": "bb72fdd6-8ecc-4c8d-9dac-66a6b9f3bf5f",
+      "component_group_uuid": "85d48780-1a61-4655-832d-683a8a2859fa",
       "color": "#00b3b0",
       "icon": null,
       "internal_tags_list": [],
@@ -1883,9 +1689,9 @@
     {
       "name": "nav-item",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.225Z",
-      "updated_at": "2023-12-03T12:24:29.762Z",
-      "id": 4816594,
+      "created_at": "2023-06-22T10:09:23.055Z",
+      "updated_at": "2023-12-03T09:33:07.910Z",
+      "id": 4160560,
       "schema": {
         "link": {
           "type": "multilink",
@@ -1923,9 +1729,9 @@
     {
       "name": "personalized-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.203Z",
-      "updated_at": "2024-03-21T10:43:39.685Z",
-      "id": 4816593,
+      "created_at": "2023-06-22T10:09:22.811Z",
+      "updated_at": "2024-03-21T10:34:50.107Z",
+      "id": 4160551,
       "schema": {
         "preview": {
           "type": "option",
@@ -1993,9 +1799,9 @@
     {
       "name": "price-card",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:07.739Z",
-      "updated_at": "2023-12-03T12:24:30.274Z",
-      "id": 4816573,
+      "created_at": "2023-06-22T10:50:12.370Z",
+      "updated_at": "2023-06-22T10:55:21.627Z",
+      "id": 4160726,
       "schema": {
         "headline": {
           "type": "text",
@@ -2053,345 +1859,11 @@
       "component_group_name": "level-2"
     },
     {
-      "name": "product-category-page-default",
-      "display_name": "Product Category Page Default",
-      "created_at": "2023-11-01T09:46:08.096Z",
-      "updated_at": "2023-11-01T09:46:08.096Z",
-      "id": 4816588,
-      "schema": {
-        "cols": {
-          "type": "option",
-          "pos": 0,
-          "use_uuid": true,
-          "display_name": "Columns",
-          "options": [
-            {
-              "_uid": "1754cae8-9716-4a97-b19b-f2ceebb4e1a7",
-              "name": "Three",
-              "value": "3"
-            },
-            {
-              "_uid": "6a0a01c2-7c43-4aa7-9b2c-a25bc42a93f2",
-              "value": "4",
-              "name": "Four"
-            }
-          ],
-          "exclude_empty_option": true,
-          "default_value": "4"
-        },
-        "background_color": {
-          "type": "option",
-          "use_uuid": true,
-          "source": "internal",
-          "exclude_empty_option": true,
-          "datasource_slug": "ecommerce-background-colors",
-          "default_value": "white",
-          "pos": 1
-        },
-        "tab-58bb4e5c-fe41-40c7-8dfe-bf577616528b": {
-          "display_name": "Style",
-          "keys": ["cols", "background_color"],
-          "pos": 2,
-          "type": "tab"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Product Category Page Default",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": "block-text-img-l",
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "product-category-page-hero",
-      "display_name": "Product Category Page Hero",
-      "created_at": "2023-11-01T09:46:08.056Z",
-      "updated_at": "2023-11-01T09:46:08.056Z",
-      "id": 4816586,
-      "schema": {
-        "bloks_above": {
-          "type": "bloks",
-          "restrict_type": "groups",
-          "restrict_components": true,
-          "component_whitelist": [],
-          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"]
-        },
-        "bloks_below": {
-          "type": "bloks",
-          "restrict_type": "groups",
-          "restrict_components": true,
-          "component_whitelist": [],
-          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"]
-        },
-        "tab-de6c9e10-a6bb-4de3-891c-98cf90a5feae": {
-          "display_name": "Style",
-          "keys": ["cols", "background_color"],
-          "pos": 0,
-          "type": "tab"
-        },
-        "cols": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "36b1ed76-d3da-4b91-b54a-b46d3aebee5f",
-              "name": "Three",
-              "value": "3"
-            },
-            {
-              "_uid": "6da9d776-8bbe-40de-b585-dfc92e22469e",
-              "value": "4",
-              "name": "Four"
-            }
-          ],
-          "exclude_empty_option": true,
-          "default_value": "4"
-        },
-        "background_color": {
-          "type": "option",
-          "use_uuid": true,
-          "source": "internal",
-          "datasource_slug": "ecommerce-background-colors",
-          "exclude_empty_option": true,
-          "default_value": "white"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Product Category Page Hero",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": "block-text-img-l",
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "product-category-page-overview",
-      "display_name": "Product Category Page Overview",
-      "created_at": "2023-11-01T09:46:08.033Z",
-      "updated_at": "2023-11-01T09:46:08.033Z",
-      "id": 4816585,
-      "schema": {
-        "cols": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "be4385a5-8933-4395-ba88-d418116971f6",
-              "value": "3",
-              "name": "Three"
-            },
-            {
-              "_uid": "4466acda-0db4-4306-afec-5c81ae437b62",
-              "value": "4",
-              "name": "Four"
-            }
-          ],
-          "default_value": "4",
-          "display_name": "Columns",
-          "pos": 0,
-          "exclude_empty_option": true
-        },
-        "headline": {
-          "type": "text",
-          "translatable": true,
-          "pos": 1
-        },
-        "lead": {
-          "type": "textarea",
-          "translatable": true,
-          "pos": 2,
-          "customize_toolbar": true,
-          "toolbar": ["bold", "undo", "redo", "italic"]
-        },
-        "tab-74327b12-6053-4d5a-b0db-ea4cf1474750": {
-          "display_name": "Style",
-          "keys": ["cols", "background_color"],
-          "pos": 3,
-          "type": "tab"
-        },
-        "background_color": {
-          "type": "option",
-          "use_uuid": true,
-          "source": "internal",
-          "datasource_slug": "ecommerce-background-colors",
-          "exclude_empty_option": true,
-          "default_value": "white"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Product Category Page Overview",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": "block-block",
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "product-page-default",
-      "display_name": "Product Page Default",
-      "created_at": "2023-11-01T09:46:08.117Z",
-      "updated_at": "2023-11-01T09:46:08.117Z",
-      "id": 4816589,
-      "schema": {
-        "headline": {
-          "type": "text"
-        },
-        "description": {
-          "type": "richtext",
-          "display_name": "Description",
-          "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "superscript",
-            "subscript",
-            "undo",
-            "redo",
-            "italic",
-            "link"
-          ]
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Product Page Default",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": "block-text-img-t-l",
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "product-page-hero",
-      "display_name": null,
-      "created_at": "2023-11-01T09:46:08.076Z",
-      "updated_at": "2023-11-01T09:46:08.076Z",
-      "id": 4816587,
-      "schema": {
-        "bloks_above": {
-          "type": "bloks",
-          "display_name": "Blocks above Product",
-          "restrict_type": "groups",
-          "restrict_components": true,
-          "component_whitelist": [],
-          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"],
-          "key": "bloks_above",
-          "pos": 0
-        },
-        "bloks_below": {
-          "type": "bloks",
-          "restrict_type": "groups",
-          "restrict_components": true,
-          "component_whitelist": [],
-          "component_group_whitelist": ["25bd5845-06f6-4a5f-bb46-4682b1f00f22"],
-          "display_name": "Blocks below Product",
-          "pos": 1,
-          "key": "blocks_below"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "product-page-hero",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": "block-text-img-t-l",
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "product-page-overview",
-      "display_name": "Product Page Overview",
-      "created_at": "2023-11-01T09:46:08.013Z",
-      "updated_at": "2023-11-01T09:46:08.013Z",
-      "id": 4816584,
-      "schema": {
-        "headline": {
-          "type": "text",
-          "translatable": true,
-          "pos": 1
-        },
-        "lead": {
-          "type": "textarea",
-          "translatable": true,
-          "pos": 2,
-          "customize_toolbar": true,
-          "toolbar": ["bold", "undo", "redo", "italic"]
-        },
-        "tab-74327b12-6053-4d5a-b0db-ea4cf1474750": {
-          "display_name": "Style",
-          "keys": ["background_color"],
-          "pos": 3,
-          "type": "tab"
-        },
-        "background_color": {
-          "type": "option",
-          "use_uuid": true,
-          "source": "internal",
-          "datasource_slug": "background-colors",
-          "exclude_empty_option": true,
-          "default_value": "white"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Product Page Overview",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": "block-block",
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
       "name": "richtext-youtube",
       "display_name": null,
-      "created_at": "2023-12-03T12:24:30.418Z",
-      "updated_at": "2023-12-03T12:24:30.418Z",
-      "id": 4972786,
+      "created_at": "2023-06-22T10:10:30.437Z",
+      "updated_at": "2023-06-22T10:23:21.217Z",
+      "id": 4160571,
       "schema": {
         "video_id": {
           "type": "text",
@@ -2409,7 +1881,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "richtext-youtube",
-      "component_group_uuid": "9f2565df-aeb2-4cd0-b988-fddec0ef7b4b",
+      "component_group_uuid": "e4165c3d-b636-41a6-8466-cc4f6ca35639",
       "color": "#00b3b0",
       "icon": null,
       "internal_tags_list": [],
@@ -2418,11 +1890,295 @@
       "component_group_name": "richtext"
     },
     {
+      "name": "rocket-customization-page",
+      "display_name": null,
+      "created_at": "2023-09-29T07:24:48.031Z",
+      "updated_at": "2023-10-17T16:26:47.199Z",
+      "id": 4646183,
+      "schema": {
+        "headline": {
+          "type": "text"
+        },
+        "description": {
+          "type": "textarea"
+        },
+        "tab-8c94c67d-c5db-4955-bb1d-5c98fde8bf42": {
+          "display_name": "Materials",
+          "keys": ["baseMaterial", "accentMaterial", "detailMaterial"],
+          "pos": 0,
+          "type": "tab"
+        },
+        "baseMaterial": {
+          "type": "custom",
+          "field_type": "sb-tres-material-plugin",
+          "options": []
+        },
+        "accentMaterial": {
+          "type": "custom",
+          "field_type": "sb-tres-material-plugin",
+          "options": []
+        },
+        "detailMaterial": {
+          "type": "custom",
+          "field_type": "sb-tres-material-plugin",
+          "options": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "rocket-customization-page",
+      "component_group_uuid": "f64f6c6e-9be6-4469-972d-1675cbed0e55",
+      "color": "#1b243f",
+      "icon": "block-resize-fc",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "3d"
+    },
+    {
+      "name": "rocket-journey-page",
+      "display_name": null,
+      "created_at": "2023-10-17T16:23:39.258Z",
+      "updated_at": "2023-10-17T16:26:52.928Z",
+      "id": 4741430,
+      "schema": {
+        "sections": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "scroll-section",
+            "rocket-journey-scroll-section"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "rocket-journey-page",
+      "component_group_uuid": "f64f6c6e-9be6-4469-972d-1675cbed0e55",
+      "color": "#1b243f",
+      "icon": "block-resize-fc",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "3d"
+    },
+    {
+      "name": "rocket-journey-scroll-section",
+      "display_name": null,
+      "created_at": "2023-10-06T07:40:26.454Z",
+      "updated_at": "2023-10-17T16:26:36.641Z",
+      "id": 4679616,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "key": "headline",
+          "pos": 0
+        },
+        "text": {
+          "type": "richtext",
+          "display_name": "Text",
+          "key": "content",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "rocket-journey-scroll-section",
+      "component_group_uuid": "f64f6c6e-9be6-4469-972d-1675cbed0e55",
+      "color": "#00b3b0",
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "3d"
+    },
+    {
+      "name": "single-product-section",
+      "display_name": "Single Product Section",
+      "created_at": "2023-10-25T13:53:15.319Z",
+      "updated_at": "2024-03-21T10:35:09.869Z",
+      "id": 4783880,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true,
+          "key": "headline"
+        },
+        "override_product_description": {
+          "type": "boolean",
+          "pos": 1
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 2,
+          "customize_toolbar": true,
+          "toolbar": ["bold", "italic", "olist", "list", "link"],
+          "translatable": true,
+          "key": "text",
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "all",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "override_product_description",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
+        },
+        "button": {
+          "type": "bloks",
+          "maximum": 1,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": ["button"],
+          "pos": 3,
+          "component_group_whitelist": [],
+          "key": "button"
+        },
+        "product": {
+          "type": "custom",
+          "pos": 4,
+          "filetypes": ["images"],
+          "translatable": true,
+          "field_type": "sb-shopify",
+          "options": [
+            {
+              "name": "endpoint",
+              "value": "https://demo-store-storyblok.myshopify.com",
+              "_uid": "dff2668a-7133-4f27-8736-7404431a784b"
+            },
+            {
+              "name": "token",
+              "value": "c73797b73dc05529b551e7df36257c24",
+              "_uid": "a83cc3e4-d01f-4450-b105-d567b81116e6"
+            },
+            {
+              "name": "limit",
+              "value": "1",
+              "_uid": "9fac3fa0-62d0-4da1-9d16-7ff25314ff4a"
+            },
+            {
+              "name": "selectOnly",
+              "value": "product",
+              "_uid": "28a84c4e-171c-4215-a322-3150bc75fd35"
+            }
+          ],
+          "key": "image"
+        },
+        "tab-a6b55e6b-48ef-4dfc-89e6-970b82383748": {
+          "display_name": "Text",
+          "keys": [
+            "headline",
+            "text",
+            "button",
+            "override_product_description"
+          ],
+          "pos": 5,
+          "type": "tab",
+          "name": "tab-a6b55e6b-48ef-4dfc-89e6-970b82383748",
+          "key": "tab-a6b55e6b-48ef-4dfc-89e6-970b82383748"
+        },
+        "tab-04deb8e3-8533-461b-ace6-ddef66bf40dd": {
+          "display_name": "Product",
+          "keys": ["image", "product"],
+          "pos": 6,
+          "type": "tab"
+        },
+        "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75": {
+          "display_name": "Style",
+          "keys": ["background_color", "reverse_layout"],
+          "pos": 7,
+          "type": "tab",
+          "name": "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75",
+          "key": "tab-13ca152d-db6e-4fe4-9621-3fd4e9391a75"
+        },
+        "reverse_layout": {
+          "type": "boolean",
+          "pos": 8,
+          "default_value": false,
+          "translatable": true,
+          "key": "reverse_layout"
+        },
+        "background_color": {
+          "type": "option",
+          "source": "internal",
+          "datasource_slug": "background-colors",
+          "exclude_empty_option": true,
+          "default_value": "white",
+          "pos": 9,
+          "key": "background_color"
+        }
+      },
+      "image": "//a.storyblok.com/f/172000/x/fb5b1759f3/image-text-section-preview.png",
+      "preview_field": "headline",
+      "is_root": false,
+      "preview_tmpl": "<div>{{it.headline}}</div>\n{{@image(it.product.items[0].image)/}} ",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1970225,
+          "name": "Astronaut Space Suit Replica",
+          "component_id": 4783880,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        },
+        {
+          "id": 2080002,
+          "name": "Space Shuttle Replica",
+          "component_id": 4783880,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Single Product Section",
+      "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
+      "color": "#00b3b0",
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "level-1"
+    },
+    {
       "name": "site-config",
       "display_name": "Site Config",
-      "created_at": "2023-11-01T09:46:08.374Z",
-      "updated_at": "2024-03-06T18:02:53.414Z",
-      "id": 4816600,
+      "created_at": "2023-06-22T10:09:22.651Z",
+      "updated_at": "2024-09-05T16:34:45.112Z",
+      "id": 4160547,
       "schema": {
         "header_disable_transparency": {
           "type": "boolean",
@@ -2482,35 +2238,140 @@
           "options": [],
           "display_name": "Primary",
           "key": "primary",
-          "pos": 6
+          "pos": 6,
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_colors",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "secondary": {
           "type": "custom",
           "pos": 7,
           "field_type": "native-color-picker",
           "options": [],
-          "key": "secondary"
+          "key": "secondary",
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_colors",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "light": {
           "type": "custom",
           "pos": 8,
           "field_type": "native-color-picker",
           "options": [],
-          "key": "light"
+          "key": "light",
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_colors",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "medium": {
           "type": "custom",
           "pos": 9,
           "field_type": "native-color-picker",
           "options": [],
-          "key": "medium"
+          "key": "medium",
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_colors",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "dark": {
           "type": "custom",
           "pos": 10,
           "field_type": "native-color-picker",
           "options": [],
-          "key": "dark"
+          "key": "dark",
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_colors",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "colored_headlines": {
           "type": "boolean",
@@ -2528,7 +2389,28 @@
           "datasource_slug": "fonts",
           "exclude_empty_option": true,
           "default_value": "Custom font to be used for headlines.",
-          "pos": 13
+          "pos": 13,
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_fonts",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "custom_font_body": {
           "type": "option",
@@ -2537,7 +2419,28 @@
           "datasource_slug": "fonts",
           "exclude_empty_option": true,
           "default_value": "Custom font to be used for everything except headlines.",
-          "pos": 14
+          "pos": 14,
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "use_custom_fonts",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "enable_breadcrumbs": {
           "type": "boolean",
@@ -2547,7 +2450,28 @@
         "breadcrumbs_excluded_stories": {
           "type": "options",
           "source": "internal_stories",
-          "pos": 16
+          "pos": 16,
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "enable_breadcrumbs",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "footer_logo": {
           "type": "asset",
@@ -2690,7 +2614,28 @@
               "value": "1"
             }
           ],
-          "key": "header_auto_nav_folder"
+          "key": "header_auto_nav_folder",
+          "conditional_settings": [
+            {
+              "modifications": [
+                {
+                  "display": "hide"
+                }
+              ],
+              "rule_match": "any",
+              "rule_conditions": [
+                {
+                  "validated_object": {
+                    "type": "field",
+                    "field_key": "header_auto_nav",
+                    "field_attr": "value"
+                  },
+                  "validation": "empty",
+                  "value": null
+                }
+              ]
+            }
+          ]
         },
         "tab-ad498c76-1aa9-400b-bef7-bf1dd2867a7b": {
           "display_name": "Breadcrumbs",
@@ -2771,91 +2716,11 @@
       "content_type_asset_preview": null
     },
     {
-      "name": "store",
-      "display_name": null,
-      "created_at": "2023-11-01T09:46:07.719Z",
-      "updated_at": "2023-11-01T09:46:07.719Z",
-      "id": 4816572,
-      "schema": {
-        "image": {
-          "type": "asset",
-          "filetypes": ["images"],
-          "pos": 0,
-          "translatable": false
-        },
-        "name": {
-          "type": "text",
-          "pos": 1
-        },
-        "description": {
-          "type": "textarea",
-          "required": false,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "store",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
-      "name": "store-finder",
-      "display_name": null,
-      "created_at": "2023-11-01T09:46:07.989Z",
-      "updated_at": "2023-11-01T09:46:07.989Z",
-      "id": 4816583,
-      "schema": {
-        "headline": {
-          "type": "text",
-          "pos": 0,
-          "translatable": true
-        },
-        "lead": {
-          "type": "textarea",
-          "pos": 1,
-          "translatable": true
-        },
-        "stores": {
-          "type": "bloks",
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": ["store"],
-          "pos": 2
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "store-finder",
-      "component_group_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "color": "#fbce41",
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "ecommerce"
-    },
-    {
       "name": "tabbed-content-entry",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:08.137Z",
-      "updated_at": "2023-12-03T12:24:31.430Z",
-      "id": 4816590,
+      "created_at": "2023-06-22T10:09:22.767Z",
+      "updated_at": "2023-06-22T10:09:22.767Z",
+      "id": 4160550,
       "schema": {
         "image": {
           "type": "asset",
@@ -2902,9 +2767,9 @@
     {
       "name": "tabbed-content-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:07.890Z",
-      "updated_at": "2024-03-21T10:43:40.723Z",
-      "id": 4816579,
+      "created_at": "2023-06-22T10:09:22.686Z",
+      "updated_at": "2024-03-21T10:35:27.009Z",
+      "id": 4160549,
       "schema": {
         "headline": {
           "type": "text",
@@ -2939,7 +2804,17 @@
       "is_root": false,
       "preview_tmpl": "<div>{{it.headline}}</div>\n<div>With <strong>{{it.entries.length}}</strong> entries</div>",
       "is_nestable": true,
-      "all_presets": [],
+      "all_presets": [
+        {
+          "id": 1809950,
+          "name": "Planet Facts",
+          "component_id": 4160549,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
       "preset_id": null,
       "real_name": "tabbed-content-section",
       "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
@@ -2953,9 +2828,9 @@
     {
       "name": "text-section",
       "display_name": null,
-      "created_at": "2023-11-01T09:46:07.841Z",
-      "updated_at": "2024-03-06T18:02:53.854Z",
-      "id": 4816577,
+      "created_at": "2023-06-22T10:09:22.828Z",
+      "updated_at": "2024-03-04T13:58:21.167Z",
+      "id": 4160552,
       "schema": {
         "alignment": {
           "type": "option",
@@ -3022,7 +2897,7 @@
           "translatable": true,
           "restrict_type": "groups",
           "restrict_components": true,
-          "component_group_whitelist": ["9f2565df-aeb2-4cd0-b988-fddec0ef7b4b"]
+          "component_group_whitelist": ["e4165c3d-b636-41a6-8466-cc4f6ca35639"]
         },
         "button": {
           "type": "bloks",
@@ -3051,7 +2926,17 @@
       "is_root": false,
       "preview_tmpl": null,
       "is_nestable": true,
-      "all_presets": [],
+      "all_presets": [
+        {
+          "id": 2079008,
+          "name": "We don't know what we don't know.",
+          "component_id": 4160552,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": ""
+        }
+      ],
       "preset_id": null,
       "real_name": "text-section",
       "component_group_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
@@ -3065,9 +2950,9 @@
     {
       "name": "two-col-image-text-section",
       "display_name": "Two Column Image Text Section",
-      "created_at": "2023-12-03T12:24:32.050Z",
-      "updated_at": "2024-03-21T10:43:41.007Z",
-      "id": 4972791,
+      "created_at": "2023-09-14T11:24:32.307Z",
+      "updated_at": "2024-03-21T10:35:38.053Z",
+      "id": 4574616,
       "schema": {
         "image_1": {
           "type": "asset",
@@ -3145,45 +3030,45 @@
   "component_groups": [
     {
       "name": "3d",
-      "id": 306139,
-      "uuid": "67c5fff3-4fda-4584-ad46-c704616f96df",
+      "id": 220299,
+      "uuid": "f64f6c6e-9be6-4469-972d-1675cbed0e55",
       "parent_id": null,
-      "parent_uuid": "67c5fff3-4fda-4584-ad46-c704616f96df"
+      "parent_uuid": "f64f6c6e-9be6-4469-972d-1675cbed0e55"
+    },
+    {
+      "name": "brand",
+      "id": 353861,
+      "uuid": "f6282921-ac60-46a8-84af-762054512e93",
+      "parent_id": null,
+      "parent_uuid": null
     },
     {
       "name": "complex-hero-section",
-      "id": 241359,
-      "uuid": "bb72fdd6-8ecc-4c8d-9dac-66a6b9f3bf5f",
+      "id": 222344,
+      "uuid": "85d48780-1a61-4655-832d-683a8a2859fa",
       "parent_id": null,
-      "parent_uuid": "bb72fdd6-8ecc-4c8d-9dac-66a6b9f3bf5f"
-    },
-    {
-      "name": "ecommerce",
-      "id": 227020,
-      "uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9",
-      "parent_id": null,
-      "parent_uuid": "7e13370a-77a4-4b5f-adb6-c331764174a9"
+      "parent_uuid": "85d48780-1a61-4655-832d-683a8a2859fa"
     },
     {
       "name": "level-1",
-      "id": 227018,
+      "id": 165844,
       "uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22",
       "parent_id": null,
       "parent_uuid": "25bd5845-06f6-4a5f-bb46-4682b1f00f22"
     },
     {
       "name": "level-2",
-      "id": 227019,
+      "id": 165845,
       "uuid": "1be9ae66-afc2-4c29-a165-5699c15094a1",
       "parent_id": null,
       "parent_uuid": "1be9ae66-afc2-4c29-a165-5699c15094a1"
     },
     {
       "name": "richtext",
-      "id": 241361,
-      "uuid": "9f2565df-aeb2-4cd0-b988-fddec0ef7b4b",
+      "id": 165846,
+      "uuid": "e4165c3d-b636-41a6-8466-cc4f6ca35639",
       "parent_id": null,
-      "parent_uuid": "9f2565df-aeb2-4cd0-b988-fddec0ef7b4b"
+      "parent_uuid": "e4165c3d-b636-41a6-8466-cc4f6ca35639"
     }
   ]
 }
