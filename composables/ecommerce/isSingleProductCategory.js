@@ -9,5 +9,9 @@ export default async function () {
 
   if (slug.length < 2) return false
   // Return false if matches product-categories startpage
-  return slug[0] === 'product-categories' && slug[1] !== 'product-categories'
+  return (
+    slug[0] === 'product-categories' &&
+    slug[1] !== 'product-categories' &&
+    slug[1] !== 'site-config'
+  )
 }
