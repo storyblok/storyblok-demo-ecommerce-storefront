@@ -13,7 +13,7 @@ const story = ref(null)
 const storyblokApi = useStoryblokApi()
 
 const apiParams = {
-  version: 'draft',
+  version: getVersion(),
   language: language,
   fallback_lang: 'default',
   resolve_relations: resolveRelations,
@@ -56,8 +56,7 @@ try {
       story.value = data.story
     }
   } catch (error) {
-    const { status } = JSON.parse(error)
-    if (status === 404) error404.value = true
+    if (error.status === 404) error404.value = true
     const { data } = await storyblokApi.get('cdn/stories/error-404', apiParams)
     story.value = data.story
   }
@@ -73,10 +72,18 @@ try {
   console.log(error)
 }
 
+const viewingSiteConfig = ref(
+  story.value.content.component === 'site-config' ? true : false,
+)
+const defineViewingSiteConfigState = useState(
+  'viewingSiteConfig',
+  () => viewingSiteConfig.value,
+)
+
 const enableBreadcrumbs = useState('enableBreadcrumbs')
 const breadcrumbsExcludedStories = useState('breadcrumbsExcludedStories')
 const enableBreadcrumbsForStory = computed(() => {
-  if (processedSlug.startsWith('site-config')) return false
+  if (viewingSiteConfig.value) return false
   if (error404.value === true) return false
   if (!enableBreadcrumbs.value) return false
   const found = breadcrumbsExcludedStories.value.find(
