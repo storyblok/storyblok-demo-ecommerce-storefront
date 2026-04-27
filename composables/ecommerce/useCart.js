@@ -7,7 +7,7 @@ const shopifyClient = Client.buildClient({
 })
 
 const cart = ref({})
-const cartId = ref({})
+const cartId = ref(null)
 
 export default function useCart() {
   const assignCheckoutData = (fetchedCheckout) => {
@@ -31,31 +31,34 @@ export default function useCart() {
   }
 
   async function getCart(existingCartId) {
-    if (existingCartId) {
-      shopifyClient.checkout.fetch(existingCartId).then((fetchedCheckout) => {
+    try {
+      if (existingCartId) {
+        const fetchedCheckout =
+          await shopifyClient.checkout.fetch(existingCartId)
         cartId.value = fetchedCheckout.id
         cart.value = assignCheckoutData(fetchedCheckout)
-      })
-    } else {
-      shopifyClient.checkout.create().then((fetchedCheckout) => {
+      } else {
+        const fetchedCheckout = await shopifyClient.checkout.create()
         cartId.value = fetchedCheckout.id
         cart.value = assignCheckoutData(fetchedCheckout)
-      })
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 
   async function addToCart(variantId) {
-    const itemsToAdd = [
-      {
-        variantId,
-        quantity: 1,
-      },
-    ]
-    shopifyClient.checkout
-      .addLineItems(cartId.value, itemsToAdd)
-      .then((fetchedCheckout) => {
-        cart.value = assignCheckoutData(fetchedCheckout)
-      })
+    if (!cartId.value) return
+    const itemsToAdd = [{ variantId, quantity: 1 }]
+    try {
+      const fetchedCheckout = await shopifyClient.checkout.addLineItems(
+        cartId.value,
+        itemsToAdd,
+      )
+      cart.value = assignCheckoutData(fetchedCheckout)
+    } catch (error) {
+      console.log(error)
+    }
   }
   return {
     cart: computed(() => cart.value),

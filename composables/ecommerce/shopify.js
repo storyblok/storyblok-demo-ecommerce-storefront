@@ -32,6 +32,36 @@ const assignCategoryData = (fetchedCollection) => {
   return category
 }
 
+export const fetchShopifyProductsByCategory = async (categoryID) => {
+  if (categoryID === '' || !categoryID) return []
+
+  let products = []
+
+  await shopifyClient.collection
+    .fetchWithProducts(categoryID, { productsFirst: 20 })
+    .then((fetchedCollection) => {
+      fetchedCollection.products.forEach((product) => {
+        products.push({ id: product.id })
+      })
+    })
+
+  return products
+}
+
+export const fetchShopifyCollectionByHandle = async (categoryHandle) => {
+  if (categoryHandle === '' || !categoryHandle) return
+
+  let category = {}
+
+  await shopifyClient.collection
+    .fetchByHandle(categoryHandle)
+    .then((fetchedCollection) => {
+      Object.assign(category, assignCategoryData(fetchedCollection))
+    })
+
+  return category
+}
+
 export const fetchShopifyProductByID = async (productID) => {
   if (productID === '' || !productID) return
 
@@ -58,38 +88,23 @@ export const fetchShopifyProductByHandle = async (productHandle) => {
   return product
 }
 
-export const fetchShopifyProductsByCategory = async (categoryID) => {
-  if (categoryID === '' || !categoryID) return
-
+export const fetchShopifyAllProducts = async () => {
   let products = []
 
-  await shopifyClient.collection
-    .fetchWithProducts(categoryID, { productsFirst: 10 })
-    .then((fetchedCollection) => {
-      fetchedCollection.products.forEach((product) => {
-        products.push({ id: product.id })
-      })
+  await shopifyClient.product.fetchAll(20).then((fetchedProducts) => {
+    fetchedProducts.forEach((fetchedProduct) => {
+      products.push({ id: fetchedProduct.id })
     })
+  })
 
   return products
 }
 
-export const fetchShopifyProductsByCustomQuery = async (
-  searchTerm,
-  categories,
-) => {
+export const fetchShopifyProductsByCustomQuery = async (searchTerm) => {
   let products = []
 
-  const searchQuery = searchTerm ? `title:'${searchTerm}'` : ''
-
-  let categoriesQuery = ''
-  for (let i = 0; i < categories.length; i++) {
-    if (i !== 0) categoriesQuery += ' '
-    categoriesQuery += `AND tag:'${categories[i]}'`
-  }
-
   const query = {
-    query: `${searchQuery} ${categoriesQuery}`,
+    query: searchTerm ? `title:'${searchTerm}'` : '',
   }
 
   await shopifyClient.product.fetchQuery(query).then((fetchedProducts) => {
@@ -99,32 +114,4 @@ export const fetchShopifyProductsByCustomQuery = async (
   })
 
   return products
-}
-
-export const fetchShopifyCollectionByHandle = async (categoryHandle) => {
-  if (categoryHandle === '' || !categoryHandle) return
-
-  let category = {}
-
-  await shopifyClient.collection
-    .fetchByHandle(categoryHandle)
-    .then((fetchedCollection) => {
-      Object.assign(category, assignCategoryData(fetchedCollection))
-    })
-
-  return category
-}
-
-export const fetchShopifyAllCollections = async () => {
-  let categories = []
-
-  await shopifyClient.collection
-    .fetchAllWithProducts()
-    .then((fetchedCollections) => {
-      fetchedCollections.forEach((fetchedCollection) => {
-        categories.push(assignCategoryData(fetchedCollection))
-      })
-    })
-
-  return categories
 }

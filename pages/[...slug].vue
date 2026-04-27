@@ -30,24 +30,11 @@ const { customParent } = useRuntimeConfig().public
 const viewingSingleProduct = await isSingleProduct()
 const productSlug = await getSingleProductSlug()
 
-/**
- * Handle product categories
- */
-const viewingSingleProductCategory = await isSingleProductCategory()
-const productCategorySlug = await getSingleProductCategorySlug()
-
 try {
   try {
     if (processedSlug === 'error-404') error404.value = true
     let data = null
-    if (viewingSingleProductCategory) {
-      data = await getHero(
-        productCategorySlug,
-        'default',
-        'product-categories',
-        apiParams,
-      )
-    } else if (viewingSingleProduct) {
+    if (viewingSingleProduct) {
       data = await getHero(productSlug, 'default', 'products', apiParams)
     } else {
       data = await getStory(processedSlug, apiParams)
@@ -98,7 +85,7 @@ const breadCrumbsAltStyle = computed(
     :alt-style="breadCrumbsAltStyle"
   />
   <StoryblokComponent
-    v-if="story && !viewingSingleProduct && !viewingSingleProductCategory"
+    v-if="story && !viewingSingleProduct"
     :blok="story.content"
     :uuid="story.uuid"
     :index="story.uuid"
@@ -107,10 +94,5 @@ const breadCrumbsAltStyle = computed(
     v-else-if="story && viewingSingleProduct"
     :blok="story.content"
     :product-slug="productSlug"
-  />
-  <SingleProductCategory
-    v-else-if="story && viewingSingleProductCategory"
-    :blok="story.content"
-    :product-category-slug="productCategorySlug"
   />
 </template>
