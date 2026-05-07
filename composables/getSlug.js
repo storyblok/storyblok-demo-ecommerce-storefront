@@ -7,7 +7,7 @@ export default async function () {
      * Check if the path URL parameter is provided.
      * Note: This is needed specifically for demo spaces created on the fly. Not needed in a usual project.
      */
-    slug = route.query.path?.split('/')
+    slug = route.query.path?.split('/').filter(Boolean)
   } else {
     /**
      * If there is no path parameter provided, retrieve the slug.
