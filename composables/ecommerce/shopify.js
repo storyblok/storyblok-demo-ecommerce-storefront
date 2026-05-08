@@ -77,7 +77,31 @@ export const fetchShopifyProductByID = async (productID) => {
 export const fetchShopifyProductByHandle = async (productHandle) => {
   if (productHandle === '' || !productHandle) return
 
+  const { collectionSlug } = await useShopifyConfig()
+
   let product = null
+
+  if (collectionSlug) {
+    try {
+      const collection =
+        await shopifyClient.collection.fetchByHandle(collectionSlug)
+      if (!collection?.id) return null
+
+      const collectionWithProducts =
+        await shopifyClient.collection.fetchWithProducts(collection.id, {
+          productsFirst: 250,
+        })
+
+      const products = collectionWithProducts?.products ?? []
+      const match =
+        products.find((p) => p.handle === productHandle) ?? products[0]
+      if (match) product = assignProductData(match)
+    } catch (e) {
+      console.log(e)
+    }
+
+    return product
+  }
 
   await shopifyClient.product
     .fetchByHandle(productHandle)
