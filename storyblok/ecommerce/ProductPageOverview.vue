@@ -2,26 +2,28 @@
 const props = defineProps({ blok: Object })
 
 const searchTerm = ref('')
-const checkedCategories = ref([])
-const rangePrice = ref(0)
 
 const resetFilters = () => {
   searchTerm.value = ''
-  checkedCategories.value = []
-  rangePrice.value = 0
 }
 
-const categories = ref([])
-categories.value = await fetchShopifyAllCollections()
-console.log(categories.value)
+const { collectionSlug } = await useShopifyConfig()
+const collectionId = ref(null)
+if (collectionSlug) {
+  const collection = await fetchShopifyCollectionByHandle(collectionSlug)
+  collectionId.value = collection?.id ?? null
+}
 
 const products = ref([])
 const fetchProducts = async () => {
   try {
-    products.value = await fetchShopifyProductsByCustomQuery(
-      searchTerm.value,
-      checkedCategories.value,
-    )
+    if (searchTerm.value) {
+      products.value = await fetchShopifyProductsByCustomQuery(searchTerm.value)
+    } else if (collectionId.value) {
+      products.value = await fetchShopifyProductsByCategory(collectionId.value)
+    } else {
+      products.value = await fetchShopifyAllProducts()
+    }
   } catch (error) {
     console.log(error)
   }
@@ -29,7 +31,7 @@ const fetchProducts = async () => {
 
 fetchProducts()
 
-watch([searchTerm, checkedCategories], () => {
+watch(searchTerm, () => {
   fetchProducts()
 })
 
@@ -74,44 +76,6 @@ const button = {
               @keypress.enter="fetchProducts()"
             />
           </div>
-          <fieldset>
-            <legend class="mb-3 text-lg font-medium">Select a category</legend>
-            <div v-if="categories" class="flex flex-col space-y-3">
-              <label
-                v-for="category in categories"
-                :key="category.id"
-                :for="category.slug"
-                class="checkbox flex"
-              >
-                <input
-                  type="checkbox"
-                  :id="category.slug"
-                  :name="category.slug"
-                  :value="category.slug"
-                  v-model="checkedCategories"
-                  class="invisible hidden"
-                />
-                <Indicator />
-                <span>{{ category.title }}</span>
-              </label>
-            </div>
-          </fieldset>
-          <!-- <fieldset>
-            <legend class="font-medium text-lg mb-3">It costs more than</legend>
-            <div class="flex flex-col space-y-3">
-              <label :key="rangePrice" :for="rangePrice" class="checkbox flex">
-                <input
-                  type="range"
-                  min="0"
-                  max="1000"
-                  step="100"
-                  v-model="rangePrice"
-                />
-
-                <span>{{ rangePrice }}</span>
-              </label>
-            </div>
-          </fieldset> -->
           <div>
             <Button :button="button" @click.prevent="resetFilters()">
               Reset filters
